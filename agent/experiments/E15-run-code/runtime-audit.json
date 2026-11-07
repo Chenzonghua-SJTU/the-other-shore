@@ -1,0 +1,548 @@
+{
+  "completed": 18,
+  "rows": [
+    {
+      "round": "R01",
+      "world": "1",
+      "total": 89.98409693792443,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "run_code": 7,
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "read_file": 1,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-1"
+    },
+    {
+      "round": "R01",
+      "world": "2",
+      "total": 94.9878475434698,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "run_code": 3,
+        "insert_probe": 5,
+        "symbolic_regression": 2,
+        "fit_law_and_rollout": 3,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_request": 1,
+        "ValidationError": 1,
+        "ValueError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-2"
+    },
+    {
+      "round": "R01",
+      "world": "3",
+      "total": 95.98982722944996,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 11,
+      "tools": {
+        "run_code": 1,
+        "read_file": 2,
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 11
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-3"
+    },
+    {
+      "round": "R01",
+      "world": "4",
+      "total": 47.38259832925283,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 21,
+      "tools": {
+        "insert_probe": 5,
+        "run_code": 4,
+        "observe_body": 1,
+        "fit_law_and_rollout": 5,
+        "analyze_residual": 1,
+        "symbolic_regression": 1,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 2,
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 21
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-4"
+    },
+    {
+      "round": "R01",
+      "world": "5",
+      "total": 43.27088769041341,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 23,
+      "tools": {
+        "run_code": 12,
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "analyze_residual": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1,
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 23
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-5"
+    },
+    {
+      "round": "R01",
+      "world": "6",
+      "total": 16.94511304502521,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "run_code": 5,
+        "insert_probe": 2,
+        "fit_law_and_rollout": 5,
+        "validate_law": 1,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R01/world-6"
+    },
+    {
+      "round": "R02",
+      "world": "1",
+      "total": 54.47118000688795,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 25,
+      "tools": {
+        "run_code": 9,
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "validate_law": 2,
+        "analyze_residual": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1,
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 25
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-1"
+    },
+    {
+      "round": "R02",
+      "world": "2",
+      "total": 96.48768295565213,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 13,
+      "tools": {
+        "run_code": 2,
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 13
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-2"
+    },
+    {
+      "round": "R02",
+      "world": "3",
+      "total": 95.96069837444112,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 11,
+      "tools": {
+        "run_code": 2,
+        "insert_probe": 2,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 11
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-3"
+    },
+    {
+      "round": "R02",
+      "world": "4",
+      "total": 15.00687977907081,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 27,
+      "tools": {
+        "run_code": 10,
+        "insert_probe": 3,
+        "observe_body": 1,
+        "fit_law_and_rollout": 9,
+        "validate_law": 3,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 3,
+        "ValueError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 27
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-4"
+    },
+    {
+      "round": "R02",
+      "world": "5",
+      "total": 21.870571405728573,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 24,
+      "tools": {
+        "run_code": 15,
+        "insert_probe": 2,
+        "observe_body": 1,
+        "fit_law_and_rollout": 4,
+        "save_draft": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 24
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-5"
+    },
+    {
+      "round": "R02",
+      "world": "6",
+      "total": 13.06830593476132,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 23,
+      "tools": {
+        "run_code": 8,
+        "insert_probe": 5,
+        "fit_law_and_rollout": 5,
+        "symbolic_regression": 1,
+        "validate_law": 1,
+        "save_draft": 2
+      },
+      "tool_error_codes": {
+        "ValidationError": 3
+      },
+      "finish_reasons": {
+        "tool_calls": 23
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R02/world-6"
+    },
+    {
+      "round": "R03",
+      "world": "1",
+      "total": 52.86714027429726,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "observe_body": 1,
+        "run_code": 4,
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "analyze_residual": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_request": 1,
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-1"
+    },
+    {
+      "round": "R03",
+      "world": "2",
+      "total": 95.9991775535959,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "insert_probe": 4,
+        "run_code": 5,
+        "fit_law_and_rollout": 2,
+        "validate_law": 1,
+        "save_draft": 1,
+        "symbolic_regression": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-2"
+    },
+    {
+      "round": "R03",
+      "world": "3",
+      "total": 96.96186566916363,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 16,
+      "tools": {
+        "run_code": 6,
+        "insert_probe": 4,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "symbolic_regression": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1,
+        "invalid_request": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 16
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-3"
+    },
+    {
+      "round": "R03",
+      "world": "4",
+      "total": 87.24836202500066,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 15,
+      "tools": {
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 3,
+        "save_draft": 1,
+        "observe_body": 1,
+        "analyze_residual": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 15
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-4"
+    },
+    {
+      "round": "R03",
+      "world": "5",
+      "total": 26.07269484221599,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "run_code": 6,
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-5"
+    },
+    {
+      "round": "R03",
+      "world": "6",
+      "total": 97.47435653439597,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 16,
+      "tools": {
+        "run_code": 3,
+        "read_file": 2,
+        "insert_probe": 4,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 16
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E15-20261108-012803/R03/world-6"
+    }
+  ],
+  "accepted": 18,
+  "pair_mismatches": [],
+  "traceback_cases": []
+}

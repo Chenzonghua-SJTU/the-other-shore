@@ -1,0 +1,28 @@
+{
+  "status": "experimental_default_disabled",
+  "recommendation": "Default off under current model and300s budget; stable benefit unproven",
+  "original_scientific_source_commit": "6f8a159",
+  "scientific_files_unchanged": 32,
+  "official_fixed_files_unchanged": 84,
+  "tests_local_and_linux": 4,
+  "e15": {
+    "trials": 18,
+    "using_code": 17,
+    "calls": 102,
+    "successful_calls": 76,
+    "code_errors": 26,
+    "backend_unavailable": 0,
+    "mean": 63.44718256281927,
+    "full_baseline_mean": 59.766610896864876,
+    "full_baseline_delta": 3.680571665954394,
+    "matched_baseline_mean": 68.07659075087746,
+    "matched_delta": -4.629408188058185
+  },
+  "e17": "Cancelled by user with0 completed trials; excluded",
+  "official_image_compatibility_verified": false,
+  "runtime_sha256": {
+    "agent/run.py": "609021436e42b83646cd9bc3ae5d192966df1ca9e5fe426f46cfb138008f6bde",
+    "agent/pipeline_bridge/code_transport.py": "9c6f886ee820c8fe7a4ac2ae44642eb9f5a4c653ebc74dc569c10ff815f6ad44",
+    "agent/code_broker.py": "9ee774fd1d54f88739250aca002b0f9792bfcfb8d42688f55f6ac0ac32218cb0"
+  }
+}

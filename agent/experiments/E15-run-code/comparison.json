@@ -1,0 +1,302 @@
+{
+  "experiment": "E15-20261108-012803",
+  "pairs": [
+    {
+      "world": "1",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 38.70431139268256,
+      "code": 89.98409693792443,
+      "delta": 51.27978554524187,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "2",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 95.98871490103035,
+      "code": 94.9878475434698,
+      "delta": -1.0008673575605513,
+      "baseline_success": true,
+      "code_success": true
+    },
+    {
+      "world": "3",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 77.17688218196847,
+      "code": 95.98982722944996,
+      "delta": 18.81294504748149,
+      "baseline_success": false,
+      "code_success": true
+    },
+    {
+      "world": "4",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 78.8287874260053,
+      "code": 47.38259832925283,
+      "delta": -31.446189096752477,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "5",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 95.88721760838871,
+      "code": 43.27088769041341,
+      "delta": -52.6163299179753,
+      "baseline_success": true,
+      "code_success": false
+    },
+    {
+      "world": "6",
+      "round": "R01",
+      "seed": 42,
+      "baseline": 22.73152255068338,
+      "code": 16.94511304502521,
+      "delta": -5.78640950565817,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "1",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 94.93805013361435,
+      "code": 54.47118000688795,
+      "delta": -40.466870126726405,
+      "baseline_success": true,
+      "code_success": false
+    },
+    {
+      "world": "2",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 95.49811833021239,
+      "code": 96.48768295565213,
+      "delta": 0.9895646254397406,
+      "baseline_success": true,
+      "code_success": true
+    },
+    {
+      "world": "3",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 95.49578168191847,
+      "code": 95.96069837444112,
+      "delta": 0.46491669252264956,
+      "baseline_success": true,
+      "code_success": true
+    },
+    {
+      "world": "4",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 94.95410678638538,
+      "code": 15.00687977907081,
+      "delta": -79.94722700731457,
+      "baseline_success": true,
+      "code_success": false
+    },
+    {
+      "world": "5",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 66.04862927388947,
+      "code": 21.870571405728573,
+      "delta": -44.178057868160906,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "6",
+      "round": "R02",
+      "seed": 43,
+      "baseline": 16.91930659408954,
+      "code": 13.06830593476132,
+      "delta": -3.8510006593282213,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "1",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 96.99472166471497,
+      "code": 52.86714027429726,
+      "delta": -44.12758139041771,
+      "baseline_success": true,
+      "code_success": false
+    },
+    {
+      "world": "2",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 96.99477861455892,
+      "code": 95.9991775535959,
+      "delta": -0.9956010609630255,
+      "baseline_success": true,
+      "code_success": true
+    },
+    {
+      "world": "3",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 96.47840392749416,
+      "code": 96.96186566916363,
+      "delta": 0.48346174166947264,
+      "baseline_success": true,
+      "code_success": true
+    },
+    {
+      "world": "4",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 23.694781819881747,
+      "code": 87.24836202500066,
+      "delta": 63.55358020511891,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "5",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 27.18589972202211,
+      "code": 26.07269484221599,
+      "delta": -1.1132048798061192,
+      "baseline_success": false,
+      "code_success": false
+    },
+    {
+      "world": "6",
+      "round": "R03",
+      "seed": 44,
+      "baseline": 10.858618906253984,
+      "code": 97.47435653439597,
+      "delta": 86.61573762814199,
+      "baseline_success": false,
+      "code_success": true
+    }
+  ],
+  "worlds": {
+    "1": {
+      "baseline_mean": 76.8790277303373,
+      "code_mean": 65.77413907303655,
+      "code_sample_std": 20.98177258314148,
+      "mean_delta": -11.104888657300748,
+      "baseline_success": 2,
+      "code_success": 0,
+      "scores": [
+        89.98409693792443,
+        54.47118000688795,
+        52.86714027429726
+      ],
+      "paired_deltas": [
+        51.27978554524187,
+        -40.466870126726405,
+        -44.12758139041771
+      ]
+    },
+    "2": {
+      "baseline_mean": 96.16053728193388,
+      "code_mean": 95.82490268423928,
+      "code_sample_std": 0.7649544845779975,
+      "mean_delta": -0.33563459769461207,
+      "baseline_success": 3,
+      "code_success": 3,
+      "scores": [
+        94.9878475434698,
+        96.48768295565213,
+        95.9991775535959
+      ],
+      "paired_deltas": [
+        -1.0008673575605513,
+        0.9895646254397406,
+        -0.9956010609630255
+      ]
+    },
+    "3": {
+      "baseline_mean": 89.71702259712703,
+      "code_mean": 96.30413042435157,
+      "code_sample_std": 0.5698015985845565,
+      "mean_delta": 6.587107827224538,
+      "baseline_success": 2,
+      "code_success": 3,
+      "scores": [
+        95.98982722944996,
+        95.96069837444112,
+        96.96186566916363
+      ],
+      "paired_deltas": [
+        18.81294504748149,
+        0.46491669252264956,
+        0.48346174166947264
+      ]
+    },
+    "4": {
+      "baseline_mean": 65.82589201075749,
+      "code_mean": 49.87928004444143,
+      "code_sample_std": 36.18539766207451,
+      "mean_delta": -15.946611966316043,
+      "baseline_success": 1,
+      "code_success": 0,
+      "scores": [
+        47.38259832925283,
+        15.00687977907081,
+        87.24836202500066
+      ],
+      "paired_deltas": [
+        -31.446189096752477,
+        -79.94722700731457,
+        63.55358020511891
+      ]
+    },
+    "5": {
+      "baseline_mean": 63.04058220143343,
+      "code_mean": 30.40471797945266,
+      "code_sample_std": 11.338791938178517,
+      "mean_delta": -32.635864221980775,
+      "baseline_success": 1,
+      "code_success": 0,
+      "scores": [
+        43.27088769041341,
+        21.870571405728573,
+        26.07269484221599
+      ],
+      "paired_deltas": [
+        -52.6163299179753,
+        -44.178057868160906,
+        -1.1132048798061192
+      ]
+    },
+    "6": {
+      "baseline_mean": 16.836482683675634,
+      "code_mean": 42.49592517139416,
+      "code_sample_std": 47.652159916364475,
+      "mean_delta": 25.659442487718533,
+      "baseline_success": 0,
+      "code_success": 1,
+      "scores": [
+        16.94511304502521,
+        13.06830593476132,
+        97.47435653439597
+      ],
+      "paired_deltas": [
+        -5.78640950565817,
+        -3.8510006593282213,
+        86.61573762814199
+      ]
+    }
+  },
+  "matched_baseline_mean": 68.07659075087746,
+  "code_mean": 63.44718256281927,
+  "mean_delta": -4.629408188058185,
+  "baseline_success": 9,
+  "code_success": 7,
+  "full_five_repeat_baseline_mean": 59.766610896864876,
+  "scope": "Descriptive three-repeat comparison. Model seed unset; matched environment seeds do not imply identical observation noise after different actions. Earlier pilot results excluded."
+}

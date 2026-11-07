@@ -1,0 +1,373 @@
+{
+  "rows": [
+    {
+      "round": "R01",
+      "world": "1",
+      "total": 89.98409693792443,
+      "calls": 7,
+      "code_bearing_model_requests": 7,
+      "code_bearing_model_seconds": 84.92439657635987,
+      "all_model_seconds": 165.82767526060343,
+      "statuses": {
+        "success": 7
+      },
+      "error_types": {
+        "none": 7
+      },
+      "elapsed_seconds": 2.973211335018277,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R01",
+      "world": "2",
+      "total": 94.9878475434698,
+      "calls": 3,
+      "code_bearing_model_requests": 3,
+      "code_bearing_model_seconds": 20.200817639008164,
+      "all_model_seconds": 92.21772197075188,
+      "statuses": {
+        "error": 2,
+        "success": 1
+      },
+      "error_types": {
+        "TypeError": 1,
+        "ValueError": 1,
+        "none": 1
+      },
+      "elapsed_seconds": 1.0926709305495024,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R01",
+      "world": "3",
+      "total": 95.98982722944996,
+      "calls": 1,
+      "code_bearing_model_requests": 1,
+      "code_bearing_model_seconds": 11.417505061253905,
+      "all_model_seconds": 63.84399504773319,
+      "statuses": {
+        "success": 1
+      },
+      "error_types": {
+        "none": 1
+      },
+      "elapsed_seconds": 0.4219635631889105,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R01",
+      "world": "4",
+      "total": 47.38259832925283,
+      "calls": 4,
+      "code_bearing_model_requests": 4,
+      "code_bearing_model_seconds": 41.15685053355992,
+      "all_model_seconds": 148.09113891795278,
+      "statuses": {
+        "error": 1,
+        "success": 3
+      },
+      "error_types": {
+        "ValueError": 1,
+        "none": 3
+      },
+      "elapsed_seconds": 2.0818038657307625,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R01",
+      "world": "5",
+      "total": 43.27088769041341,
+      "calls": 12,
+      "code_bearing_model_requests": 12,
+      "code_bearing_model_seconds": 100.58856526389718,
+      "all_model_seconds": 172.90619822964072,
+      "statuses": {
+        "error": 6,
+        "success": 6
+      },
+      "error_types": {
+        "ValueError": 4,
+        "none": 6,
+        "SyntaxError": 1,
+        "TypeError": 1
+      },
+      "elapsed_seconds": 6.214597895741463,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R01",
+      "world": "6",
+      "total": 16.94511304502521,
+      "calls": 5,
+      "code_bearing_model_requests": 5,
+      "code_bearing_model_seconds": 67.82005005143583,
+      "all_model_seconds": 179.44478745944798,
+      "statuses": {
+        "error": 2,
+        "success": 3
+      },
+      "error_types": {
+        "TypeError": 1,
+        "none": 3,
+        "ValueError": 1
+      },
+      "elapsed_seconds": 2.2067213226109743,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "1",
+      "total": 54.47118000688795,
+      "calls": 9,
+      "code_bearing_model_requests": 9,
+      "code_bearing_model_seconds": 72.73793891072273,
+      "all_model_seconds": 154.7657511383295,
+      "statuses": {
+        "success": 7,
+        "error": 2
+      },
+      "error_types": {
+        "none": 7,
+        "AxisError": 1,
+        "ValueError": 1
+      },
+      "elapsed_seconds": 4.0138284880667925,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "2",
+      "total": 96.48768295565213,
+      "calls": 2,
+      "code_bearing_model_requests": 2,
+      "code_bearing_model_seconds": 36.481671983376145,
+      "all_model_seconds": 100.59419740177691,
+      "statuses": {
+        "success": 2
+      },
+      "error_types": {
+        "none": 2
+      },
+      "elapsed_seconds": 0.9470876231789589,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "3",
+      "total": 95.96069837444112,
+      "calls": 2,
+      "code_bearing_model_requests": 2,
+      "code_bearing_model_seconds": 24.792567582800984,
+      "all_model_seconds": 82.5365887247026,
+      "statuses": {
+        "error": 1,
+        "success": 1
+      },
+      "error_types": {
+        "IndexError": 1,
+        "none": 1
+      },
+      "elapsed_seconds": 0.7924399934709072,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "4",
+      "total": 15.00687977907081,
+      "calls": 10,
+      "code_bearing_model_requests": 10,
+      "code_bearing_model_seconds": 54.02425920031965,
+      "all_model_seconds": 119.39436094649136,
+      "statuses": {
+        "error": 4,
+        "success": 6
+      },
+      "error_types": {
+        "FileNotFoundError": 1,
+        "ValueError": 1,
+        "none": 6,
+        "NameError": 1,
+        "TypeError": 1
+      },
+      "elapsed_seconds": 4.212263895198703,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "5",
+      "total": 21.870571405728573,
+      "calls": 15,
+      "code_bearing_model_requests": 15,
+      "code_bearing_model_seconds": 154.5125304274261,
+      "all_model_seconds": 195.4223680086434,
+      "statuses": {
+        "error": 2,
+        "success": 13
+      },
+      "error_types": {
+        "ValueError": 2,
+        "none": 13
+      },
+      "elapsed_seconds": 8.578335355967283,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R02",
+      "world": "6",
+      "total": 13.06830593476132,
+      "calls": 8,
+      "code_bearing_model_requests": 8,
+      "code_bearing_model_seconds": 63.58261195756495,
+      "all_model_seconds": 146.93665145151317,
+      "statuses": {
+        "error": 2,
+        "success": 6
+      },
+      "error_types": {
+        "TypeError": 1,
+        "none": 6,
+        "ValueError": 1
+      },
+      "elapsed_seconds": 4.670521190389991,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "1",
+      "total": 52.86714027429726,
+      "calls": 4,
+      "code_bearing_model_requests": 4,
+      "code_bearing_model_seconds": 43.426736222580075,
+      "all_model_seconds": 116.3101413026452,
+      "statuses": {
+        "success": 3,
+        "error": 1
+      },
+      "error_types": {
+        "none": 3,
+        "ValueError": 1
+      },
+      "elapsed_seconds": 1.8629077393561602,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "2",
+      "total": 95.9991775535959,
+      "calls": 5,
+      "code_bearing_model_requests": 5,
+      "code_bearing_model_seconds": 41.423291036859155,
+      "all_model_seconds": 111.47934310510755,
+      "statuses": {
+        "success": 4,
+        "error": 1
+      },
+      "error_types": {
+        "none": 4,
+        "IndexError": 1
+      },
+      "elapsed_seconds": 2.255109900608659,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "3",
+      "total": 96.96186566916363,
+      "calls": 6,
+      "code_bearing_model_requests": 6,
+      "code_bearing_model_seconds": 53.96020678244531,
+      "all_model_seconds": 121.08400042168796,
+      "statuses": {
+        "success": 5,
+        "error": 1
+      },
+      "error_types": {
+        "none": 5,
+        "UFuncTypeError": 1
+      },
+      "elapsed_seconds": 2.4639125913381577,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "4",
+      "total": 87.24836202500066,
+      "calls": 0,
+      "code_bearing_model_requests": 0,
+      "code_bearing_model_seconds": 0,
+      "all_model_seconds": 91.36583519354463,
+      "statuses": {},
+      "error_types": {},
+      "elapsed_seconds": 0.0,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "5",
+      "total": 26.07269484221599,
+      "calls": 6,
+      "code_bearing_model_requests": 6,
+      "code_bearing_model_seconds": 101.9722220171243,
+      "all_model_seconds": 171.54194694757462,
+      "statuses": {
+        "success": 5,
+        "error": 1
+      },
+      "error_types": {
+        "none": 5,
+        "ValueError": 1
+      },
+      "elapsed_seconds": 2.3880861066281796,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    },
+    {
+      "round": "R03",
+      "world": "6",
+      "total": 97.47435653439597,
+      "calls": 3,
+      "code_bearing_model_requests": 3,
+      "code_bearing_model_seconds": 26.890480680391192,
+      "all_model_seconds": 83.7142622563988,
+      "statuses": {
+        "success": 3
+      },
+      "error_types": {
+        "none": 3
+      },
+      "elapsed_seconds": 4.448404148221016,
+      "code_backend_receipt": true,
+      "backend_unavailable": 0
+    }
+  ],
+  "completed": 18,
+  "trials_using_code": 17,
+  "trials_with_success": 17,
+  "calls": 102,
+  "code_bearing_model_seconds": 999.9127019271255,
+  "all_model_seconds": 2317.4769637845457,
+  "statuses": {
+    "success": 76,
+    "error": 26
+  },
+  "elapsed_seconds": 51.6238659452647,
+  "backend_unavailable_calls": 0,
+  "missing_backend_receipts": 0,
+  "backend_valid_for_interpretation": true
+}
