@@ -14,6 +14,7 @@ from .pipeline_bridge.environment import Environment
 from .pipeline_bridge.backend import install
 from .pipeline_bridge.service import symbolic_service
 from .pipeline_bridge.reliability import configure,ProtocolClient
+from .pipeline_bridge.filter_options import add_filter_options,resolve_filter_enabled
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
@@ -22,7 +23,7 @@ def main(argv=None):
     p.add_argument('--model-python');p.add_argument('--startup-timeout',type=float,default=900.)
     p.add_argument('--output-dir',default=os.environ.get('RIFT_OUTPUT_DIR'))
     p.add_argument('--symbolic-endpoint');p.add_argument('--max-tokens',type=int,default=4096)
-    p.add_argument('--trajectory-filter',action='store_true',help='Expose optional joint spline tool; off preserves BF2 preprocessing')
+    add_filter_options(p)
     p.add_argument('--max-turns',type=int,default=None,help='Legacy launcher parameter, unused by repository Agent')
     p.add_argument('--tp-size',type=int,default=4)
     args=p.parse_args(argv)
@@ -34,6 +35,9 @@ def main(argv=None):
     os.environ['RIFT_OUTPUT_DIR']=str(out)
     (out/'tmp').mkdir(exist_ok=True);os.environ['TMPDIR']=str(out/'tmp')
     config=json.loads((A/'repository-config.json').read_text())
+    filter_cli_override=args.trajectory_filter
+    try:args.trajectory_filter=resolve_filter_enabled(config['numerics'],filter_cli_override)
+    except ValueError as exc:p.error(str(exc))
     binding=model_binding(load_model_registry(args.models_file or A/'models.json',check_files=True),args.model_ref)
     def stop(signum,frame):raise SystemExit(128+signum)
     previous=signal.signal(signal.SIGTERM,stop)
@@ -46,6 +50,8 @@ def main(argv=None):
                 env=Environment(Console());env.ruleset=config['environment']['ruleset']
                 backend=install(env,out)
                 numerics=copy.deepcopy(config['numerics']);numerics['symbolic_regression_endpoint']=endpoint
+                if 'trajectory_filter_enabled' in numerics or filter_cli_override is not None:
+                    numerics['trajectory_filter_enabled']=args.trajectory_filter
                 runtime=ToolRuntime(env,out,config=numerics,code_config=config['code_execution'])
                 backend.attach(runtime)
                 configure(runtime)
