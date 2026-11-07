@@ -28,3 +28,5 @@ automatic 策略需同时设置 `"trajectory_filter_enabled": true, "trajectory_
 后续工作区为 official_run，科学代码、实验记录均在 agent 内；84个官方文件与原包逐字节一致。初始版本 tag 为 baseline-bf2-v1，commit 为5d9a0b3。关闭 trajectory_filter_enabled 可恢复 BF2 默认路径；精确复现实验使用其冻结 submission/agent 及 registration.json，不能只看当前 main。
 
 Git 不包含模型权重、vendor_runtime、Julia/PySR 依赖、会话凭据和大日志。现服务器使用既有 agent/vendor_runtime；官方镜像的依赖布局尚待核实，不能据此声称无依赖提交包已在官方镜像验证。不要把本实验交付包直接当作已验证的官方提交包。
+
+E14三次复测：18场均分57.4598，同seed baseline68.0766，下降10.6168；7/18达到90（对照9/18）。17场实际滤波，另1场未调用SR。19次消费确认全部通过。当前版本没有总体提升，默认关闭。见experiments/E14-filter3。

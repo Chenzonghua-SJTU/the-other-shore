@@ -130,6 +130,17 @@
     "e13_registered_trials": 6,
     "e13_first_system_and_schemas_match_baseline": true,
     "stable_efficacy_demonstrated": false,
-    "official_image_dependency_layout_verified": false
+    "official_image_dependency_layout_verified": false,
+    "e14_three_repeat_result": {
+      "mean": 57.45982620467957,
+      "matched_baseline_mean": 68.07659075087746,
+      "mean_delta": -10.616764546197889,
+      "success": 7,
+      "baseline_success": 9,
+      "trials": 18,
+      "trials_using_filter": 17,
+      "verified_searches": 19,
+      "automatic_failed_calls": 0
+    }
   }
 }
