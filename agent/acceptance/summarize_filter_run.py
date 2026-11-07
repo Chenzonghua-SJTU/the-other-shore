@@ -17,12 +17,17 @@ def summarize(directory):
         output = directory/row['repeat']/('world-'+str(row['world']))/'agent-output'
         tools = records(output/'tools.jsonl')
         receipts = records(output/'filter-consumption.jsonl')
+        automatic = records(output/'filter-automatic.jsonl')
         artifacts = [json.loads(p.read_text()) for p in (output/'trajectory-filters').glob('*.json')]
         per_artifact = {a['preprocessing_id']: sum(p['status'] == 'filtered' for p in a['per_probe']) for a in artifacts}
         actual = sum(per_artifact.values())
         counts = collections.Counter(t['tool'] for t in tools)
         rows.append({**{k: v for k, v in row.items() if k != 'directory'},
                      'filter_calls': counts['denoise_trajectories'],
+                     'automatic_calls': len(automatic),
+                     'automatic_filter_calls': sum(a.get('filter_calls',0) for a in automatic),
+                     'automatic_preprocessing_seconds': sum(a.get('preprocessing_seconds',0.) for a in automatic),
+                     'automatic_failed_calls': sum(a.get('status') == 'failed' for a in automatic),
                      'symbolic_calls': counts['symbolic_regression'],
                      'filtered_probe_artifacts': actual,
                      'verified_searches': sum(r.get('worker_consumption_verified') is True for r in receipts),
@@ -33,6 +38,10 @@ def summarize(directory):
     result.update(experiment=directory.name, rows=rows,
                   success_count=sum(r['success'] for r in rows),
                   filter_calls=sum(r['filter_calls'] for r in rows),
+                  automatic_calls=sum(r['automatic_calls'] for r in rows),
+                  automatic_filter_calls=sum(r['automatic_filter_calls'] for r in rows),
+                  automatic_failed_calls=sum(r['automatic_failed_calls'] for r in rows),
+                  automatic_preprocessing_seconds=sum(r['automatic_preprocessing_seconds'] for r in rows),
                   verified_searches=sum(r['verified_searches'] for r in rows),
                   unverified_searches=sum(r['unverified_searches'] for r in rows),
                   effective_filtered_searches=sum(r['effective_filtered_searches'] for r in rows))

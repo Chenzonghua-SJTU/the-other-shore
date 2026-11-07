@@ -16,7 +16,9 @@ def with_noise(runtime, probes):
     return result
 
 
-def install(runtime, *, enabled=False):
+def install(runtime, *, enabled=False, policy='explicit'):
+    if policy not in ('explicit', 'automatic'):
+        raise ValueError('Trajectory filter policy must be explicit or automatic')
     if not enabled:
         return runtime
     if not runtime.symbolic_enabled:
@@ -118,6 +120,10 @@ def install(runtime, *, enabled=False):
             raise ValueError('Worker did not acknowledge filtered targets; result is not a filtered search')
         return dict(result, preprocessing=audit)
     runtime.symbolic_regression = symbolic_regression
+    if policy == 'automatic':
+        from .automatic_filter import wrap
+        runtime.symbolic_regression = wrap(runtime, original_search, symbolic_regression)
+        return runtime
     runtime.schemas = copy.deepcopy(runtime.schemas)
     for schema in runtime.schemas:
         function = schema['function']

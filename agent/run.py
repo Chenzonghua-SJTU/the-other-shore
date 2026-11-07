@@ -14,7 +14,7 @@ from .pipeline_bridge.environment import Environment
 from .pipeline_bridge.backend import install
 from .pipeline_bridge.service import symbolic_service
 from .pipeline_bridge.reliability import configure,ProtocolClient
-from .pipeline_bridge.filter_options import add_filter_options,resolve_filter_enabled
+from .pipeline_bridge.filter_options import add_filter_options,resolve_filter_enabled,resolve_filter_policy
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
@@ -36,7 +36,10 @@ def main(argv=None):
     (out/'tmp').mkdir(exist_ok=True);os.environ['TMPDIR']=str(out/'tmp')
     config=json.loads((A/'repository-config.json').read_text())
     filter_cli_override=args.trajectory_filter
-    try:args.trajectory_filter=resolve_filter_enabled(config['numerics'],filter_cli_override)
+    filter_policy_cli_override=args.trajectory_filter_policy
+    try:
+        args.trajectory_filter=resolve_filter_enabled(config['numerics'],filter_cli_override)
+        args.trajectory_filter_policy=resolve_filter_policy(config['numerics'],filter_policy_cli_override)
     except ValueError as exc:p.error(str(exc))
     binding=model_binding(load_model_registry(args.models_file or A/'models.json',check_files=True),args.model_ref)
     def stop(signum,frame):raise SystemExit(128+signum)
@@ -52,12 +55,14 @@ def main(argv=None):
                 numerics=copy.deepcopy(config['numerics']);numerics['symbolic_regression_endpoint']=endpoint
                 if 'trajectory_filter_enabled' in numerics or filter_cli_override is not None:
                     numerics['trajectory_filter_enabled']=args.trajectory_filter
+                if 'trajectory_filter_policy' in numerics or filter_policy_cli_override is not None:
+                    numerics['trajectory_filter_policy']=args.trajectory_filter_policy
                 runtime=ToolRuntime(env,out,config=numerics,code_config=config['code_execution'])
                 backend.attach(runtime)
                 configure(runtime)
                 if args.trajectory_filter:
                     from .pipeline_bridge.filter_tool import install as install_filter
-                    install_filter(runtime,enabled=True)
+                    install_filter(runtime,enabled=True,policy=args.trajectory_filter_policy)
                     numerics['trajectory_filter_tool']='joint_spline_v1'
                 import hashlib,inspect
                 provenance=json.loads((A/'repository-source.json').read_text())
@@ -71,8 +76,10 @@ def main(argv=None):
                     provenance_path=out/'runtime-provenance.json'
                     provenance_record=json.loads(provenance_path.read_text())
                     provenance_record['trajectory_filter_tool']='joint_spline_v1; opt-in adapter overlay; original scientific source hashes unchanged'
-                    from .pipeline_bridge.filter_guidance import VERSION as filter_guidance_version
-                    provenance_record['trajectory_filter_guidance']=filter_guidance_version
+                    provenance_record['trajectory_filter_policy']=args.trajectory_filter_policy
+                    if args.trajectory_filter_policy=='explicit':
+                        from .pipeline_bridge.filter_guidance import VERSION as filter_guidance_version
+                        provenance_record['trajectory_filter_guidance']=filter_guidance_version
                     provenance_path.write_text(json.dumps(provenance_record,indent=2))
 
                 settings=copy.deepcopy(config['model']);settings.update(base_url=model.base_url,model=model.model,
@@ -80,7 +87,7 @@ def main(argv=None):
                 (out/'effective_config.json').write_text(json.dumps({**config,'model':settings,'numerics':numerics},ensure_ascii=False,indent=2))
                 client=DeepSeekClient(settings,out,remaining_seconds=lambda:runtime.budget()['wall_seconds_remaining'])
                 agent_client=ProtocolClient(client)
-                if args.trajectory_filter:
+                if args.trajectory_filter and args.trajectory_filter_policy=='explicit':
                     from .pipeline_bridge.filter_guidance import configure as configure_filter_guidance
                     agent_client=configure_filter_guidance(agent_client,enabled=True)
                 try:result=Agent(agent_client,runtime,out,config['agent']).run()

@@ -4,7 +4,7 @@ from contextlib import redirect_stderr
 import io
 import unittest
 
-from .pipeline_bridge.filter_options import add_filter_options, resolve_filter_enabled
+from .pipeline_bridge.filter_options import add_filter_options, resolve_filter_enabled, resolve_filter_policy
 
 
 class FilterOptionsTests(unittest.TestCase):
@@ -47,6 +47,23 @@ class FilterOptionsTests(unittest.TestCase):
         with redirect_stderr(io.StringIO()):
             with self.assertRaises(SystemExit):
                 self.parser().parse_args(['--trajectory-filter', '--no-trajectory-filter'])
+
+    def test_policy_default_and_cli_precedence(self):
+        for configured in ['explicit', 'automatic']:
+            for override in [None, 'explicit', 'automatic']:
+                self.assertEqual(resolve_filter_policy({'trajectory_filter_policy': configured}, override), configured if override is None else override)
+        self.assertEqual(resolve_filter_policy({}), 'explicit')
+        args = self.parser().parse_args(['--trajectory-filter-policy', 'automatic'])
+        self.assertEqual(args.trajectory_filter_policy, 'automatic')
+        self.assertIs(resolve_filter_enabled({}, args.trajectory_filter), False)
+
+    def test_invalid_policy_even_when_overridden(self):
+        for value in [None, 1, True, [], {}, '', 'auto']:
+            with self.assertRaises(ValueError):resolve_filter_policy({'trajectory_filter_policy': value}, 'explicit')
+            if value is not None:
+                with self.assertRaises(ValueError):resolve_filter_policy({}, value)
+        with redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):self.parser().parse_args(['--trajectory-filter-policy', 'auto'])
 
 
 if __name__ == '__main__':unittest.main()

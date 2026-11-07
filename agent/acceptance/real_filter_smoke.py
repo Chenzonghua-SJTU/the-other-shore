@@ -16,7 +16,7 @@ from ..pipeline_bridge.filter_capability import verify
 from ..repository.shore_agent.runtime import ToolRuntime
 
 
-def run(output, endpoint):
+def run(output, endpoint, *, policy="explicit"):
     output=Path(output);output.mkdir(parents=True,exist_ok=False)
     os.environ['RIFT_OUTPUT_DIR']=str(output)
     capability=verify(endpoint,wait_timeout=60.)
@@ -25,7 +25,10 @@ def run(output, endpoint):
         env=Environment(Console(credentials['endpoint'],credentials['token']));env.ruleset='e5'
         backend=install_backend(env,output/'runtime')
         rt=ToolRuntime(env,output/'runtime',config={'symbolic_regression_enabled':True,'symbolic_regression_endpoint':endpoint,'symbolic_regression_seed':42})
-        backend.attach(rt);configure(rt);install_filter(rt,enabled=True)
+        backend.attach(rt);configure(rt)
+        original_schemas=copy.deepcopy(rt.schemas)
+        install_filter(rt,enabled=True,**({"policy":policy} if policy!="explicit" else {}))
+        if policy=="automatic":assert rt.schemas==original_schemas
         assert rt.mission()['ok']
         probes=[{'r0':[1.5,0.],'v0':[0.,.3],'properties':{'mass':1.,'charge':1.}},
                 {'r0':[1.5,0.],'v0':[0.,.3],'properties':{'mass':2.,'charge':1.}},
@@ -34,10 +37,16 @@ def run(output, endpoint):
         inserted=rt.execute('insert_probe',{'probes':probes,'t0':0.,'dt':.2,'n_samples':50});assert inserted['ok'],inserted
         ids=[p['probe_id'] for p in inserted['data']['probes']]
         before=copy.deepcopy(rt.store.records['probe'])
-        filtered=rt.execute('denoise_trajectories',{'train_probe_ids':ids,'time_budget_seconds':2.});assert filtered['ok'],filtered
-        fid=filtered['data']['preprocessing_id']
-        assert any(r['status']=='filtered' for r in filtered['data']['per_probe'])
-        searched=rt.execute('symbolic_regression',{'train_probe_ids':ids,'time_budget_seconds':45.,'preprocessing_id':fid});assert searched['ok'],searched
+        if policy=='automatic':
+            searched=rt.execute('symbolic_regression',{'train_probe_ids':ids,'time_budget_seconds':45.})
+            assert searched['ok'],searched
+            fid=searched['data']['preprocessing']['preprocessing_id']
+            filtered_rows=json.loads((output/'runtime/trajectory-filters'/str(fid+'.json')).read_text())['per_probe']
+        else:
+            filtered=rt.execute('denoise_trajectories',{'train_probe_ids':ids,'time_budget_seconds':2.});assert filtered['ok'],filtered
+            fid=filtered['data']['preprocessing_id'];filtered_rows=filtered['data']['per_probe']
+            searched=rt.execute('symbolic_regression',{'train_probe_ids':ids,'time_budget_seconds':45.,'preprocessing_id':fid});assert searched['ok'],searched
+        assert any(r['status']=='filtered' for r in filtered_rows)
         assert searched['data']['preprocessing']['worker_consumption_verified']
         assert rt.store.records['probe']==before,'search mutated acquired observations'
         # A generic zero hypothesis exercises the full raw-data rollout path;
@@ -51,7 +60,7 @@ def run(output, endpoint):
         submitted=rt.execute('submit',args)
         if not submitted['ok'] and submitted['error']['code']=='scientific_review_needed':submitted=rt.execute('submit',args)
         assert submitted['ok'] and session.snapshot()['closed'],submitted
-        report={'passed':True,'scope':'Integration only, excluded from 30 scientific trials','real_pysr_search':True,'worker_capability':capability['verified_capability'],'filtered_probes':sum(r['status']=='filtered' for r in filtered['data']['per_probe']),'worker_consumption_verified':True,'raw_probe_records_unchanged':True,'official_rollouts':backend.rollout_calls,'accepted':True,'search_id':searched['data']['preprocessing']['search_id']}
+        report={'passed':True,'scope':'Integration only, excluded from registered scientific trials','policy':policy,'real_pysr_search':True,'worker_capability':capability['verified_capability'],'filtered_probes':sum(r['status']=='filtered' for r in filtered_rows),'worker_consumption_verified':True,'raw_probe_records_unchanged':True,'official_rollouts':backend.rollout_calls,'accepted':True,'search_id':searched['data']['preprocessing']['search_id']}
         assert backend.rollout_calls>0
     (output/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
     print('FILTER_INTEGRATION_PASS',json.dumps(report,ensure_ascii=False),flush=True)

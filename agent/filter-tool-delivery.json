@@ -4,23 +4,25 @@
   "source_baseline": "5d9a0b3 / baseline-bf2-v1",
   "vendored_source_modified": false,
   "feature_flag": "--trajectory-filter",
-  "unit_tests_passed": 28,
-  "command": "OPENBLAS_NUM_THREADS=1 ../physics_discovery/.venv/bin/python -B -m unittest agent.test_filter_guidance agent.test_filter_options agent.test_trajectory_filter -q",
+  "unit_tests_passed": 40,
+  "command": "OPENBLAS_NUM_THREADS=1 ../physics_discovery/.venv/bin/python -B -m unittest agent.test_automatic_filter agent.test_filter_guidance agent.test_filter_options agent.test_trajectory_filter -q",
   "consumer_capability": {
     "version": "joint_spline_v1",
     "consumer_sha256": "192b77402d0494d30ee1f9f233a1e3e4c0c7ed27e94185ecb2d5f50152f01efc"
   },
   "files_sha256": {
     "agent/pipeline_bridge/trajectory_filter.py": "192b77402d0494d30ee1f9f233a1e3e4c0c7ed27e94185ecb2d5f50152f01efc",
-    "agent/pipeline_bridge/filter_tool.py": "fc3101d3ba538d97c9cf05451f41d2173748eb9042307e3e5680a685c83fc767",
+    "agent/pipeline_bridge/filter_tool.py": "4798c56020e9a86ac66fadb84717a105f646846a710b0a2aa1e5ad73baa3dbd5",
     "agent/pipeline_bridge/filter_capability.py": "b9116807fe0e52779b450ea8bc9c47cf5ca351c699234b7dde0a00fc95e5898a",
     "agent/pipeline_bridge/service.py": "39ce6844cc738202c2504d80fc57f3f79d10e6c661e8f6095eaa0c9e70a151fe",
-    "agent/run.py": "9f2a7739404d59ed650d84865d0b42cef371b713cfdf3e8e4ae040c434050b7d",
+    "agent/run.py": "1edc54e806a1d5e85ebddd6e9edf46ec492bc56d108a347b819d000234884d70",
     "agent/test_trajectory_filter.py": "c029ed43ffa7f08e9fad0c839d6d46d84b1aaea2d46a3a8efc36cbec1dfb233f",
-    "agent/pipeline_bridge/filter_options.py": "d2c4702d2656c9226274ed25be8041988e65fe92b259eed18338d899178d843d",
-    "agent/test_filter_options.py": "6a3a7102e7a7ae1a0364c4104b0fa2c2ee83ceadb0ba7fae0249a7d8fce485b3",
+    "agent/pipeline_bridge/filter_options.py": "1cdfd005f2dcb669ac2d81ca33208d7a12be3678957af123c654242f0daa9984",
+    "agent/test_filter_options.py": "e56aef084d5b2910a4ed2ce0a5405102cd1b79432bbe669ef48f6ba30f2dbcde",
     "agent/pipeline_bridge/filter_guidance.py": "f8551c1cca19648e0ccd469d527e3367396f347c1e5e66284db8b13254112629",
-    "agent/test_filter_guidance.py": "e374c0a76537771323395748a195c16fd5a7b6d01f5bb1a2b14fe6dcd8847e72"
+    "agent/test_filter_guidance.py": "e374c0a76537771323395748a195c16fd5a7b6d01f5bb1a2b14fe6dcd8847e72",
+    "agent/pipeline_bridge/automatic_filter.py": "19f9c2e6c0dcd30225f205bb0681319f2fd94e99d5b2753251746f689345825a",
+    "agent/test_automatic_filter.py": "1cd8d5b1b4c0649898e9ec97a680800548f9cf1a7fe5246936b4afd5756a7d69"
   },
   "independent_test_family_5_seeds": {
     "joint_r_v_a_rmse": [
@@ -85,10 +87,37 @@
   },
   "guidance_variant": {
     "version": "filter-guidance-v1",
-    "enabled_when": "Resolved trajectory_filter_enabled is true (config or CLI)",
+    "enabled_when": "Resolved filter enabled=true AND policy=explicit (automatic has no guidance overlay)",
     "scope": "Independent prompt-only pilot variant; never merge with frozen optional-tool-only E11 batch",
     "model_messages_logging": "Original model client logs actual modified system prompt",
     "default_disabled_prompt_schemas": "Byte equal to BF2 wrapper output",
     "numerical_worker_capability_changed": false
+  },
+  "automatic_variant": {
+    "version": "automatic-filter-v1",
+    "config": {
+      "numerics.trajectory_filter_enabled": true,
+      "numerics.trajectory_filter_policy": "automatic"
+    },
+    "cli": "--trajectory-filter --trajectory-filter-policy automatic",
+    "default_policy": "explicit",
+    "policy_cli_overrides_config": true,
+    "policy_flag_enables_filtering": false,
+    "schemas": "Original BF2 schemas retained by identity: no denoise tool or preprocessing_id schema addition",
+    "system_prompt": "No FilterGuidanceClient; original BF2 ProtocolClient",
+    "operation": "Missing preprocessing_id: internally filter eligible acquired probes, then use verified artifact path; explicit internal ID has priority and invalid IDs are rejected",
+    "budget": "total=min(requested,60,remaining-35); filter<=min(2,available-1); subtract ALL preprocessing elapsed time before SR; never start SR with <1 second",
+    "audit": "filter-automatic.jsonl and result.automatic_preprocessing, plus existing filter-consumption.jsonl and trajectory-filters artifacts",
+    "all_bypass": "No derived targets sent; worker_consumption=not_required; filtered_count=0; no empty-set success claimed",
+    "cache": "No additional artifact cache reuse",
+    "experimental_scope": "Separate E13 pilot; E10/E11/E12 frozen snapshots and results unchanged",
+    "fallback": "Short/zero-noise/inadequate budget or per-probe numerical failures use raw legacy preprocessing; invalid raw arrays are not suppressed",
+    "science_unchanged": [
+      "filter algorithm and parameters",
+      "consumer source SHA",
+      "legacy raw quality and resolution",
+      "candidate fitting and validation raw observations",
+      "official rollout backend"
+    ]
   }
 }
