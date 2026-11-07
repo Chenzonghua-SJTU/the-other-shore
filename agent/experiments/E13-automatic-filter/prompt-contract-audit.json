@@ -1,0 +1,84 @@
+{
+  "rows": [
+    {
+      "world": "world-1",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    },
+    {
+      "world": "world-2",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    },
+    {
+      "world": "world-3",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    },
+    {
+      "world": "world-4",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    },
+    {
+      "world": "world-5",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    },
+    {
+      "world": "world-6",
+      "actual": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "baseline": {
+        "system_sha256": "5fef0fe16a80cfe6361a795b90bb4afd3cf4b9d32ccffdef284f67870d5608e5",
+        "schemas_sha256": "2f9ae0451e0c4ea66f8fdc12d9f75399119b8fbbc97fde5401d6ac445aa1c589"
+      },
+      "system_matches": true,
+      "schemas_match": true
+    }
+  ],
+  "all_six_match": true,
+  "scope": "Actual first-request system message and runtime schemas; later trajectories and tool results may differ."
+}

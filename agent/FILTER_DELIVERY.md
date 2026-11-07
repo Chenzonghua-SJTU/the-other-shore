@@ -4,7 +4,9 @@
 
 ## 接口与使用
 
-官方入口仍为 agent/run.py。在 agent/repository-config.json 的 numerics 中设置 `"trajectory_filter_enabled": true` 即可启用，无需修改官方入口或评分器。缺省为 false；CLI `--trajectory-filter` / `--no-trajectory-filter` 显式覆盖配置。启用后增加可选工具及简短使用说明，旧科研包32个文件仍保持原始哈希。
+官方入口仍为 agent/run.py。在 agent/repository-config.json 的 numerics 中设置 `"trajectory_filter_enabled": true` 即可启用，无需修改官方入口或评分器。缺省为 false；CLI `--trajectory-filter` / `--no-trajectory-filter` 显式覆盖配置。策略缺省为 explicit，启用后增加可选工具及简短使用说明。旧科研包32个文件仍保持原始哈希。
+
+automatic 策略需同时设置 `"trajectory_filter_enabled": true, "trajectory_filter_policy": "automatic"`，或 CLI `--trajectory-filter --trajectory-filter-policy automatic`。它保留 BF2 原始提示词和工具 schemas，在 SR 内部处理，不增加模型调用；实际预处理耗时从同一 SR 请求预算扣除。记录 filter-automatic.jsonl 及消费回执，全回退不算有效滤波。策略参数本身不会启用滤波。
 
 调用 `denoise_trajectories(train_probe_ids=[...], time_budget_seconds=2)`，再将返回的 preprocessing_id 和完全相同的 train_probe_ids 传给 symbolic_regression。省略 ID 仍走旧局部多项式。不得把只有工具注册、没有实际消费的试验说成滤波收益。
 
@@ -14,12 +16,12 @@
 
 ## 验收与实验
 
-- 本地与 Linux 28 项数值、边界、数据消费、配置和提示词测试通过；四组既有框架回归通过。
+- 本地与 Linux 40 项数值、边界、数据消费、配置、提示词和自动流程测试通过；四组既有框架回归通过。
 - 真实 PySR + 官方 Console 集成通过：4条滤波探针被 worker 确认消费，原始记录不变，13次官方 rollout，合法提交。集成冒烟的零假设不是科学成绩。
 - 80个预登记解析案例全部保留；混合频率案例加速度误差略退化。固定 E10 R07 全部58条观测消融：46条实际滤波、12条短序列回退；位置六世界改善，加速度世界2/3/5退化。见 acceptance/evidence。
-- E10 六宇宙各五次含噪 baseline 已完成，整体均分59.7666，≥90为12/30。E11是可选工具端到端五次消融；E12另测工具使用引导，不能合并统计。
+- E10 六宇宙各五次含噪 baseline 已完成，整体均分59.7666，≥90为12/30。E11可选工具30场均分69.4680、15/30达到90，E12使用引导6场均分65.6187、3/6达到90，但两批实际滤波均为0次，不能当作滤波收益。E13自动前处理6场均分69.4394、4/6达到90，6次搜索均确认消费滤波，总前处理1.1233秒；它是单次试跑，不与其他版本合并统计，不足以确立稳定收益。
 
-测试命令：`python -B -m unittest agent.test_filter_guidance agent.test_filter_options agent.test_trajectory_filter -q`。需要 NumPy/SciPy。科学集成还需要现有 PySR/Julia 服务。
+测试命令：`python -B -m unittest agent.test_automatic_filter agent.test_filter_guidance agent.test_filter_options agent.test_trajectory_filter -q`。需要 NumPy/SciPy。科学集成还需要现有 PySR/Julia 服务。
 
 ## 部署与回退
 

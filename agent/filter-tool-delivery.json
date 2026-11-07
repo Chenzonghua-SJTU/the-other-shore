@@ -1,5 +1,5 @@
 {
-  "status": "ready_for_independent_acceptance",
+  "status": "correctness_accepted_experimental_default_disabled",
   "default": "disabled",
   "source_baseline": "5d9a0b3 / baseline-bf2-v1",
   "vendored_source_modified": false,
@@ -119,5 +119,17 @@
       "candidate fitting and validation raw observations",
       "official rollout backend"
     ]
+  },
+  "independent_acceptance": {
+    "linux_and_local_unit_tests": 40,
+    "official_fixed_files_unchanged": 84,
+    "vendored_scientific_files_unchanged": 32,
+    "e13_verified_filtered_searches": 6,
+    "e13_mean_score": 69.43937960152289,
+    "e13_success_count": 4,
+    "e13_registered_trials": 6,
+    "e13_first_system_and_schemas_match_baseline": true,
+    "stable_efficacy_demonstrated": false,
+    "official_image_dependency_layout_verified": false
   }
 }

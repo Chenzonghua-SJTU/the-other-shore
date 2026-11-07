@@ -1,6 +1,6 @@
 # Official pipeline development workspace
 
-This repository is the `official_run` workspace. The initial commit preserves the BF2 Agent used by E10 R05/R06 and the ongoing R07–R11 noisy baseline. Upstream scientific source: `6f8a1599b604d4fd317176d8503c84c1fd636866`. BF2 runtime overlays change protocol feedback and actual prompts; this is not behaviorally identical to upstream.
+This repository is the `official_run` workspace. The initial commit preserves the BF2 Agent used by E10 R05/R06 and the completed R07–R11 noisy baseline. Upstream scientific source: `6f8a1599b604d4fd317176d8503c84c1fd636866`. BF2 runtime overlays change protocol feedback and actual prompts; this is not behaviorally identical to upstream.
 
 ## Boundaries and rollback
 
@@ -14,7 +14,7 @@ This repository is the `official_run` workspace. The initial commit preserves th
 
 R07–R11 each run all six public worlds with observation noise, seeds 42–46 respectively; Qwen3.8-27B, 4096 output tokens/call, thinking disabled, PySR enabled, energy 10, exploration 300 seconds, model seed unset. Four independent model ports 8000–8003 are used. Each registered attempt is retained. Report five-score mean, sample standard deviation, range, valid submissions and unrounded score >=90 count per world. Infrastructure errors invalidate completeness and must be reported separately.
 
-The active baseline remains in the previous workspace to avoid moving running processes:
+The original baseline remains at the previous path; an archive is also present under official_run/agent/_experiments:
 `/inspire/hdd/project/26-the-other-shore/263140062/official_test/agent/_experiments/E10-20261107-224311`.
 
 ## Runtime and dependencies

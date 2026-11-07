@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "Integration only, excluded from registered scientific trials",
+  "policy": "automatic",
+  "real_pysr_search": true,
+  "worker_capability": {
+    "version": "joint_spline_v1",
+    "consumer_sha256": "192b77402d0494d30ee1f9f233a1e3e4c0c7ed27e94185ecb2d5f50152f01efc"
+  },
+  "filtered_probes": 4,
+  "worker_consumption_verified": true,
+  "raw_probe_records_unchanged": true,
+  "official_rollouts": 13,
+  "accepted": true,
+  "search_id": "sr_216764c3e808"
+}
