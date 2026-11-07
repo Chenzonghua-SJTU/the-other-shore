@@ -12,8 +12,13 @@ from ..repository.shore_agent.symbolic_service import WorkerPool, make_server
 
 
 @contextmanager
-def symbolic_service(output_dir, *, size=1, timeout=900., external_endpoint=None):
+def symbolic_service(output_dir, *, size=1, timeout=900., external_endpoint=None, trajectory_filter=False):
     if external_endpoint:
+        if trajectory_filter:
+            from .filter_capability import verify
+            import json
+            receipt=verify(external_endpoint,wait_timeout=timeout)
+            (Path(output_dir)/'filter-worker-capability.json').write_text(json.dumps(receipt,indent=2))
         yield external_endpoint
         return
     agent_dir = Path(__file__).resolve().parents[1]
@@ -43,16 +48,22 @@ def symbolic_service(output_dir, *, size=1, timeout=900., external_endpoint=None
         PYTHON_JULIACALL_PROJECT=str(project),JULIA_NUM_THREADS='4',JULIA_PKG_OFFLINE='true',
         OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',JULIA_NUM_PRECOMPILE_TASKS='4')
     # Explicit package bootstrap supports relocated agent trees, without importing the source checkout.
+    filter_bootstrap = ('from agent.pipeline_bridge.trajectory_filter import install_consumer;install_consumer();'
+                        if trajectory_filter else '')
     bootstrap = ("import sys,importlib.util;sys.path.insert(0,"+repr(sdk)+");"
         "p="+repr(str(agent_dir))+";s=importlib.util.spec_from_file_location('agent',p+'/__init__.py',submodule_search_locations=[p]);"
         "m=importlib.util.module_from_spec(s);sys.modules['agent']=m;s.loader.exec_module(m);"
         "from agent.pipeline_bridge.bootstrap import repository;repository();"
         "from agent.pipeline_bridge.backend import install;install(None,sys.argv[1]);"
+        +filter_bootstrap+
         "from agent.repository.shore_agent.symbolic_service import _worker;_worker(sys.argv[1])")
     # Use the organizer's working interpreter, not a non-relocatable venv executable.
     python = sys.executable
     pool = WorkerPool(size,python,output,warmup_timeout_seconds=timeout,worker_env=env,
         worker_command_factory=lambda directory:[python,'-B','-u','-c',bootstrap,str(directory)])
+    if trajectory_filter:
+        from .filter_capability import advertise
+        advertise(pool)
     server = None
     try:
         deadline = time.monotonic()+timeout

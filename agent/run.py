@@ -22,6 +22,7 @@ def main(argv=None):
     p.add_argument('--model-python');p.add_argument('--startup-timeout',type=float,default=900.)
     p.add_argument('--output-dir',default=os.environ.get('RIFT_OUTPUT_DIR'))
     p.add_argument('--symbolic-endpoint');p.add_argument('--max-tokens',type=int,default=4096)
+    p.add_argument('--trajectory-filter',action='store_true',help='Expose optional joint spline tool; off preserves BF2 preprocessing')
     p.add_argument('--max-turns',type=int,default=None,help='Legacy launcher parameter, unused by repository Agent')
     p.add_argument('--tp-size',type=int,default=4)
     args=p.parse_args(argv)
@@ -40,13 +41,18 @@ def main(argv=None):
         with managed_model(binding['base_model'],base_url=args.base_url,model_id=args.model_id,
             model_path=binding['path'],adapter_path=binding.get('adapter_path'),python_executable=args.model_python,
             tensor_parallel_size=args.tp_size,max_model_len=262144,startup_timeout=args.startup_timeout,log_dir=out/'model-logs') as model:
-            with symbolic_service(out,timeout=args.startup_timeout,external_endpoint=args.symbolic_endpoint) as endpoint:
+            service_options={'trajectory_filter':True} if args.trajectory_filter else {}
+            with symbolic_service(out,timeout=args.startup_timeout,external_endpoint=args.symbolic_endpoint,**service_options) as endpoint:
                 env=Environment(Console());env.ruleset=config['environment']['ruleset']
                 backend=install(env,out)
                 numerics=copy.deepcopy(config['numerics']);numerics['symbolic_regression_endpoint']=endpoint
                 runtime=ToolRuntime(env,out,config=numerics,code_config=config['code_execution'])
                 backend.attach(runtime)
                 configure(runtime)
+                if args.trajectory_filter:
+                    from .pipeline_bridge.filter_tool import install as install_filter
+                    install_filter(runtime,enabled=True)
+                    numerics['trajectory_filter_tool']='joint_spline_v1'
                 import hashlib,inspect
                 provenance=json.loads((A/'repository-source.json').read_text())
                 (out/'runtime-provenance.json').write_text(json.dumps({'github_commit':provenance['github_commit'],
@@ -55,6 +61,11 @@ def main(argv=None):
                     'client_class':DeepSeekClient.__module__,'fit_file':runtime.fit_law_and_rollout.__func__.__code__.co_filename,
                     'tool_schemas_sha256':hashlib.sha256(json.dumps(runtime.schemas,sort_keys=True).encode()).hexdigest(),
                     'protocol_overlay':'BF2: logged interface/research feedback corrections; original source unchanged','trajectory_backend':'official rift.rollout','scientific_source_files':len(provenance['files'])},indent=2))
+                if args.trajectory_filter:
+                    provenance_path=out/'runtime-provenance.json'
+                    provenance_record=json.loads(provenance_path.read_text())
+                    provenance_record['trajectory_filter_tool']='joint_spline_v1; opt-in adapter overlay; original scientific source hashes unchanged'
+                    provenance_path.write_text(json.dumps(provenance_record,indent=2))
 
                 settings=copy.deepcopy(config['model']);settings.update(base_url=model.base_url,model=model.model,
                     max_tokens_per_call=args.max_tokens,local_model_endpoints={model.model:model.base_url})

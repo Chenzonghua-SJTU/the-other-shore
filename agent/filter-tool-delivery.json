@@ -1,0 +1,69 @@
+{
+  "status": "ready_for_independent_acceptance",
+  "default": "disabled",
+  "source_baseline": "5d9a0b3 / baseline-bf2-v1",
+  "vendored_source_modified": false,
+  "feature_flag": "--trajectory-filter",
+  "unit_tests_passed": 18,
+  "command": "OPENBLAS_NUM_THREADS=1 ../physics_discovery/.venv/bin/python -B -m unittest agent.test_trajectory_filter -v",
+  "consumer_capability": {
+    "version": "joint_spline_v1",
+    "consumer_sha256": "192b77402d0494d30ee1f9f233a1e3e4c0c7ed27e94185ecb2d5f50152f01efc"
+  },
+  "files_sha256": {
+    "agent/pipeline_bridge/trajectory_filter.py": "192b77402d0494d30ee1f9f233a1e3e4c0c7ed27e94185ecb2d5f50152f01efc",
+    "agent/pipeline_bridge/filter_tool.py": "fc3101d3ba538d97c9cf05451f41d2173748eb9042307e3e5680a685c83fc767",
+    "agent/pipeline_bridge/filter_capability.py": "b9116807fe0e52779b450ea8bc9c47cf5ca351c699234b7dde0a00fc95e5898a",
+    "agent/pipeline_bridge/service.py": "39ce6844cc738202c2504d80fc57f3f79d10e6c661e8f6095eaa0c9e70a151fe",
+    "agent/run.py": "573d4943b03bd3406cbc7e714456f97084fbea3848f3aaee8c836a3ab6856177",
+    "agent/test_trajectory_filter.py": "c029ed43ffa7f08e9fad0c839d6d46d84b1aaea2d46a3a8efc36cbec1dfb233f"
+  },
+  "independent_test_family_5_seeds": {
+    "joint_r_v_a_rmse": [
+      0.0002595220840726334,
+      0.0003556101818753432,
+      0.0027103155736597027
+    ],
+    "legacy_r_v_a_rmse": [
+      0.020381053336382158,
+      0.001093244861559495,
+      0.0020995478817935798
+    ],
+    "selection": [
+      {
+        "seed": 0,
+        "lambda": 1e-06
+      },
+      {
+        "seed": 1,
+        "lambda": 1e-06
+      },
+      {
+        "seed": 2,
+        "lambda": 1e-06
+      },
+      {
+        "seed": 3,
+        "lambda": 1e-08
+      },
+      {
+        "seed": 4,
+        "lambda": 1e-06
+      }
+    ],
+    "benefit_verdict": "Position and velocity improved; acceleration aggregate worse than legacy. Not an all-channel benefit pass."
+  },
+  "performance_local_seconds": {
+    "ten_50_sample_probes": 0.1108,
+    "one_1000_sample_probe": 0.02625
+  },
+  "limits": [
+    "No real PySR/model/official rollout executed by this delivery test suite.",
+    "Cooperative deadline checked around sparse solves; not a process-enforced hard interrupt.",
+    "CV selected from position/velocity prediction and does not guarantee acceleration or law-discovery improvement.",
+    "Endpoint derivatives may be less accurate than interior derivatives.",
+    "n<12 and zero-noise trajectories bypass to legacy."
+  ],
+  "weight_policy": "Retain raw-observation legacy quality and resolution sensitivity, replace only SR r/v/a; neither is joint posterior uncertainty.",
+  "pool_lifecycle": "Busy workers remain authenticated. Rewarming/restarted workers require bounded startup capability wait. Incorrect hash/legacy pool rejected immediately."
+}
