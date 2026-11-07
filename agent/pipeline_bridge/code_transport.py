@@ -1,5 +1,5 @@
 """Loopback RPC transport to the original Docker sandbox; no host-code fallback."""
-import base64,json,os,time,urllib.request
+import base64,json,os,time,urllib.request,urllib.error,uuid
 from pathlib import Path
 from urllib.parse import urlparse
 from ..repository.shore_agent import code_execution as original
@@ -15,10 +15,18 @@ def install(endpoint):
     def request(path,payload=None,timeout=10):
         raw=None if payload is None else json.dumps(payload,allow_nan=False).encode()
         req=urllib.request.Request(endpoint.rstrip('/')+path,data=raw,headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
-        with opener.open(req,timeout=timeout) as r:
-            data=r.read(original.MAX_RESPONSE+1)
-        if len(data)>original.MAX_RESPONSE:raise ValueError('Code response too large')
-        return json.loads(data)
+        deadline=time.monotonic()+timeout
+        while True:
+            try:
+                with opener.open(req,timeout=min(5,max(.1,deadline-time.monotonic()))) as r:
+                    data=r.read(original.MAX_RESPONSE+1)
+                if len(data)>original.MAX_RESPONSE:raise ValueError('Code response too large')
+                return json.loads(data)
+            except urllib.error.HTTPError:
+                raise
+            except (OSError,urllib.error.URLError):
+                if time.monotonic()>=deadline:raise
+                time.sleep(.25)
     health=request('/health')
     if health.get('version')!=VERSION or not health.get('sandbox',{}).get('available'):
         raise ValueError('Original Docker broker unavailable')
@@ -27,7 +35,16 @@ def install(endpoint):
     def execute_code(code,inputs,schema,artifact_dir,config,timeout_seconds,files=None):
         started=time.monotonic();allowed=min(float(config.get('timeout_seconds',90)),float(timeout_seconds))
         if allowed<1:raise ValueError('code_execution_time_exhausted')
-        raw=request('/execute',{'code':code,'inputs':inputs,'schema':schema,'files':files or {},'timeout_seconds':allowed},timeout=allowed+25)
+        job_id=uuid.uuid4().hex
+        deadline=started+allowed+25
+        payload={'job_id':job_id,'code':code,'inputs':inputs,'schema':schema,'files':files or {},'timeout_seconds':allowed}
+        request('/execute',payload,timeout=min(10,max(.1,deadline-time.monotonic())))
+        while True:
+            state=request('/result/'+job_id,timeout=min(10,max(.1,deadline-time.monotonic())))
+            if state['state']=='done':
+                raw=state['response'];break
+            if time.monotonic()>=deadline:raise ValueError('Code RPC wall-time deadline exceeded')
+            time.sleep(.25)
         rec=raw['record'];status=rec['status']
         if status not in ('success','error','schema_error','timeout','memory_limit','output_limit','protocol_error'):raise ValueError('Invalid code status')
         if rec['sandbox']['image_id']!=expected_image or rec['sandbox']['network']!='none' or rec['sandbox']['host_mounts'] is not False:raise ValueError('Sandbox receipt mismatch')

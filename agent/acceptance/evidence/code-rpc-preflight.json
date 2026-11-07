@@ -4,22 +4,22 @@
     {
       "name": "numeric",
       "status": "success",
-      "elapsed_seconds": 0.481823875
+      "elapsed_seconds": 0.5175596249999999
     },
     {
       "name": "exception",
       "status": "error",
-      "elapsed_seconds": 0.18632154199999995
+      "elapsed_seconds": 0.2621735420000002
     },
     {
       "name": "isolation",
       "status": "success",
-      "elapsed_seconds": 0.2233054590000001
+      "elapsed_seconds": 0.2591818749999999
     },
     {
       "name": "timeout",
       "status": "timeout",
-      "elapsed_seconds": 9.132849709
+      "elapsed_seconds": 9.217234292
     }
   ],
   "sandbox": {
@@ -42,5 +42,12 @@
       },
       "docker_architecture": "arm64"
     }
-  }
+  },
+  "source_runner_sha256": "11d05b411a8ca6da7a49e046d53fd7cde1b75ba060aba5c886c167e2250e8b23",
+  "source_commit": "6f8a159",
+  "runner_matches_repository": true,
+  "transport_unit_tests": 4,
+  "local_and_linux_tests_passed": true,
+  "failed_startup_attempt": "E15-20261108-012137; zero scientific trials; SSH closed before integration",
+  "active_attempt": "E15-20261108-012803"
 }
