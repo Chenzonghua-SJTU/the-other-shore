@@ -1,0 +1,11 @@
+# run_code 实训消融
+
+原仓库已有 run_code：code_execution.py + Docker 镜像 shore-code:e2-r04 + code.txt 提示词 + 当前会话虚拟文件输入。32个原科研源文件未修改。原始 Docker 沙箱限制继续生效：无网络、无宿主目录挂载、非root、只读根目录、1CPU、1GiB、受限临时目录与超时。
+
+当前服务器无 Docker，且缺少常规 daemon 所需挂载权限。实验通过 SSH 回环转发调用本机既有 Colima Docker 沙箱，使用原 execute_code 函数；server 端仅替换传输，保留工具签名、文件快照、产物验证、原提示词和科研循环。凭据只在进程内存和子进程环境中，不进入配置、日志或项目文件。RPC 不暴露 Docker socket。服务固定镜像与资源参数，不允许客户端指定宿主路径或 Docker 参数。
+
+这是依赖本机连接的实训消融后端；正式提交需要测评环境提供 Docker 或兼容后端。ARM64 CPU、库版本和网络耗时是本实验环境条件，不能声称已验证官方目标镜像。
+
+E15 六宇宙各3次新实验，seed42/43/44，四卡8000–8003，4096、thinking=false、10能量、300秒，PySR开启、自动滤波关闭。主要对照已有E10 R07/R08/R09（同seed、无run_code）。这是历史对照，不是同一模型随机轨迹的确定性配对；模型seed未固定。全保留18场，单列工具调用/成功/Python错误/后端不可用与耗时。若后端不可用，不将其解释成代码工具能力差。
+
+CLI --run-code/--no-run-code 可覆盖 agent 配置；默认仍关闭。--code-endpoint 仅接受 SSH 转发的127.0.0.1，认证来自进程环境。原生 Docker 环境可以启用 --run-code 而不传 endpoint，继续走原生代码实现。

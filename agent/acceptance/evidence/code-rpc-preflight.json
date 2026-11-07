@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "numeric",
+      "status": "success",
+      "elapsed_seconds": 0.481823875
+    },
+    {
+      "name": "exception",
+      "status": "error",
+      "elapsed_seconds": 0.18632154199999995
+    },
+    {
+      "name": "isolation",
+      "status": "success",
+      "elapsed_seconds": 0.2233054590000001
+    },
+    {
+      "name": "timeout",
+      "status": "timeout",
+      "elapsed_seconds": 9.132849709
+    }
+  ],
+  "sandbox": {
+    "version": "original-docker-rpc-v1",
+    "sandbox": {
+      "available": true,
+      "backend": "docker",
+      "image_id": "sha256:04f954b98c734a0f36b565d259edfe66edbe7ad69c38ac9b5d5bf148955f9f6f"
+    },
+    "docker_architecture": "arm64"
+  },
+  "remote_smoke": {
+    "remote_execution": true,
+    "receipt": {
+      "version": "original-docker-rpc-v1",
+      "sandbox": {
+        "available": true,
+        "backend": "docker",
+        "image_id": "sha256:04f954b98c734a0f36b565d259edfe66edbe7ad69c38ac9b5d5bf148955f9f6f"
+      },
+      "docker_architecture": "arm64"
+    }
+  }
+}

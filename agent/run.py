@@ -24,6 +24,11 @@ def main(argv=None):
     p.add_argument('--output-dir',default=os.environ.get('RIFT_OUTPUT_DIR'))
     p.add_argument('--symbolic-endpoint');p.add_argument('--max-tokens',type=int,default=4096)
     add_filter_options(p)
+    code_flags=p.add_mutually_exclusive_group()
+    code_flags.add_argument('--run-code',dest='run_code',action='store_true')
+    code_flags.add_argument('--no-run-code',dest='run_code',action='store_false')
+    p.set_defaults(run_code=None)
+    p.add_argument('--code-endpoint')
     p.add_argument('--max-turns',type=int,default=None,help='Legacy launcher parameter, unused by repository Agent')
     p.add_argument('--tp-size',type=int,default=4)
     args=p.parse_args(argv)
@@ -35,6 +40,11 @@ def main(argv=None):
     os.environ['RIFT_OUTPUT_DIR']=str(out)
     (out/'tmp').mkdir(exist_ok=True);os.environ['TMPDIR']=str(out/'tmp')
     config=json.loads((A/'repository-config.json').read_text())
+    if args.run_code is not None:config['code_execution']['enabled']=args.run_code
+    code_receipt=None
+    if config['code_execution']['enabled'] and args.code_endpoint:
+        from .pipeline_bridge.code_transport import install as install_code_transport
+        code_receipt=install_code_transport(args.code_endpoint)
     filter_cli_override=args.trajectory_filter
     filter_policy_cli_override=args.trajectory_filter_policy
     try:
@@ -72,6 +82,8 @@ def main(argv=None):
                     'client_class':DeepSeekClient.__module__,'fit_file':runtime.fit_law_and_rollout.__func__.__code__.co_filename,
                     'tool_schemas_sha256':hashlib.sha256(json.dumps(runtime.schemas,sort_keys=True).encode()).hexdigest(),
                     'protocol_overlay':'BF2: logged interface/research feedback corrections; original source unchanged','trajectory_backend':'official rift.rollout','scientific_source_files':len(provenance['files'])},indent=2))
+                if code_receipt:
+                    (out/'code-backend-receipt.json').write_text(json.dumps(code_receipt,indent=2))
                 if args.trajectory_filter:
                     provenance_path=out/'runtime-provenance.json'
                     provenance_record=json.loads(provenance_path.read_text())
