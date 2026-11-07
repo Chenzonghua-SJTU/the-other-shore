@@ -1,0 +1,12 @@
+# Filter acceptance and ablation protocol
+
+Registered before filter implementation tests. Owner: server integration / acceptance thread. Development owns the filter implementation and its unit tests; this directory contains independent acceptance fixtures and experiment reporting.
+
+1. Baseline B0 is immutable `baseline-bf2-v1`, E10 R07–R11, six worlds x five environment seeds 42–46. Keep every outcome; never tune against or replace failed baseline trials.
+2. Verify numerical and interface correctness first: actual timestamps, kinematic consistency, public noise scales, exact-channel handling, source immutability, artifact lineage, no double filtering, server-worker consumption, disabled-mode equivalence, unchanged official rollout and original-data validation. A remaining correctness failure blocks promotion.
+3. Independent analytic tests use generic polynomial, mixed-frequency, chirp and localized smooth-pulse trajectories. Truth is in the acceptance harness only, never in filter input. Seeds and fixtures are fixed before evaluation; report all cases, including regressions, boundary errors and elapsed time.
+4. Compare three input preparations where available: unfiltered velocity differentiation (diagnostic), existing BF2 local cubic, and joint spline. The actual baseline already has local cubic smoothing. Do not label it “no denoising”.
+5. Algorithm-only ablation freezes the same saved observations and symbolic-search budget/seed. Tool-enabled end-to-end ablation permits different Agent actions and must be labeled separately. Scores from these two experiments cannot be pooled.
+6. End-to-end comparisons use the same six worlds, seeds 42–46, model configuration, energy and 300-second limit. All filter time counts. Paired seeds align the noise generator, not necessarily identical noise samples once Agent actions diverge.
+7. Benefits are empirical, not a correctness assertion: report acceleration/position/velocity errors, failure/fallback rates, runtime, per-world scores and score differences. A filter that passes software tests but fails to improve performance remains experimental and disabled by default.
+8. Only `agent/` is deployed for scientific changes. Official SDK hashes are checked before and after. Preserve Git tags and source snapshots; package delivery includes source, configuration, tests, evidence and rollback instructions, not dependencies or credentials.
