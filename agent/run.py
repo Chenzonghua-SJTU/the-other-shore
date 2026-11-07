@@ -71,13 +71,19 @@ def main(argv=None):
                     provenance_path=out/'runtime-provenance.json'
                     provenance_record=json.loads(provenance_path.read_text())
                     provenance_record['trajectory_filter_tool']='joint_spline_v1; opt-in adapter overlay; original scientific source hashes unchanged'
+                    from .pipeline_bridge.filter_guidance import VERSION as filter_guidance_version
+                    provenance_record['trajectory_filter_guidance']=filter_guidance_version
                     provenance_path.write_text(json.dumps(provenance_record,indent=2))
 
                 settings=copy.deepcopy(config['model']);settings.update(base_url=model.base_url,model=model.model,
                     max_tokens_per_call=args.max_tokens,local_model_endpoints={model.model:model.base_url})
                 (out/'effective_config.json').write_text(json.dumps({**config,'model':settings,'numerics':numerics},ensure_ascii=False,indent=2))
                 client=DeepSeekClient(settings,out,remaining_seconds=lambda:runtime.budget()['wall_seconds_remaining'])
-                try:result=Agent(ProtocolClient(client),runtime,out,config['agent']).run()
+                agent_client=ProtocolClient(client)
+                if args.trajectory_filter:
+                    from .pipeline_bridge.filter_guidance import configure as configure_filter_guidance
+                    agent_client=configure_filter_guidance(agent_client,enabled=True)
+                try:result=Agent(agent_client,runtime,out,config['agent']).run()
                 finally:client.close()
                 (out/'bridge-summary.json').write_text(json.dumps({'official_rollouts':backend.rollout_calls,'repository_integrity':True}))
         print(json.dumps(result,ensure_ascii=False),flush=True)
