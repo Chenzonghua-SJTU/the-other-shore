@@ -1,6 +1,13 @@
 """Load the immutable original SDK extracted inside /agent; outputs stay in /agent."""
-import pathlib,json,zipfile,hashlib,sys,importlib.util,os
-A=pathlib.Path(__file__).resolve().parent;C=A/'_runtime/official-pristine-BF2';C.mkdir(parents=True,exist_ok=True)
+import pathlib,json,zipfile,hashlib,sys,importlib.util,os,time
+A=pathlib.Path(__file__).resolve().parent
+baseline=A.parent.parent/'official_test/agent/_experiments/E10-20261107-224311/report.json'
+print('WAIT_FOR_BASELINE',str(baseline),flush=True)
+while not baseline.exists():time.sleep(2)
+registered=json.loads(baseline.read_text())
+assert registered.get('baseline_complete') and registered.get('source_integrity') and registered.get('official_files_unchanged'), 'Baseline incomplete or integrity failed; do not run ablation'
+print('BASELINE_VERIFIED',len(registered['summary_rows']),flush=True)
+C=A/'_runtime/official-pristine-BF2';C.mkdir(parents=True,exist_ok=True)
 z=zipfile.ZipFile(A.parent.parent/'shore-contest-starter-v15.zip');expected={}
 for name in z.namelist():
  if name.endswith('/'):continue
@@ -15,9 +22,10 @@ for name in z.namelist():
 assert len(expected)==84
 manifest=json.loads((A/'repository-source.json').read_text())
 assert all(hashlib.sha256((A/'repository/shore_agent'/k).read_bytes()).hexdigest()==v for k,v in manifest['files'].items())
-files=['run.py','pipeline_bridge/backend.py','pipeline_bridge/compiler.py','pipeline_bridge/reliability.py','repository-config.json']
-meta={'version':'BF2','base_commit':manifest['github_commit'],'original_scientific_package_unchanged':True,'runtime_overlay':True,'files':{k:hashlib.sha256((A/k).read_bytes()).hexdigest() for k in files},'official_root':str(C),'official_zip_files':expected,'fixed_files_match_original_zip':True,'sampling_interval':'advisory only; no changed request or official integrator','changes':['remove impossible submission gate','isolated property and velocity-noise diagnostics','one-time evidence review','unambiguous batch-t0 correction','autonomous shared-RHS background hypothesis','noise-aware sampling and long-span guidance']}
-(A/'_bugfixes/BF2/manifest.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2))
+files=['run.py','pipeline_bridge/backend.py','pipeline_bridge/compiler.py','pipeline_bridge/reliability.py','repository-config.json','pipeline_bridge/trajectory_filter.py','pipeline_bridge/filter_tool.py','pipeline_bridge/filter_capability.py','pipeline_bridge/service.py']
+meta={'version':'BF2+joint_spline_v1','base_commit':manifest['github_commit'],'original_scientific_package_unchanged':True,'runtime_overlay':True,'files':{k:hashlib.sha256((A/k).read_bytes()).hexdigest() for k in files},'official_root':str(C),'official_zip_files':expected,'fixed_files_match_original_zip':True,'sampling_interval':'advisory only; no changed request or official integrator','changes':['remove impossible submission gate','isolated property and velocity-noise diagnostics','one-time evidence review','unambiguous batch-t0 correction','autonomous shared-RHS background hypothesis','noise-aware sampling and long-span guidance']}
+(A/'_bugfixes/FILTER1').mkdir(parents=True,exist_ok=True)
+(A/'_bugfixes/FILTER1/manifest.json').write_text(json.dumps(meta,ensure_ascii=False,indent=2))
 os.environ['SHORE_SDK_ROOT']=str(C);os.environ['PYTHONDONTWRITEBYTECODE']='1'
 sys.path.insert(0,str(C));s=importlib.util.spec_from_file_location('agent',A/'__init__.py',submodule_search_locations=[str(A)]);m=importlib.util.module_from_spec(s);sys.modules['agent']=m;s.loader.exec_module(m)
 import agent.benchmark_official as bo
