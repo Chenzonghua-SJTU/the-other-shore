@@ -1,0 +1,23 @@
+{
+  "claims": {
+    "dynamics_order": 2,
+    "hidden_matter": false,
+    "time_dependence": false
+  },
+  "energy_used": 8,
+  "source_files": {
+    "records/probe/probe_0001.json": "2e92b4531e1b5bb287f2dfcbd15d3db837515f0e53a4239c258568fd36a6dbab",
+    "records/probe/probe_0002.json": "7402c5e5c8c3c6daab7c36b50015fd26f2a2762a3d8657a556fc2ee8ff950e42",
+    "records/probe/probe_0003.json": "3fef2f89a121014a91ed4e30875f339822b54b2690664c2f346dffc90dde43d9",
+    "records/probe/probe_0004.json": "b8d159491449e58d6ad2db0d48890ff822521b177c4b8a18ce0fe6fa9f2e462b",
+    "records/probe/probe_0005.json": "5a20278530b502a8f4b1f9a67fffee78d5e8329a1d727334611b30832f1d6c10",
+    "records/probe/probe_0006.json": "52a11dc73b598ee2dd789fa4015a499c9fb9b4402989c874ba56877d89c22ce4",
+    "records/probe/probe_0007.json": "69e71f6a592ebe994eb8a4f6858fbaff7551fa1d315d0c4e77c3b366538a7da1",
+    "records/probe/probe_0008.json": "7c457bfbc7ff451e885d19e9de11bf4a6c439a6c9b1076d53716a770226f7ebb",
+    "records/probe/probe_0009.json": "ef709a216321fe55c751983d243c6bc6dcf373d04e3cb7c1298c53e688693b75",
+    "records/probe/probe_0010.json": "991506a7cf335a3ecf101710965e04d31301372fa8ca648e686c0e6e429cad58"
+  },
+  "mission_sha256": "658403cd82543022055c4ac4f17cb7a4a0d5911dff1d3856de27e04b9ed49229",
+  "baseline_result_sha256": "d1866fd7a33f48c91a28623fc5f3f2fe262d6a618e3aeac4efffa4bb6800cf7c",
+  "augmented_probe_sha256": "acb1fb25ea3db9953b7ccdc8d289242929c7e3301143e95f78483846ee4c73fb"
+}

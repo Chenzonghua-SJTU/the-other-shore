@@ -1,0 +1,68 @@
+{
+  "experiment": "E16-fixed-sr",
+  "status": "registered",
+  "scope": "Fixed-observation symbolic-regression mechanism comparison; not autonomous Agent discovery",
+  "scientific_source_tag": "filter-tool-v1-experimental",
+  "observations": "E10-20261107-224311/R07: all archived acquired probes in each world",
+  "worlds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "search_seeds": [
+    42,
+    43,
+    44
+  ],
+  "arms": [
+    "legacy",
+    "joint"
+  ],
+  "registered_attempts": 36,
+  "pair_order": "world ascending, seed ascending; legacy/joint order alternates by pair index",
+  "parallel_pairs": 2,
+  "worker_pool_size": 2,
+  "search_seconds_per_arm": 47,
+  "filter_seconds_per_arm": 2,
+  "timing_note": "Equal 47-second search budget. Joint preprocessing is measured separately to isolate search-data changes; not a 300-second autonomous session comparison.",
+  "candidate_limit": 3,
+  "raw_refit_seconds_per_candidate": 8,
+  "raw_refit_max_nfev": 80,
+  "primary_selection": "Lowest finite raw-training position RMSE among the returned complete top-three candidates after identical refit; tie by original SR rank. Selection is frozen before evaluator access.",
+  "primary_metrics": [
+    "Official clean fixed-case total and prediction score for raw-training-selected candidate",
+    "Post-hoc held-out acceleration recovery rate"
+  ],
+  "secondary_metrics": [
+    "Original SR rank-one score and recovery BEFORE external raw refit",
+    "Any returned top-three recovered law BEFORE external raw refit",
+    "Any top-three recovery AFTER external raw refit",
+    "raw training position and velocity residual",
+    "invalid predictions",
+    "filter/search/refit/evaluation/total time"
+  ],
+  "scoring_constants": "Claims and energy_used copied from each original R07 submission, identical for both arms. Prediction/80 reported separately. Fixed claims may be wrong; these are not new Agent declarations.",
+  "recovery_rule": "Post-hoc 256 independent legal-domain states with public control variations; acceleration normalized RMSE <= 0.01. Reference fields and test states are accessible only to a separate evaluator after selection.json is committed.",
+  "recovery_note": "Numerical law-recovery criterion, not proof of exact symbolic equivalence. Actual formulas will also be inspected and reported.",
+  "reference_seed": 160016,
+  "reference_state_policy": "Evaluator uses clean autonomous background at each sampled absolute t. Public reference acceleration has no probe-velocity argument (confirmed source signature); nonzero sampled candidate velocity tests spurious velocity dependence, not a missing reference argument.",
+  "failures": "Keep all registered attempts; no-result/missing selected candidate scores zero. No retry or best-seed selection.",
+  "unchanged": [
+    "Original observations and raw fitting/validation",
+    "Filter parameters, consumer, legacy quality and resolution weights",
+    "PySR operators, complexity policy, candidate exporter",
+    "Official rollout and evaluator"
+  ],
+  "no_model_calls": true,
+  "no_extra_probe_energy": true,
+  "limitations": [
+    "One fixed observation dataset per world",
+    "Three requested SR seeds; multithreading and time-bounded search are not fully deterministic",
+    "Not evidence for nine unseen worlds or autonomous Agent success rate"
+  ],
+  "baseline_absolute": "/inspire/hdd/project/26-the-other-shore/263140062/official_run/agent/_experiments/E10-20261107-224311",
+  "registered_at_unix": 1794074056.4004536
+}

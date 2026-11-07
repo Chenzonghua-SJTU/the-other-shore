@@ -1,0 +1,21 @@
+import numpy as np
+import math
+LAW_API_VERSION = '1.0.0'
+PARAMS = {'c1': -0.060055695155908986, 'c2': -0.05994714293409318, 'c3': 0.00031225405244817057, 'c4': 0.024560855115649753}
+
+def source_property(bodies, target, key):
+    for source in bodies:
+        if source['id'] == target:
+            return source['properties'][key]
+    raise ValueError('Public source control target is absent')
+
+def acceleration(t, bodies, params):
+    result = np.zeros((len(bodies), 2))
+    for i, b in enumerate(bodies):
+        if b['kind'] == 'probe':
+            result[i, 0] = source_property(bodies, 'N0', 'p1') / b['properties']['p2'] * math.sin(b['pos'][0] * params['c1'])
+            result[i, 1] = b['pos'][1] * params['c2'] * (source_property(bodies, 'N0', 'p1') / b['properties']['p2']) - params['c3'] / (b['vel'][0] * b['vel'][0] + b['vel'][1] * b['vel'][1] + t + params['c4'])
+        else:
+            result[i, 0] = 0
+            result[i, 1] = 0
+    return result

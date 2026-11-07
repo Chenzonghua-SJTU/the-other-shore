@@ -1,0 +1,791 @@
+{
+  "world": 2,
+  "seed": 42,
+  "arm": "legacy",
+  "status": "completed",
+  "model_calls": 0,
+  "average_model_output_tokens": null,
+  "original_probe_sha256": "acb1fb25ea3db9953b7ccdc8d289242929c7e3301143e95f78483846ee4c73fb",
+  "filter_seconds": 6.705522537231445e-07,
+  "filtered_probes": 0,
+  "search_seconds": 45.13773733563721,
+  "worker_consumption": "not_required",
+  "returned_candidates": 3,
+  "refit_seconds": 24.04749732092023,
+  "raw_official_rollout_calls": 112,
+  "observations_unchanged": true,
+  "selection_sha256_before_scoring": "6b92fcf84256bd499a4d6d1a27fa3d3c523b009f268161f0b1ef7121fc90fd95",
+  "evaluation_seconds": 51.72697279416025,
+  "evaluation_exit_code": 0,
+  "evaluation": {
+    "world": 2,
+    "selection_sha256": "6b92fcf84256bd499a4d6d1a27fa3d3c523b009f268161f0b1ef7121fc90fd95",
+    "selected": {
+      "sr_rank": 2,
+      "score": {
+        "world": "2",
+        "status": "development_diagnostic",
+        "evaluation_version": "public-development-evaluation-1.0.0",
+        "prediction": 0.0,
+        "law": 15,
+        "saving": 0.0,
+        "total": 15.0,
+        "raw_MSE": null,
+        "global_V": 9.543695482145655,
+        "e": null,
+        "energy_used": 8.0,
+        "claims": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "claims_truth": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "law_sha256": "45f13a8996bc4a8a5d9de83bbd44a0e10a3d914616ac8359ab90184db9872f54",
+        "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+        "source_sha256": {
+          "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+          "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+          "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+          "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+          "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+          "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+          "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+          "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+        },
+        "N_probes": 24,
+        "T_samples": 20,
+        "invalid_cases": [
+          {
+            "name": "b0-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b0-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b1-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b1-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b2-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b2-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          }
+        ],
+        "case_diagnostics": [],
+        "visibility": "public development only; not an official leaderboard result"
+      },
+      "recovery": {
+        "correct": false,
+        "reason": "TypeError"
+      },
+      "sr_returned_score": {
+        "world": "2",
+        "status": "development_diagnostic",
+        "evaluation_version": "public-development-evaluation-1.0.0",
+        "prediction": 0.0,
+        "law": 15,
+        "saving": 0.0,
+        "total": 15.0,
+        "raw_MSE": null,
+        "global_V": 9.543695482145655,
+        "e": null,
+        "energy_used": 8.0,
+        "claims": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "claims_truth": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "law_sha256": "45f13a8996bc4a8a5d9de83bbd44a0e10a3d914616ac8359ab90184db9872f54",
+        "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+        "source_sha256": {
+          "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+          "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+          "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+          "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+          "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+          "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+          "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+          "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+        },
+        "N_probes": 24,
+        "T_samples": 20,
+        "invalid_cases": [
+          {
+            "name": "b0-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b0-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b1-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b1-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b2-s0",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          },
+          {
+            "name": "b2-s1",
+            "error_type": "ValidationError",
+            "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+          }
+        ],
+        "case_diagnostics": [],
+        "visibility": "public development only; not an official leaderboard result"
+      },
+      "sr_returned_recovery": {
+        "correct": false,
+        "reason": "TypeError"
+      },
+      "evaluation_seconds": 7.263909455388784
+    },
+    "sr_rank_one": {
+      "score": {
+        "world": "2",
+        "status": "development_diagnostic",
+        "evaluation_version": "public-development-evaluation-1.0.0",
+        "prediction": 79.41535311965691,
+        "law": 15,
+        "saving": 0.9999999999999998,
+        "total": 95.41535311965691,
+        "raw_MSE": 0.007025961065958871,
+        "global_V": 9.543695482145655,
+        "e": 0.0007361887309903212,
+        "energy_used": 8.0,
+        "claims": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "claims_truth": {
+          "dynamics_order": 2,
+          "hidden_matter": false,
+          "time_dependence": false
+        },
+        "law_sha256": "fdf8d9bb68065bde95d762fc986573a21710f985f38cf607fac0b912d09f6c67",
+        "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+        "source_sha256": {
+          "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+          "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+          "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+          "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+          "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+          "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+          "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+          "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+        },
+        "N_probes": 24,
+        "T_samples": 20,
+        "invalid_cases": [],
+        "case_diagnostics": [
+          {
+            "name": "b0-s0",
+            "group": "band_0",
+            "MSE": 0.00782994056933677,
+            "sample_records": 80
+          },
+          {
+            "name": "b0-s1",
+            "group": "band_0",
+            "MSE": 3.0284816190184554e-05,
+            "sample_records": 80
+          },
+          {
+            "name": "b1-s0",
+            "group": "band_1",
+            "MSE": 0.016721022303924398,
+            "sample_records": 80
+          },
+          {
+            "name": "b1-s1",
+            "group": "band_1",
+            "MSE": 6.898419666409609e-05,
+            "sample_records": 80
+          },
+          {
+            "name": "b2-s0",
+            "group": "band_2",
+            "MSE": 0.017304240664193667,
+            "sample_records": 80
+          },
+          {
+            "name": "b2-s1",
+            "group": "band_2",
+            "MSE": 0.00020129384544410848,
+            "sample_records": 80
+          }
+        ],
+        "visibility": "public development only; not an official leaderboard result"
+      },
+      "recovery": {
+        "correct": true,
+        "normalized_acceleration_rmse": 0.009915137429648007,
+        "criterion": "NRMSE<=0.01 on 256 predetermined independent legal-domain states",
+        "states": 256,
+        "reference_seed": 160016,
+        "reference_velocity_policy": "Public simulator acceleration has no velocity argument; independently varying candidate velocity tests spurious dependence.",
+        "background_state_policy": "Clean autonomous background at the same sampled absolute time; evaluator-only reference state.",
+        "interpretation": "Numerical law recovery; not exact symbolic-equivalence proof"
+      }
+    },
+    "any_top_three_recovered": true,
+    "any_top_three_after_refit_recovered": true,
+    "candidate_evaluations": [
+      {
+        "sr_rank": 1,
+        "score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 79.41535263094352,
+          "law": 15,
+          "saving": 0.9999999999999998,
+          "total": 95.41535263094352,
+          "raw_MSE": 0.0070259669822818,
+          "global_V": 9.543695482145655,
+          "e": 0.0007361893509098209,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "b329b7ccad25eacb8a190bb538e8ef78d4d312c40173d79cdc4e6347e984f796",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [],
+          "case_diagnostics": [
+            {
+              "name": "b0-s0",
+              "group": "band_0",
+              "MSE": 0.007829943136752634,
+              "sample_records": 80
+            },
+            {
+              "name": "b0-s1",
+              "group": "band_0",
+              "MSE": 3.028481619067681e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s0",
+              "group": "band_1",
+              "MSE": 0.016721159674516005,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s1",
+              "group": "band_1",
+              "MSE": 6.89841966649037e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s0",
+              "group": "band_2",
+              "MSE": 0.017304136224120664,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s1",
+              "group": "band_2",
+              "MSE": 0.00020129384544591305,
+              "sample_records": 80
+            }
+          ],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "recovery": {
+          "correct": true,
+          "normalized_acceleration_rmse": 0.009915137488132582,
+          "criterion": "NRMSE<=0.01 on 256 predetermined independent legal-domain states",
+          "states": 256,
+          "reference_seed": 160016,
+          "reference_velocity_policy": "Public simulator acceleration has no velocity argument; independently varying candidate velocity tests spurious dependence.",
+          "background_state_policy": "Clean autonomous background at the same sampled absolute time; evaluator-only reference state.",
+          "interpretation": "Numerical law recovery; not exact symbolic-equivalence proof"
+        },
+        "sr_returned_score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 79.41535311965691,
+          "law": 15,
+          "saving": 0.9999999999999998,
+          "total": 95.41535311965691,
+          "raw_MSE": 0.007025961065958871,
+          "global_V": 9.543695482145655,
+          "e": 0.0007361887309903212,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "fdf8d9bb68065bde95d762fc986573a21710f985f38cf607fac0b912d09f6c67",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [],
+          "case_diagnostics": [
+            {
+              "name": "b0-s0",
+              "group": "band_0",
+              "MSE": 0.00782994056933677,
+              "sample_records": 80
+            },
+            {
+              "name": "b0-s1",
+              "group": "band_0",
+              "MSE": 3.0284816190184554e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s0",
+              "group": "band_1",
+              "MSE": 0.016721022303924398,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s1",
+              "group": "band_1",
+              "MSE": 6.898419666409609e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s0",
+              "group": "band_2",
+              "MSE": 0.017304240664193667,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s1",
+              "group": "band_2",
+              "MSE": 0.00020129384544410848,
+              "sample_records": 80
+            }
+          ],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "sr_returned_recovery": {
+          "correct": true,
+          "normalized_acceleration_rmse": 0.009915137429648007,
+          "criterion": "NRMSE<=0.01 on 256 predetermined independent legal-domain states",
+          "states": 256,
+          "reference_seed": 160016,
+          "reference_velocity_policy": "Public simulator acceleration has no velocity argument; independently varying candidate velocity tests spurious dependence.",
+          "background_state_policy": "Clean autonomous background at the same sampled absolute time; evaluator-only reference state.",
+          "interpretation": "Numerical law recovery; not exact symbolic-equivalence proof"
+        },
+        "evaluation_seconds": 22.327581346035004
+      },
+      {
+        "sr_rank": 2,
+        "score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 0.0,
+          "law": 15,
+          "saving": 0.0,
+          "total": 15.0,
+          "raw_MSE": null,
+          "global_V": 9.543695482145655,
+          "e": null,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "45f13a8996bc4a8a5d9de83bbd44a0e10a3d914616ac8359ab90184db9872f54",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [
+            {
+              "name": "b0-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b0-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b1-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b1-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b2-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b2-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            }
+          ],
+          "case_diagnostics": [],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "recovery": {
+          "correct": false,
+          "reason": "TypeError"
+        },
+        "sr_returned_score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 0.0,
+          "law": 15,
+          "saving": 0.0,
+          "total": 15.0,
+          "raw_MSE": null,
+          "global_V": 9.543695482145655,
+          "e": null,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "45f13a8996bc4a8a5d9de83bbd44a0e10a3d914616ac8359ab90184db9872f54",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [
+            {
+              "name": "b0-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b0-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b1-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b1-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b2-s0",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            },
+            {
+              "name": "b2-s1",
+              "error_type": "ValidationError",
+              "message": "$.law.acceleration: callback failed with TypeError: float() argument must be a string or a real number, not 'complex'"
+            }
+          ],
+          "case_diagnostics": [],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "sr_returned_recovery": {
+          "correct": false,
+          "reason": "TypeError"
+        },
+        "evaluation_seconds": 7.263909455388784
+      },
+      {
+        "sr_rank": 3,
+        "score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 79.64122651600533,
+          "law": 15,
+          "saving": 0.9999999999999998,
+          "total": 95.64122651600533,
+          "raw_MSE": 0.004299312087597585,
+          "global_V": 9.543695482145655,
+          "e": 0.0004504871405045077,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "06e2107d4e71760e4bcbc202a3cd9ad86ebc704948b06af09ca01166b199f45d",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [],
+          "case_diagnostics": [
+            {
+              "name": "b0-s0",
+              "group": "band_0",
+              "MSE": 0.01083256243943865,
+              "sample_records": 80
+            },
+            {
+              "name": "b0-s1",
+              "group": "band_0",
+              "MSE": 2.3080838151315048e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s0",
+              "group": "band_1",
+              "MSE": 3.0333846654102664e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s1",
+              "group": "band_1",
+              "MSE": 0.00043385952094758523,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s0",
+              "group": "band_2",
+              "MSE": 0.0003401202101407236,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s1",
+              "group": "band_2",
+              "MSE": 0.014135915670253135,
+              "sample_records": 80
+            }
+          ],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "recovery": {
+          "correct": false,
+          "normalized_acceleration_rmse": 0.03304243410126288,
+          "criterion": "NRMSE<=0.01 on 256 predetermined independent legal-domain states",
+          "states": 256,
+          "reference_seed": 160016,
+          "reference_velocity_policy": "Public simulator acceleration has no velocity argument; independently varying candidate velocity tests spurious dependence.",
+          "background_state_policy": "Clean autonomous background at the same sampled absolute time; evaluator-only reference state.",
+          "interpretation": "Numerical law recovery; not exact symbolic-equivalence proof"
+        },
+        "sr_returned_score": {
+          "world": "2",
+          "status": "development_diagnostic",
+          "evaluation_version": "public-development-evaluation-1.0.0",
+          "prediction": 79.641226224423,
+          "law": 15,
+          "saving": 0.9999999999999998,
+          "total": 95.641226224423,
+          "raw_MSE": 0.004299315597474594,
+          "global_V": 9.543695482145655,
+          "e": 0.00045048750827368216,
+          "energy_used": 8.0,
+          "claims": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "claims_truth": {
+            "dynamics_order": 2,
+            "hidden_matter": false,
+            "time_dependence": false
+          },
+          "law_sha256": "cdf59e47b8f9813e38d9faecf52916d05cfa0da916d0d2bdddfb6a36b31124d8",
+          "reference_sha256": "ded929cc8aaced607fdf27f97f49f908a63353391fa48da89a48466b438b925d",
+          "source_sha256": {
+            "development_worlds/worlds.py": "576f3700e583682e63b56177d73046a6e8c728c33251aaeb8424630f7ab873e6",
+            "development_worlds/catalog.py": "52d4d53949521af8c3d09d0190cdeaf88749bd58cad375fd1f64c70b47745bd0",
+            "development_worlds/evaluation.py": "3931a074e0c4f5789d1690d20aeb7c35ae3f430261be38fce6b2bd17ca0713fc",
+            "rift/law.py": "4b67838fadf4ae9deb0c685619262aa84252b2ded3d3cc8348df6987cd8f96d6",
+            "rift/observations.py": "e9d7e615cb4583745378c2690b1997dbd95eaf5491c85420409e368becc3e0b9",
+            "rift/prediction.py": "ec153830614b1fca15f03f0f85eae1cc82f591589fc42cc58a3ba9735215e2eb",
+            "rift_numerics/__init__.py": "22f601b805724c8fd7ea68c21d742445260fde494135c023c089820e91dbcd73",
+            "rift_numerics/rollout.py": "76dac8e186332c101c41b67829f175b99c970a2819397bc0877d75e6ebcbe414"
+          },
+          "N_probes": 24,
+          "T_samples": 20,
+          "invalid_cases": [],
+          "case_diagnostics": [
+            {
+              "name": "b0-s0",
+              "group": "band_0",
+              "MSE": 0.010832583531358606,
+              "sample_records": 80
+            },
+            {
+              "name": "b0-s1",
+              "group": "band_0",
+              "MSE": 2.3080809091333437e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s0",
+              "group": "band_1",
+              "MSE": 3.033382337749531e-05,
+              "sample_records": 80
+            },
+            {
+              "name": "b1-s1",
+              "group": "band_1",
+              "MSE": 0.00043385966636764307,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s0",
+              "group": "band_2",
+              "MSE": 0.0003401201828212788,
+              "sample_records": 80
+            },
+            {
+              "name": "b2-s1",
+              "group": "band_2",
+              "MSE": 0.014135915571831203,
+              "sample_records": 80
+            }
+          ],
+          "visibility": "public development only; not an official leaderboard result"
+        },
+        "sr_returned_recovery": {
+          "correct": false,
+          "normalized_acceleration_rmse": 0.03304242607218831,
+          "criterion": "NRMSE<=0.01 on 256 predetermined independent legal-domain states",
+          "states": 256,
+          "reference_seed": 160016,
+          "reference_velocity_policy": "Public simulator acceleration has no velocity argument; independently varying candidate velocity tests spurious dependence.",
+          "background_state_policy": "Clean autonomous background at the same sampled absolute time; evaluator-only reference state.",
+          "interpretation": "Numerical law recovery; not exact symbolic-equivalence proof"
+        },
+        "evaluation_seconds": 21.944044506177306
+      }
+    ],
+    "scoring_constants": {
+      "claims": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "energy_used": 8
+    },
+    "scope": "Official clean fixed-case score with frozen original claims/energy; standalone SR, not an Agent trial"
+  },
+  "total_seconds": 120.95322467200458
+}

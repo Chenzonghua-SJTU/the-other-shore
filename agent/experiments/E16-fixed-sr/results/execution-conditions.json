@@ -1,0 +1,14 @@
+{
+  "parallel_experiment": "E17 baseline planned by main engineering chat",
+  "reported_cgroup_cpu_quota_cores": 80,
+  "E16_pool_size": 2,
+  "E16_julia_threads_per_worker": 4,
+  "blas_threads": 1,
+  "model_calls": 0,
+  "note": "Resource availability was released after E15; E17 may run 4 other CPU workers plus model GPUs. Monitor throttling; fixed time search is not fully deterministic.",
+  "E17_status_update": {
+    "reported_at": "2026-11-08T02:05:17.910366+08:00",
+    "status": "stopped_by_user_in_main_chat_before_formal_scores",
+    "main_chat_report": "E17 owned process tree cleaned; E16 explicitly continues."
+  }
+}

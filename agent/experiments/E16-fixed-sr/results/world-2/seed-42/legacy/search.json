@@ -1,0 +1,3543 @@
+{
+  "status": "timeout",
+  "backend": "staged_pysr_with_regression_basis",
+  "target": "velocity_difference_acceleration",
+  "feature_names": [
+    "t",
+    "x",
+    "y",
+    "vx",
+    "vy",
+    "mass",
+    "charge"
+  ],
+  "samples_per_probe": {
+    "probe_0001": 6,
+    "probe_0002": 6,
+    "probe_0003": 48,
+    "probe_0004": 48,
+    "probe_0005": 48,
+    "probe_0006": 48,
+    "probe_0007": 48,
+    "probe_0008": 48,
+    "probe_0009": 48,
+    "probe_0010": 48
+  },
+  "dropped_constant_features": [],
+  "omitted_incomplete_properties": [],
+  "search_configuration": {
+    "maxsize": 48,
+    "binary_operators": [
+      "+",
+      "-",
+      "*",
+      "/",
+      "^"
+    ],
+    "unary_operators": [
+      "sin",
+      "cos",
+      "exp",
+      "sqrt",
+      "log",
+      "abs"
+    ],
+    "power_exponent_max_complexity": 1,
+    "early_unary_operators": [
+      "sin",
+      "cos",
+      "exp",
+      "sqrt",
+      "log",
+      "abs"
+    ],
+    "random_state": 42,
+    "warm_start": false,
+    "parallelism": "multithreading",
+    "linear_seed_max_terms": 3,
+    "finalization_reserve_seconds": 9.0,
+    "operator_scope": "All powers and elementary operators are available from the first stage. Legacy algebra/full labels mean compact size 24 then size 48, not operator priority; actual completed stages depend on remaining budget.",
+    "simplicity_preference": "Linear seeds plus parameter/complexity-aware selection within resolution tolerance."
+  },
+  "warnings": [
+    "Search loss uses finite-difference acceleration, not independent prediction.",
+    "All selected probes are discovery data and cannot serve as independent validation.",
+    "Constant/absent properties do not establish absence of physical dependence.",
+    "Body positions are not included; explicit t may substitute for unobserved body motion.",
+    "Resolution tolerance is a finite-stencil sensitivity heuristic, not a confidence interval.",
+    "Short rollout checks certify only acquired initial states; fit and fresh-probe validation remain required."
+  ],
+  "data_quality": {
+    "samples_per_probe": {
+      "probe_0001": 6,
+      "probe_0002": 6,
+      "probe_0003": 48,
+      "probe_0004": 48,
+      "probe_0005": 48,
+      "probe_0006": 48,
+      "probe_0007": 48,
+      "probe_0008": 48,
+      "probe_0009": 48,
+      "probe_0010": 48
+    },
+    "local_derivative_quality": [
+      {
+        "probe_id": "probe_0001",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 6,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9950710785655266,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0002",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 6,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9991779473013672,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0003",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9940794692163233,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0004",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9873856950338892,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0005",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9973498714181287,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0006",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9893533315513209,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0007",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.987309499689706,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0008",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9908971360523113,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0009",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.985651990623565,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      },
+      {
+        "probe_id": "probe_0010",
+        "method": "local_cubic_velocity",
+        "position_smoothed": true,
+        "velocity_noise_sigma": 0.00030000000000000003,
+        "position_noise_sigma": 0.042573465914816006,
+        "samples": 48,
+        "downweighted_samples": 0,
+        "low_reliability_times": [],
+        "minimum_relative_weight": 0.9908071330121019,
+        "scope": "Resolution sensitivity only; no samples removed and no truth used."
+      }
+    ],
+    "differencing_tolerance_by_axis": [
+      1.418569742232521e-08,
+      1.4071234397753782e-08
+    ],
+    "dropped_constant_features": [],
+    "omitted_incomplete_properties": [],
+    "body_positions_included": false,
+    "acceleration_source": "observed_velocity_finite_difference",
+    "trajectory_checks": "executability only; reported RMSE is training diagnostic, not accuracy certification"
+  },
+  "axis_search_seconds": [
+    6.7477785516530275,
+    6.186725741252303,
+    11.036813605576754,
+    6.068905787542462
+  ],
+  "search_axes_completed": [
+    "ax",
+    "ay"
+  ],
+  "search_stages": [
+    {
+      "stage": "axis_0_algebra",
+      "requested_seconds": 6.119799220897257,
+      "elapsed_seconds": 6.7477785516530275,
+      "features": [
+        "t",
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "mass",
+        "charge",
+        "radius2",
+        "radius",
+        "speed2",
+        "radial_dot",
+        "property_ratio"
+      ],
+      "unary_operators": [
+        "sin",
+        "cos",
+        "exp",
+        "sqrt",
+        "log",
+        "abs"
+      ]
+    },
+    {
+      "stage": "axis_1_algebra",
+      "requested_seconds": 6.119799220897257,
+      "elapsed_seconds": 6.186725741252303,
+      "features": [
+        "t",
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "mass",
+        "charge",
+        "radius2",
+        "radius",
+        "speed2",
+        "radial_dot",
+        "property_ratio"
+      ],
+      "unary_operators": [
+        "sin",
+        "cos",
+        "exp",
+        "sqrt",
+        "log",
+        "abs"
+      ]
+    },
+    {
+      "stage": "axis_0_full",
+      "requested_seconds": 10.879643059372903,
+      "elapsed_seconds": 11.036813605576754,
+      "features": [
+        "t",
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "mass",
+        "charge",
+        "radius2",
+        "radius",
+        "speed2",
+        "radial_dot",
+        "property_ratio"
+      ],
+      "unary_operators": [
+        "sin",
+        "cos",
+        "exp",
+        "sqrt",
+        "log",
+        "abs"
+      ]
+    },
+    {
+      "stage": "axis_1_full",
+      "requested_seconds": 5.951293313875794,
+      "elapsed_seconds": 6.068905787542462,
+      "features": [
+        "t",
+        "x",
+        "y",
+        "vx",
+        "vy",
+        "mass",
+        "charge",
+        "radius2",
+        "radius",
+        "speed2",
+        "radial_dot",
+        "property_ratio"
+      ],
+      "unary_operators": [
+        "sin",
+        "cos",
+        "exp",
+        "sqrt",
+        "log",
+        "abs"
+      ]
+    }
+  ],
+  "rejected_candidate_pairs": 0,
+  "elapsed_seconds": 45.1085156314075,
+  "basis_diagnostics": {
+    "origin": "regression_basis",
+    "independent_validation": false,
+    "data_source": "selected current-session velocity-derived acceleration",
+    "time_modulation": {
+      "status": "unresolved",
+      "independent_validation": false,
+      "observed_time_span": 17.55,
+      "median_time_step": 0.20000000000000107,
+      "frequency_range_radians_per_time": [
+        0.0895040642048374,
+        15.707963267948882
+      ],
+      "minimum_observed_cycles": 0.25,
+      "maximum_observation_gap": 0.20500000000000007,
+      "temporal_alias_risk": false,
+      "reason": "frequency_minimum_at_resolution_boundary",
+      "frequencies_evaluated": 48
+    },
+    "polynomial": {
+      "status": "completed",
+      "rank_by_degree": [
+        {
+          "degree": 1,
+          "columns": 5,
+          "rank": 5
+        },
+        {
+          "degree": 2,
+          "columns": 15,
+          "rank": 15
+        },
+        {
+          "degree": 3,
+          "columns": 35,
+          "rank": 35
+        }
+      ]
+    },
+    "observed_rows": 396,
+    "numerical_fit_rows": 396,
+    "used_probe_ids": [
+      "probe_0001",
+      "probe_0002",
+      "probe_0003",
+      "probe_0004",
+      "probe_0005",
+      "probe_0006",
+      "probe_0007",
+      "probe_0008",
+      "probe_0009",
+      "probe_0010"
+    ],
+    "omitted_properties": [
+      "mass",
+      "charge"
+    ],
+    "unused_features": [
+      "mass",
+      "charge"
+    ],
+    "elapsed_seconds": 0.02017812430858612,
+    "budget_exhausted": false
+  },
+  "geometric_features": {
+    "radius2": "x*x+y*y",
+    "radius": "sqrt(x*x+y*y)",
+    "speed2": "vx*vx+vy*vy",
+    "radial_dot": "x*vx+y*vy",
+    "property_ratio": "charge/mass"
+  },
+  "projection_diagnostics": {
+    "supported": false,
+    "relative_transverse_residual": 0.011875306043095996,
+    "relative_derivative_resolution": 0.001218797050054474,
+    "effective_transverse_tolerance": 0.004875188200217896,
+    "tolerance_rule": "min(relative cap, four times observed stencil/noise sensitivity); not a confidence interval",
+    "direction_coverage_min_eigenvalue": 0.42629433235904446,
+    "hypothesis": "acceleration equals an unknown scalar response times position",
+    "scope": "Acquired-data hypothesis only; not proof of isotropy or an origin force source.",
+    "log_response": {
+      "enabled": false
+    }
+  },
+  "stop_reason": "hard_timeout",
+  "search_elapsed_seconds": 43.59297926351428,
+  "service_elapsed_seconds": 45.1085156314075,
+  "requested_time_budget_seconds": 47.0,
+  "worker_search_budget_seconds": 44.997916016727686,
+  "cleanup_reserve_seconds": 2.0,
+  "service_budget_exceeded": false,
+  "worker_reap_pending": false,
+  "cleanup_pending": true,
+  "timing_scope": "service_validation_dispatch_search_and_cleanup_wait; excludes HTTP and client processing",
+  "axis_equations": {
+    "ax": [
+      {
+        "source": "-0.02174349277729158",
+        "complexity": 1,
+        "origin": "constant_initialization",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0008641639182218514)*(t)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0008641639182218514*t)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.06407378883232237)*(x)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06407378883232237*x)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0007443853769308837)*(y)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0007443853769308837*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.02438088297915655)*(vx)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(0.02438088297915655*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07770836064426277)*(vy)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.07770836064426277*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.01875732871047101)*(mass)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.01875732871047101*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.015675334553556755)*(charge)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.015675334553556755*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0008246573382922908)*(t) + (-0.06588451906891116)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0008246573382922908*t) + (-0.06588451906891116*x)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0009221316643407046)*(t) + (0.0007397654625877964)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0009221316643407046*t) + (0.0007397654625877964*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0006876333705912487)*(t) + (0.013590315782614406)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0006876333705912487*t) + (0.013590315782614406*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0006341789117654802)*(t) + (-0.07669314425965061)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0006341789117654802*t) + (-0.07669314425965061*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.04006442881165656)*(mass) + (0.003250466616495449)*(t)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.003250466616495449*t) + (-0.04006442881165656*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0306372004645999)*(charge) + (0.0022823993072530343)*(t)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0022823993072530343*t) + (-0.0306372004645999*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.06415687336124155)*(x) + (0.0008180429089587521)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06415687336124155*x) + (0.0008180429089587521*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.007097072542689496)*(vx) + (-0.06432006489326808)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06432006489326808*x) + (-0.007097072542689496*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0005337903895309787)*(vy) + (-0.0639704552211402)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0639704552211402*x) + (-0.0005337903895309787*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.007954000398309097)*(mass) + (-0.06825153324344435)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06825153324344435*x) + (0.007954000398309097*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.00520759729039593)*(charge) + (-0.06627593514936454)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06627593514936454*x) + (0.00520759729039593*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.030329465352409914)*(vx) + (0.0014183246998255453)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0014183246998255453*y) + (0.030329465352409914*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07786114362336614)*(vy) + (0.0003999674901697266)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0003999674901697266*y) + (-0.07786114362336614*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.026677563554407206)*(mass) + (0.007882046779461374)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.007882046779461374*y) + (-0.026677563554407206*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.02119732979308659)*(charge) + (0.00577644242992755)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.00577644242992755*y) + (-0.02119732979308659*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.00729647363425187)*(vx) + (-0.07699292761665322)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.00729647363425187*vx) + (-0.07699292761665322*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.020169767806388548)*(mass) + (-0.014035891259204134)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.014035891259204134*vx) + (-0.020169767806388548*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.01691644828385665)*(charge) + (-0.011176018630254941)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.011176018630254941*vx) + (-0.01691644828385665*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.01390180514735651)*(mass) + (-0.0695965744916637)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0695965744916637*vy) + (-0.01390180514735651*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.011735163780869494)*(charge) + (-0.07236422624063185)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.07236422624063185*vy) + (-0.011735163780869494*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.011080469571295387)*(charge) + (-0.028985454468589817)*(mass)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.028985454468589817*mass) + (0.011080469571295387*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0008676316975143468)*(t) + (-0.06592450724610205)*(x) + (-0.000535343792964858)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0008676316975143468*t) + (-0.06592450724610205*x) + (-0.000535343792964858*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0009064943049621999)*(t) + (0.0063827495942606095)*(vx) + (-0.06584272320026138)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0009064943049621999*t) + (-0.06584272320026138*x) + (0.0063827495942606095*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0008258965073990452)*(t) + (0.0005956131876658874)*(vy) + (-0.06600254151201312)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0008258965073990452*t) + (-0.06600254151201312*x) + (0.0005956131876658874*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.006339249824541729)*(mass) + (0.00022522428057143598)*(t) + (-0.06789793782683537)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.00022522428057143598*t) + (-0.06789793782683537*x) + (0.006339249824541729*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0010866332146199)*(charge) + (0.0009304338298206888)*(t) + (-0.06565726977338446)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0009304338298206888*t) + (-0.06565726977338446*x) + (-0.0010866332146199*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0007458305033080867)*(t) + (0.020814637941475252)*(vx) + (0.0019402466986639553)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0007458305033080867*t) + (0.0019402466986639553*y) + (0.020814637941475252*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0007591507598203063)*(t) + (-0.0771083691033616)*(vy) + (0.0016107403175150534)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0007591507598203063*t) + (0.0016107403175150534*y) + (-0.0771083691033616*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0565509802624938)*(mass) + (0.004084150743171572)*(t) + (0.010968535329658078)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.004084150743171572*t) + (0.010968535329658078*y) + (-0.0565509802624938*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0405858979633891)*(charge) + (0.002728242572480938)*(t) + (0.007349802980094355)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.002728242572480938*t) + (0.007349802980094355*y) + (-0.0405858979633891*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0006763767594308874)*(t) + (-0.003307912258595148)*(vx) + (-0.07694993947691178)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0006763767594308874*t) + (-0.003307912258595148*vx) + (-0.07694993947691178*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.04012022951228611)*(mass) + (0.0032408996438809934)*(t) + (-0.0011777049234280048)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0032408996438809934*t) + (-0.0011777049234280048*vx) + (-0.04012022951228611*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.031076811579519838)*(charge) + (0.002255515012200768)*(t) + (-0.005545592079928865)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.002255515012200768*t) + (-0.005545592079928865*vx) + (-0.031076811579519838*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.030258318741482527)*(mass) + (0.002435149199519587)*(t) + (-0.06395072565179191)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.002435149199519587*t) + (-0.06395072565179191*vy) + (-0.030258318741482527*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.023193040839526138)*(charge) + (0.001727503664420581)*(t) + (-0.06991181673787433)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.001727503664420581*t) + (-0.06991181673787433*vy) + (-0.023193040839526138*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-4.753736488580954e-06)*(charge) + (-0.04006079440612902)*(mass) + (0.0032505815895870183)*(t)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0032505815895870183*t) + (-0.04006079440612902*mass) + (-4.753736488580954e-06*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.005195438780200768)*(vx) + (-0.06429988739588521)*(x) + (0.00045105343179017385)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06429988739588521*x) + (0.00045105343179017385*y) + (-0.005195438780200768*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0008134682681779771)*(vy) + (-0.0640002252481598)*(x) + (0.0008261838504229291)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0640002252481598*x) + (0.0008261838504229291*y) + (-0.0008134682681779771*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.011193994661061695)*(mass) + (-0.06968242067091558)*(x) + (-0.0026670717735191056)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06968242067091558*x) + (-0.0026670717735191056*y) + (0.011193994661061695*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.006354646579705422)*(charge) + (-0.06665170120690861)*(x) + (-0.001076047851345466)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06665170120690861*x) + (-0.001076047851345466*y) + (0.006354646579705422*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0072347249806223556)*(vx) + (-0.0010641602151305884)*(vy) + (-0.06411883652733301)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06411883652733301*x) + (-0.0072347249806223556*vx) + (-0.0010641602151305884*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.008790826951205238)*(mass) + (0.00763711045570101)*(vx) + (-0.06842605051125425)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06842605051125425*x) + (0.00763711045570101*vx) + (0.008790826951205238*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.00564470541590547)*(charge) + (0.003784218027268098)*(vx) + (-0.06632945943122052)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06632945943122052*x) + (0.003784218027268098*vx) + (0.00564470541590547*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.007953899286461332)*(mass) + (-1.339740042187173e-05)*(vy) + (-0.06824888660493861)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06824888660493861*x) + (-1.339740042187173e-05*vy) + (0.007953899286461332*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.005206374989086964)*(charge) + (-0.00016180644386296417)*(vy) + (-0.06624409503315191)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06624409503315191*x) + (-0.00016180644386296417*vy) + (0.005206374989086964*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.010476591297651773)*(charge) + (0.0179444990680156)*(mass) + (-0.06906866865053155)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06906866865053155*x) + (0.0179444990680156*mass) + (-0.010476591297651773*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.012735431500315494)*(vx) + (-0.07695421335705985)*(vy) + (0.0012947663215927554)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0012947663215927554*y) + (0.012735431500315494*vx) + (-0.07695421335705985*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.02625762242349812)*(mass) + (0.009783050515005944)*(vx) + (0.008443857211459007)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.008443857211459007*y) + (0.009783050515005944*vx) + (-0.02625762242349812*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.020819481474019692)*(charge) + (0.006219679147466961)*(vx) + (0.006103714928596386)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.006103714928596386*y) + (0.006219679147466961*vx) + (-0.020819481474019692*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.021130573601596595)*(mass) + (-0.06808648763224746)*(vy) + (0.007089068541959875)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.007089068541959875*y) + (-0.06808648763224746*vy) + (-0.021130573601596595*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.017073447360197797)*(charge) + (-0.07205969828677124)*(vy) + (0.0055669202120381765)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0055669202120381765*y) + (-0.07205969828677124*vy) + (-0.017073447360197797*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.00959208534894273)*(charge) + (-0.035401302066730346)*(mass) + (0.007752181850123865)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.007752181850123865*y) + (-0.035401302066730346*mass) + (0.00959208534894273*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0160330193129029)*(mass) + (-0.02179826240932253)*(vx) + (-0.07049035914518595)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.02179826240932253*vx) + (-0.07049035914518595*vy) + (-0.0160330193129029*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.014062037609311765)*(charge) + (-0.021465516340936255)*(vx) + (-0.07340931407344178)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.021465516340936255*vx) + (-0.07340931407344178*vy) + (-0.014062037609311765*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.009872697488818607)*(charge) + (-0.028860528859857706)*(mass) + (-0.009837382207686516)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.009837382207686516*vx) + (-0.028860528859857706*mass) + (0.009872697488818607*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.006436413056453839)*(charge) + (-0.01988206785403059)*(mass) + (-0.0690381656085011)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0690381656085011*vy) + (-0.01988206785403059*mass) + (0.006436413056453839*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0751028148424673)*(x) + (0.209301870483598)*(vx*vy) + (0.0458344087233185)*(vx*x) + (0.013569089918773)*(x**2) + (0.0205658126224496)*(x*y) + (0.0749470598009513)*(vx*vy*x)",
+        "complexity": 36,
+        "origin": "regression_basis",
+        "original_source": "-(0.0751028148424673*(x)) + 0.013569089918773*(x**2) + 0.0458344087233185*(x*vx) + 0.0205658126224496*(x*y) + 0.0749470598009513*(x*vx*vy) + 0.209301870483598*(vx*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0192203538131062)*(vx) + (-0.0751174768217604)*(x) + (0.299490222525408)*(vx*vy) + (0.0335517853017838)*(vx*x) + (0.012603464989245)*(x**2) + (0.0238012803070979)*(x*y)",
+        "complexity": 32,
+        "origin": "regression_basis",
+        "original_source": "-(0.0751174768217604*(x)) + 0.012603464989245*(x**2) + 0.0335517853017838*(x*vx) + 0.0238012803070979*(x*y) + 0.299490222525408*(vx*vy) + 0.0192203538131062*(vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0742351517047414)*(x) + (0.219975736065545)*(vx*vy) + (0.0370552677624142)*(vx*x) + (0.0111707719310708)*(x**2) + (0.0189914651602272)*(x*y)",
+        "complexity": 28,
+        "origin": "regression_basis",
+        "original_source": "-(0.0742351517047414*(x)) + 0.0111707719310708*(x**2) + 0.0370552677624142*(x*vx) + 0.0189914651602272*(x*y) + 0.219975736065545*(vx*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0716917412922822)*(x) + (0.0463292589020658)*(vx*x) + (0.00860067221220484)*(x**2) + (0.00696255164174294)*(x*y)",
+        "complexity": 22,
+        "origin": "regression_basis",
+        "original_source": "-(0.0716917412922822*(x)) + 0.00860067221220484*(x**2) + 0.0463292589020658*(x*vx) + 0.00696255164174294*(x*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0662250446780407)*(x) + (0.0340797776617911)*(vx*x) + (0.00655815466538759)*(x**2)",
+        "complexity": 16,
+        "origin": "regression_basis",
+        "original_source": "-(0.0662250446780407*(x)) + 0.00655815466538759*(x**2) + 0.0340797776617911*(x*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0673247581857134)*(x) + (0.00548384591387299)*(x**2)",
+        "complexity": 10,
+        "origin": "regression_basis",
+        "original_source": "-(0.0673247581857134*(x)) + 0.00548384591387299*(x**2)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.00636074151214965 + (-0.0668350351122139)*(x)",
+        "complexity": 8,
+        "origin": "regression_basis",
+        "original_source": "0.00636074151214965*(1) + -(0.0668350351122139*(x))",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.0217434927776071",
+        "complexity": 1,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "sin(x * -0.06415435918166337)",
+        "complexity": 4,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * x * -0.060007161751815016",
+        "complexity": 5,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * sin(x * -0.060072151688799515)",
+        "complexity": 6,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (x - 0.003551621911610106) * -0.060062274894457125",
+        "complexity": 7,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * sin(0.00021924081301325892 + x * -0.06012890599393683)",
+        "complexity": 8,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * -0.06013972578683667 * (x - 0.0025433236127980433 / t)",
+        "complexity": 9,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(x - 0.002583426573934022 / t) * sin(charge / mass * -0.06021935716246687)",
+        "complexity": 10,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * x + vx / (t / 0.013484528057869764)) * -0.060024006513724186",
+        "complexity": 11,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (x * -0.06003334575473936 + cos(x) / (t / 0.00024382242811550896))",
+        "complexity": 12,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * x + vx / (t / 0.035927354721340676 + y)) * -0.060045599445247975",
+        "complexity": 13,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * x + vx / (t / 0.03540412107423844 + y - 0.13120950308469295)) * -0.060051784096139",
+        "complexity": 15,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (x + cos(t) / ((t + x + x) / -0.005035060107426516)) * -0.06001308676044242",
+        "complexity": 16,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (t ** x / ((t + x + x) / -0.004990182100843167) + x) * -0.06013887185594629",
+        "complexity": 17,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (t ** x / ((t + x + sin(x)) / -0.004959206660125322) + x) * -0.060145803130344795",
+        "complexity": 18,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (charge * t ** x / ((t + x + x) / 0.0002892844477610096) + x * -0.06019019567574589)",
+        "complexity": 19,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (t ** x / ((t + x + sin(vy + x)) / -0.004089445645381684) + x) * -0.06011978005811454",
+        "complexity": 20,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (t ** x * (charge - vy) / ((t + x + x) / 0.00028992629513663326) + x * -0.06016331278773855)",
+        "complexity": 21,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (charge * t ** x / ((t + x + sin(vy + x)) / 0.0002408392302141541) + x * -0.06016566587045287)",
+        "complexity": 22,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (charge * t ** x / ((t + vy + x + x) / 0.0002559020000927843) + x * -0.06012398404157175) - 0.00013523964899746178",
+        "complexity": 23,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (charge * t ** x / ((t + x + sin(vy + x)) / 0.00025460609161440074) + x * -0.06013541209754852) - 0.00013391677189040157",
+        "complexity": 24,
+        "origin": "pysr",
+        "search_representation": "axis_0_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.02174349277736821",
+        "complexity": 1,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0640737888834908)*(x)",
+        "complexity": 3,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "original_source": "x * -0.0640737888834908",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "sin(x * -0.06415435918077832)",
+        "complexity": 4,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * -0.0600071617516508 * x",
+        "complexity": 5,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * sin(x * -0.06007215169746595)",
+        "complexity": 6,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (0.00021331848960344843 - 0.06006227489359711 * x)",
+        "complexity": 7,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * sin(0.00021924081196673543 - 0.060128905993533315 * x)",
+        "complexity": 8,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (-0.0601397257866546 * x + 0.00015295478503882527 / t)",
+        "complexity": 9,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-x + 0.0025834265410158517 / t) * sin(charge / mass * 0.060219357158850136)",
+        "complexity": 10,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-x + 0.0026231495480281567 / t) * sin(sin(charge / mass * 0.06029886374298424))",
+        "complexity": 11,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.004114029406156264 / (t + x) - x / mass) * 0.060020922562100266 * charge",
+        "complexity": 13,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-x + 0.004061449933342309 * cos(x) / t) * charge * 0.060033345754751055 / mass",
+        "complexity": 14,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (-0.06000938203894578 * x - 2.082744935120077e-05 / (-3.349832984570024 * sqrt(vx * vx + vy * vy) + cos(x)))",
+        "complexity": 15,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-x - 0.0013228638849742545 / (-(vx * vx + vy * vy) / 0.08822850869107185 + cos(x / -0.2952535616728769))) * (charge / mass) * 0.05999885109581674",
+        "complexity": 16,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.0600185065186831 * (charge / mass) * (-x - 0.0013228638849742545 / (-(vx * vx + vy * vy) / 0.08822850869107185 + cos(sin(x) / 0.40138414185096205)))",
+        "complexity": 17,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (-x - 0.0012963032899173368 / (-(vx * vx + vy * vy) / 0.08830987537216103 + cos(x / (charge / mass - x)))) * 0.05997469138887664",
+        "complexity": 18,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-x - 0.0013880518378001873 / (-(vx * vx + vy * vy) / 0.0881315250103545 + cos(x / (charge / mass - x)))) * sin(charge / mass * 0.06000177786241857)",
+        "complexity": 19,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * 0.06000177786241857 * (-x - 0.0013880518378001873 / (-(vx * vx + vy * vy) / 0.0881315250103545 + cos(x / (charge / mass - x - x))))",
+        "complexity": 20,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.05988035554111205 * (charge / mass) * (-x - 0.0007225774140154034 / (-3.370511773176685 * sqrt(vx * vx + vy * vy) + cos(charge / mass + x - cos(sin(t)))))",
+        "complexity": 21,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "sin(0.060013542508473974 * (charge / mass) * (-x - 0.0007452108973735923 / (-3.37062160195168 * sqrt(vx * vx + vy * vy) + cos(charge / mass + x - cos(sin(t))))))",
+        "complexity": 22,
+        "origin": "pysr",
+        "search_representation": "axis_0_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      }
+    ],
+    "ay": [
+      {
+        "source": "-0.07137951713987692",
+        "complexity": 1,
+        "origin": "constant_initialization",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.004592848933870321)*(t)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.004592848933870321*t)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.003954012341721788)*(x)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.003954012341721788*x)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.05942306100925152)*(y)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05942306100925152*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.26084656527012745)*(vx)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(0.26084656527012745*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.020353503551899448)*(vy)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.020353503551899448*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.05757427035998201)*(mass)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05757427035998201*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.05966083646462736)*(charge)",
+        "complexity": 3,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05966083646462736*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.004759369137722034)*(t) + (0.006496308300069809)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.004759369137722034*t) + (0.006496308300069809*x)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(7.268716224914079e-05)*(t) + (-0.05954004941453683)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(7.268716224914079e-05*t) + (-0.05954004941453683*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0015130006705363723)*(t) + (0.23710406512095883)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0015130006705363723*t) + (0.23710406512095883*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.004553673560356231)*(t) + (-0.013063819327334204)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.004553673560356231*t) + (-0.013063819327334204*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.08405315187048594)*(mass) + (0.004039438496242978)*(t)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.004039438496242978*t) + (-0.08405315187048594*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0904481969650003)*(charge) + (0.004696543245073201)*(t)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.004696543245073201*t) + (-0.0904481969650003*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0020864516210750144)*(x) + (-0.059473872884256)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0020864516210750144*x) + (-0.059473872884256*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.2633844293306972)*(vx) + (0.00518571102728846)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.00518571102728846*x) + (0.2633844293306972*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.020331645263845868)*(vy) + (-1.81184635369949e-05)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-1.81184635369949e-05*x) + (-0.020331645263845868*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07052367573353611)*(mass) + (0.03308771224886198)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.03308771224886198*x) + (-0.07052367573353611*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0673948563929418)*(charge) + (0.024545375479032492)*(x)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.024545375479032492*x) + (-0.0673948563929418*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.016579178016923223)*(vx) + (-0.058240845795599905)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.058240845795599905*y) + (0.016579178016923223*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.002358664074916228)*(vy) + (-0.059457727132442746)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.059457727132442746*y) + (0.002358664074916228*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0031651213140905595)*(mass) + (-0.06044653169566068)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06044653169566068*y) + (0.0031651213140905595*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0040447727954644)*(charge) + (-0.058178787925115626)*(y)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.058178787925115626*y) + (-0.0040447727954644*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.2620313027784446)*(vx) + (0.0053391608326105065)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.2620313027784446*vx) + (0.0053391608326105065*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.03875282162809665)*(mass) + (0.18703518509576056)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.18703518509576056*vx) + (-0.03875282162809665*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.04003946883012784)*(charge) + (0.17668708747687392)*(vx)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.17668708747687392*vx) + (-0.04003946883012784*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.058537284646589596)*(mass) + (0.013803350897844367)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.013803350897844367*vy) + (-0.058537284646589596*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.060041383757586865)*(charge) + (0.006989039813673573)*(vy)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(0.006989039813673573*vy) + (-0.060041383757586865*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.04404380745459311)*(charge) + (-0.01691844809420373)*(mass)",
+        "complexity": 7,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.01691844809420373*mass) + (-0.04404380745459311*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(1.6982035148435196e-05)*(t) + (0.0020518539676602668)*(x) + (-0.05950036253488461)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(1.6982035148435196e-05*t) + (0.0020518539676602668*x) + (-0.05950036253488461*y)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0017080141695322612)*(t) + (0.23798578414710103)*(vx) + (0.00805469977819863)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0017080141695322612*t) + (0.00805469977819863*x) + (0.23798578414710103*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.004815368946936097)*(t) + (-0.026916604596486083)*(vy) + (0.0118299098728226)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.004815368946936097*t) + (0.0118299098728226*x) + (-0.026916604596486083*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.11302735243538659)*(mass) + (0.005928383096641827)*(t) + (0.042395097249968344)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.005928383096641827*t) + (0.042395097249968344*x) + (-0.11302735243538659*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.10307377532473253)*(charge) + (0.005274175001870913)*(t) + (0.028052287368882888)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.005274175001870913*t) + (0.028052287368882888*x) + (-0.10307377532473253*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.000238931626839762)*(t) + (0.01962731453361262)*(vx) + (-0.05840804688447035)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.000238931626839762*t) + (-0.05840804688447035*y) + (0.01962731453361262*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(6.784394206948226e-05)*(t) + (0.0022913899659649985)*(vy) + (-0.05956593172882251)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(6.784394206948226e-05*t) + (-0.05956593172882251*y) + (0.0022913899659649985*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.007471375195876306)*(mass) + (-0.0005887304476564899)*(t) + (-0.06089144910936833)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0005887304476564899*t) + (-0.06089144910936833*y) + (0.007471375195876306*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.012641666540513262)*(charge) + (0.0012097031250746266)*(t) + (-0.057481159644696675)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0012097031250746266*t) + (-0.057481159644696675*y) + (-0.012641666540513262*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0015137957832288096)*(t) + (0.2382976744056573)*(vx) + (0.005435372394823536)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.0015137957832288096*t) + (0.2382976744056573*vx) + (0.005435372394823536*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07411150253812644)*(mass) + (0.005743924028361815)*(t) + (0.20982405657305658)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.005743924028361815*t) + (0.20982405657305658*vx) + (-0.07411150253812644*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07532948329610817)*(charge) + (0.005621123960370329)*(t) + (0.1907190604045391)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.005621123960370329*t) + (0.1907190604045391*vx) + (-0.07532948329610817*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.08771401888241838)*(mass) + (0.0043438169515837245)*(t) + (0.023874410979728804)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0043438169515837245*t) + (0.023874410979728804*vy) + (-0.08771401888241838*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.091918889267257)*(charge) + (0.004806170226703299)*(t) + (0.013812005100864874)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.004806170226703299*t) + (0.013812005100864874*vy) + (-0.091918889267257*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.06301678709011452)*(charge) + (-0.03587451178882093)*(mass) + (0.00556355218027306)*(t)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.00556355218027306*t) + (-0.03587451178882093*mass) + (-0.06301678709011452*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.01800575303087821)*(vx) + (0.002582093182199079)*(x) + (-0.058202003044116504)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.002582093182199079*x) + (-0.058202003044116504*y) + (0.01800575303087821*vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.00019936042351241106)*(vy) + (0.002124842097247266)*(x) + (-0.05947187774615219)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.002124842097247266*x) + (-0.05947187774615219*y) + (-0.00019936042351241106*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0027758513693870537)*(mass) + (0.0007162438864291194)*(x) + (-0.06033810059355431)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.0007162438864291194*x) + (-0.06033810059355431*y) + (0.0027758513693870537*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.00585793660268795)*(charge) + (0.004386271630139263)*(x) + (-0.057727833438248985)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.004386271630139263*x) + (-0.057727833438248985*y) + (-0.00585793660268795*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.2632508056487117)*(vx) + (-0.0010330148038313106)*(vy) + (0.005381049922697285)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.005381049922697285*x) + (0.2632508056487117*vx) + (-0.0010330148038313106*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.05103683455926819)*(mass) + (0.17784229953689673)*(vx) + (0.029023799281223263)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.029023799281223263*x) + (0.17784229953689673*vx) + (-0.05103683455926819*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.04756224618696102)*(charge) + (0.1716987552719804)*(vx) + (0.02211685457847103)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.02211685457847103*x) + (0.1716987552719804*vx) + (-0.04756224618696102*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.07071203732842969)*(mass) + (-0.024958061458726668)*(vy) + (0.03801814385540395)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.03801814385540395*x) + (-0.024958061458726668*vy) + (-0.07071203732842969*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.06758492074087401)*(charge) + (-0.025160437953105914)*(vy) + (0.029496422231323226)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.029496422231323226*x) + (-0.025160437953105914*vy) + (-0.06758492074087401*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.03455804581071818)*(charge) + (-0.03756905329092721)*(mass) + (0.030392312377912678)*(x)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.030392312377912678*x) + (-0.03756905329092721*mass) + (-0.03455804581071818*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.017401765223096725)*(vx) + (0.0035978986911592956)*(vy) + (-0.05823506897704861)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05823506897704861*y) + (0.017401765223096725*vx) + (0.0035978986911592956*vy)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.004011531392964739)*(mass) + (0.01971817464059934)*(vx) + (-0.05931417771302025)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05931417771302025*y) + (0.01971817464059934*vx) + (0.004011531392964739*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0032674500389478544)*(charge) + (0.012795341134497953)*(vx) + (-0.05750551151243883)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.05750551151243883*y) + (0.012795341134497953*vx) + (-0.0032674500389478544*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0030893900351445028)*(mass) + (0.0009295630298955665)*(vy) + (-0.060435705417514654)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.060435705417514654*y) + (0.0009295630298955665*vy) + (0.0030893900351445028*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.004262647219422512)*(charge) + (0.003807083618488793)*(vy) + (-0.058167718372752815)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.058167718372752815*y) + (0.003807083618488793*vy) + (-0.004262647219422512*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.032522883249402675)*(charge) + (0.032743791521177026)*(mass) + (-0.06000621222586978)*(y)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(-0.06000621222586978*y) + (0.032743791521177026*mass) + (-0.032522883249402675*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.040018644028551105)*(mass) + (0.1894104281877528)*(vx) + (0.021569664136595598)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.1894104281877528*vx) + (0.021569664136595598*vy) + (-0.040018644028551105*mass)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.040649881506908334)*(charge) + (0.17888748558227477)*(vx) + (0.01569850347877383)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.17888748558227477*vx) + (0.01569850347877383*vy) + (-0.040649881506908334*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.02224208954803851)*(charge) + (-0.01917350343154592)*(mass) + (0.1775764110982927)*(vx)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.1775764110982927*vx) + (-0.01917350343154592*mass) + (-0.02224208954803851*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.043368382895393874)*(charge) + (-0.018242430882033485)*(mass) + (0.010040806442605866)*(vy)",
+        "complexity": 11,
+        "origin": "linear_least_squares",
+        "original_source": "(0.010040806442605866*vy) + (-0.018242430882033485*mass) + (-0.043368382895393874*charge)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.0153889888942926 + (-0.0567284296009391)*(y) + (-0.153305533441297)*(vx**2) + (-0.00750630177327335)*(vy**2) + (-0.00573300200320953)*(x**2) + (0.191052813441239)*(vx**3)",
+        "complexity": 35,
+        "origin": "regression_basis",
+        "original_source": "-(0.0567284296009391*(y)) + 0.191052813441239*(vx**3) + -(0.153305533441297*(vx**2)) + 0.0153889888942926*(1) + -(0.00750630177327335*(vy**2)) + -(0.00573300200320953*(x**2))",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.00698705269468591 + (-0.0561488856424164)*(y) + (-0.120116320825753)*(vx**2) + (-0.00940360428293679)*(vy**2) + (0.174111804727285)*(vx**3)",
+        "complexity": 28,
+        "origin": "regression_basis",
+        "original_source": "-(0.0561488856424164*(y)) + 0.174111804727285*(vx**3) + -(0.120116320825753*(vx**2)) + 0.00698705269468591*(1) + -(0.00940360428293679*(vy**2))",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "0.00518474570643969 + (-0.0567494919929928)*(y) + (-0.105810068647031)*(vx**2) + (0.166962696205029)*(vx**3)",
+        "complexity": 21,
+        "origin": "regression_basis",
+        "original_source": "-(0.0567494919929928*(y)) + 0.166962696205029*(vx**3) + -(0.105810068647031*(vx**2)) + 0.00518474570643969*(1)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0561120860149945)*(y) + (-0.0747363290381959)*(vx**2) + (0.166808451459805)*(vx**3)",
+        "complexity": 17,
+        "origin": "regression_basis",
+        "original_source": "-(0.0561120860149945*(y)) + 0.166808451459805*(vx**3) + -(0.0747363290381959*(vx**2))",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(0.0132805098198987)*(vx) + (-0.0562106476664976)*(y) + (-0.0790983672966662)*(vx**2)",
+        "complexity": 15,
+        "origin": "regression_basis",
+        "original_source": "-(0.0562106476664976*(y)) + -(0.0790983672966662*(vx**2)) + 0.0132805098198987*(vx)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.0581298767610039)*(y) + (0.184293975269442)*(vx**3)",
+        "complexity": 10,
+        "origin": "regression_basis",
+        "original_source": "-(0.0581298767610039*(y)) + 0.184293975269442*(vx**3)",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.07137951713934108",
+        "complexity": 1,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * (charge / mass) * -0.060081617721478096",
+        "complexity": 5,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * sin(charge / mass * -0.060121422165761)",
+        "complexity": 6,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * y * -0.06000028043266478 - 1 * 0.0002763522550308791",
+        "complexity": 7,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * sin(charge / mass * -0.06003750569458146) - 1 * 0.00028461550847046294",
+        "complexity": 8,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * y * -0.06002024150073954 - 0.00010509574370466133 / t",
+        "complexity": 9,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.05996691905557655 * (charge / mass) * y - 0.00040456951755492646 / sqrt(t)",
+        "complexity": 10,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * (charge / mass) * -0.05999350245563371 - -1 * 0.00029248228340992546 / (-t - 0.11153342165893662)",
+        "complexity": 11,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.059967449928391765 * (charge / mass) * (-(-0.006945589333229054) ** charge / sqrt(t) + y)",
+        "complexity": 12,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (--0.00019577713669539947 * (-1.7211293881428475) ** charge * x + y * -0.06007954332188922)",
+        "complexity": 13,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (y * -0.060050083054835425 - 0.0010638408429141538 * sin(x * vx + y * vy)) - 0.00010498737096614889 / t",
+        "complexity": 14,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (y * -0.060050083054835425 - 0.0010638408429141538 * sin(sin(x * vx + y * vy))) - 0.00010498737096614889 / t",
+        "complexity": 15,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (y * -0.06004309427511502 - -0.0015759527139000186 * sin((x * vx + y * vy) * -0.7859650514552481)) - 0.00010575083259270377 / t",
+        "complexity": 16,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (--7.383798961507655e-05 * (-2.806999132772651) ** charge * x + y * -0.06002699300169497) - 9.21142977673116e-05 / t",
+        "complexity": 17,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (--0.0015508542986113387 * (charge / mass) * sin((x * vx + y * vy) * -0.7838061923211587) + y * -0.06004273538363567) - 0.00010575724209194797 / t",
+        "complexity": 18,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (--0.0015508542986113387 * (charge / mass) * sin(sin((x * vx + y * vy) * -0.7838061923211587)) + y * -0.06004273538363567) - 0.00010575724209194797 / t",
+        "complexity": 19,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (y * -0.06003834662111214 - (charge / mass * -0.003185115248633932 - 1 * -0.0019669073747863868) * sin((x * vx + y * vy) * -0.7859655198009007)) - 0.00010575724209194797 / t",
+        "complexity": 20,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (y * -0.06003834662111214 - (charge / mass * -0.003185115248633932 - 1 * -0.0019669073747863868) * sin(sin((x * vx + y * vy) * -0.7859655198009007))) - 0.00010575724209194797 / t",
+        "complexity": 21,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.00014787619955136658 * (-9.998326688418159) ** charge * sin((-0.7248405332825288) ** charge * (x * vx + y * vy) - 0.10944553618263793 / t) + y * -0.060041191154020186 * (charge / mass)",
+        "complexity": 22,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * (sin((x * vx + y * vy) * ((-0.7037527289264903) ** charge) ** charge - 0.10974695359714565 / t) * (-9.998586977025917) ** charge * -0.00015100051699653964 + y * -0.060042207217700816)",
+        "complexity": 24,
+        "origin": "pysr",
+        "search_representation": "axis_1_algebra",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "-0.0713795171410218",
+        "complexity": 1,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(-0.05942306101255791)*(y)",
+        "complexity": 3,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "original_source": "y * -0.05942306101255791",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * sin(charge / mass * -0.060121422166943765)",
+        "complexity": 6,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "charge / mass * -0.06000028043266442 * y - 0.00027635225503202187",
+        "complexity": 7,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(y - 0.007486774471857907) * (charge / mass) * -0.060002941936523446 - 0.0007448881516480536",
+        "complexity": 9,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "exp(charge ** x * -0.03202453289878212) * y * (charge / mass) * -0.062047986306628534",
+        "complexity": 12,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "exp(exp(charge * charge * x) * -0.0003272187187948892) * y * -0.0601221414061743 * (charge / mass)",
+        "complexity": 15,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "y * exp(exp(exp(charge * x)) * -9.572177811377803e-10) * (charge / mass) * -0.059984561800570144 - 0.0003529484781292156",
+        "complexity": 16,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * y * -0.05998725324810117 - 0.00034782417377677373) * exp((x * vx + y * vy) * exp(exp(charge / mass * x)) * 1.667021384981719e-08)",
+        "complexity": 18,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * y * -0.059983220555113334 - 0.0003513883734697544) * exp((--3.181727175459428e-05 * (x * vx + y * vy) * exp(exp(charge / mass * x)) + (x * vx + y * vy)) * 0.000527372097603825)",
+        "complexity": 22,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(y * (charge / mass) * -0.05998828555396892 - 0.00034845279673923846) * exp((-exp(y) + exp(exp(charge / mass * x)) * -0.0027056116210988847) * (x * vx + y * vy) * -6.25843257223244e-06)",
+        "complexity": 23,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(charge / mass * -0.05998823991679638 * y - 0.000349493247258498) * exp((-exp(sqrt(x * x + y * y) * cos(x)) + exp(exp(charge / mass * x)) * -0.001400088527429594) * (x * vx + y * vy) * -1.1945439899697549e-05)",
+        "complexity": 26,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "exp((x * vx + y * vy) * (-exp(sqrt(x * x + y * y) * Abs(cos(vx * vx + vy * vy))) + exp(exp(charge / mass * x)) * -0.002040704758151259) * -7.81735482334421e-06) * (charge / mass) * -0.05998925810306575 * y - 0.00034716444105789264",
+        "complexity": 27,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(y * (charge / mass) * -0.059992213206349926 - 0.00034697582195263) * exp((--8.989612319575668e-05 * (charge / mass) * (charge / mass) * (charge / mass) * exp(y) * exp(y) + exp(exp(charge / mass * x)) * 8.085118462610184e-05) * (x * vx + y * vy) * 0.00020684983230524637)",
+        "complexity": 34,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(y * (charge / mass) * -0.059992400025068914 - 0.0003463959549235889) * exp((--8.729582707141553e-05 * (charge / mass) * (charge / mass) * exp(y) * exp(y) * cos(y) + exp(exp(charge / mass * x)) * 7.936576919091781e-05) * (x * vx + y * vy) * 0.00021332165803339076)",
+        "complexity": 35,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      },
+      {
+        "source": "(y * (charge / mass) * -0.05999437920523617 - 0.0003453926317058749) * exp((--0.00010114583407535842 * (charge / mass) * (charge / mass) * (charge / mass) * exp(y) * exp(y) * cos(y) + exp(exp(charge / mass * x)) * 7.733234245127034e-05) * (x * vx + y * vy) * 0.00021635016224312903)",
+        "complexity": 37,
+        "origin": "pysr",
+        "search_representation": "axis_1_full",
+        "domain_valid": null,
+        "rejection_reason": "not_checked_budget"
+      }
+    ]
+  },
+  "rejection_counts": {},
+  "rejection_examples": [],
+  "candidate_selection": {
+    "strategy": "bounded_algebraic_dedup_then_joint_sharing_and_observed_integral_residual",
+    "normalized_resolution_tolerance": 2.0651555952536374e-06,
+    "legal_pairs": 0,
+    "over_budget_pairs_retained": 0,
+    "sharing_attempts_cached": 162,
+    "sharing_fit_attempts_this_selection": 0,
+    "sharing_proposal_prefilter_rejections_this_selection": 0,
+    "sharing_order": "public_axis_first_pair_then_interleaved_loss_and_complexity; infeasible_proposals_do_not_consume_fit_slots",
+    "sharing_public_axis_pair_prioritized": false,
+    "sharing_unattempted_pairs": 0,
+    "rejection_stage_counts": {},
+    "rejected_candidates_total": 0,
+    "unchecked_axis_equations": 218,
+    "rollout_candidates_considered": 0,
+    "axis_frontier_counts": [
+      0,
+      0
+    ],
+    "full_axis_equations_retained": true,
+    "selection_incomplete": true,
+    "stop_reason": "selection_deadline",
+    "retained_checkpoint": true,
+    "independent_validation": false,
+    "final_ranking": "observed domain risk, comparable error metric, then exported complexity within 5% MSE / public noise-and-numerical tolerance bands; discovery diagnostics, not independent validation",
+    "trajectory_refit_candidates_processed": 5,
+    "trajectory_refit_candidates_planned": 6
+  },
+  "used_probe_ids": [
+    "probe_0001",
+    "probe_0002",
+    "probe_0003",
+    "probe_0004",
+    "probe_0005",
+    "probe_0006",
+    "probe_0007",
+    "probe_0008",
+    "probe_0009",
+    "probe_0010"
+  ],
+  "candidates": [
+    {
+      "law_spec": {
+        "ax": "(q('charge') / q('mass') * x + vx / (t / c1 + y - c2)) * c3",
+        "ay": "y * sin(q('charge') / q('mass') * c4) - 1 * c5"
+      },
+      "parameter_spec": [
+        {
+          "name": "c1",
+          "initial": 0.03540412107423844
+        },
+        {
+          "name": "c2",
+          "initial": 0.13120950308469295
+        },
+        {
+          "name": "c3",
+          "initial": -0.060051784096139
+        },
+        {
+          "name": "c4",
+          "initial": -0.06003750569458146
+        },
+        {
+          "name": "c5",
+          "initial": 0.00028461550847046294
+        }
+      ],
+      "complexity": 23,
+      "parameter_count": 5,
+      "acceleration_search_mse_by_axis": [
+        2.3821067683350333e-06,
+        2.1070550101254885e-06
+      ],
+      "acceleration_search_mse": 4.489161778460522e-06,
+      "normalized_acceleration_search_loss": 0.0003379877396418674,
+      "dsl_valid": true,
+      "component_sources": [
+        "pysr",
+        "pysr"
+      ],
+      "initial_domain_check": {
+        "status": "passed",
+        "scope": "All acquired states and controlled initial states"
+      },
+      "short_rollout_check": {
+        "status": "passed",
+        "probe_count": 10,
+        "rhs_calls": 2304,
+        "position_rmse": 0.06059130428919381,
+        "velocity_rmse": 0.0005595336629800685,
+        "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+      },
+      "fitted_parameters": {
+        "c1": 0.03540412107423844,
+        "c2": 0.13120950308469295,
+        "c3": -0.060051784096139,
+        "c4": -0.06003750569458146,
+        "c5": 0.00028461550847046294
+      },
+      "residuals": {
+        "acceleration_weighted_mse": 4.489161778460522e-06,
+        "acceleration_weighted_mse_by_axis": [
+          2.3821067683350333e-06,
+          2.1070550101254885e-06
+        ],
+        "short_rollout": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.06059130428919381,
+          "velocity_rmse": 0.0005595336629800685,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "observed_velocity_integral": {
+          "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "status": "checked",
+              "velocity_increment_rmse": 0.00037747636251262925,
+              "relative_increment_rmse": 0.025583658713613636,
+              "cumulative_velocity_residual_rmse": 0.00044432955442833227,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0002",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0005410198309725254,
+              "relative_increment_rmse": 0.01846440785572329,
+              "cumulative_velocity_residual_rmse": 0.0005899793725047149,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0003",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007979651391520009,
+              "relative_increment_rmse": 0.03666921634946119,
+              "cumulative_velocity_residual_rmse": 0.0029402496758094187,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0004",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007616995166593513,
+              "relative_increment_rmse": 0.03892214583134225,
+              "cumulative_velocity_residual_rmse": 0.004505791516729325,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0005",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007253300170347998,
+              "relative_increment_rmse": 0.01219548857337527,
+              "cumulative_velocity_residual_rmse": 0.0018207058268709712,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0006",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007952891907777011,
+              "relative_increment_rmse": 0.04815592874018227,
+              "cumulative_velocity_residual_rmse": 0.00442203108976229,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0007",
+              "status": "checked",
+              "velocity_increment_rmse": 0.000805211219550219,
+              "relative_increment_rmse": 0.04998703224956507,
+              "cumulative_velocity_residual_rmse": 0.0034116081977899892,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0008",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0008186404295758515,
+              "relative_increment_rmse": 0.048350261642044076,
+              "cumulative_velocity_residual_rmse": 0.004064670832466768,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0009",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007271624991834385,
+              "relative_increment_rmse": 0.07418298024803681,
+              "cumulative_velocity_residual_rmse": 0.002663458830259771,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0010",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0012507836178924302,
+              "relative_increment_rmse": 0.041804749986914996,
+              "cumulative_velocity_residual_rmse": 0.005949211312923293,
+              "denominator_sign_changes": 0
+            }
+          ],
+          "checked_probe_ids": [
+            "probe_0001",
+            "probe_0002",
+            "probe_0003",
+            "probe_0004",
+            "probe_0005",
+            "probe_0006",
+            "probe_0007",
+            "probe_0008",
+            "probe_0009",
+            "probe_0010"
+          ],
+          "complete": true,
+          "domain_error_probe_ids": [],
+          "denominator_sign_change_probe_ids": [
+            "probe_0001",
+            "probe_0005",
+            "probe_0006"
+          ],
+          "velocity_increment_rmse": 0.0007888267318844036,
+          "relative_increment_rmse": 0.04290681659449012,
+          "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+        },
+        "trajectory_training": {
+          "overall": {
+            "position_mse": 0.003422354171448476,
+            "velocity_mse": 1.1092056132078806e-06,
+            "position_rmse": 0.0585008903474851,
+            "velocity_rmse": 0.0010531883085222132
+          },
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "n_samples": 8,
+              "position_mse": 0.002468600021227153,
+              "position_rmse": 0.04968500801275122,
+              "velocity_mse": 1.3557205642774262e-07,
+              "velocity_rmse": 0.0003682011086726147
+            },
+            {
+              "probe_id": "probe_0002",
+              "n_samples": 8,
+              "position_mse": 0.0025394962235370366,
+              "position_rmse": 0.05039341448579404,
+              "velocity_mse": 8.473430167982453e-07,
+              "velocity_rmse": 0.0009205123664559023
+            },
+            {
+              "probe_id": "probe_0003",
+              "n_samples": 50,
+              "position_mse": 0.003325648612096935,
+              "position_rmse": 0.057668436879257746,
+              "velocity_mse": 2.29828264502349e-06,
+              "velocity_rmse": 0.0015160087879110364
+            },
+            {
+              "probe_id": "probe_0004",
+              "n_samples": 50,
+              "position_mse": 0.003755665029455875,
+              "position_rmse": 0.06128348088560142,
+              "velocity_mse": 1.2479739958084262e-06,
+              "velocity_rmse": 0.0011171275646981531
+            },
+            {
+              "probe_id": "probe_0005",
+              "n_samples": 50,
+              "position_mse": 0.003658557942799488,
+              "position_rmse": 0.0604860144396991,
+              "velocity_mse": 1.086715327702159e-06,
+              "velocity_rmse": 0.0010424563912711932
+            },
+            {
+              "probe_id": "probe_0006",
+              "n_samples": 50,
+              "position_mse": 0.003120193682016274,
+              "position_rmse": 0.05585869388032873,
+              "velocity_mse": 1.0880621363065659e-06,
+              "velocity_rmse": 0.0010431021696394682
+            },
+            {
+              "probe_id": "probe_0007",
+              "n_samples": 50,
+              "position_mse": 0.003691565129410226,
+              "position_rmse": 0.06075825153351787,
+              "velocity_mse": 1.0923619106216991e-06,
+              "velocity_rmse": 0.0010451611888229006
+            },
+            {
+              "probe_id": "probe_0008",
+              "n_samples": 50,
+              "position_mse": 0.004167940377796156,
+              "position_rmse": 0.06455958780689477,
+              "velocity_mse": 1.0876930929115941e-06,
+              "velocity_rmse": 0.001042925257586369
+            },
+            {
+              "probe_id": "probe_0009",
+              "n_samples": 50,
+              "position_mse": 0.003659328158823348,
+              "position_rmse": 0.06049238099813354,
+              "velocity_mse": 1.8339152588053003e-06,
+              "velocity_rmse": 0.0013542212739450301
+            },
+            {
+              "probe_id": "probe_0010",
+              "n_samples": 50,
+              "position_mse": 0.003836546537322268,
+              "position_rmse": 0.06193986226431463,
+              "velocity_mse": 3.7413669167358294e-07,
+              "velocity_rmse": 0.0006116671412407102
+            }
+          ],
+          "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+        },
+        "refitted_acceleration_mse_by_axis": [
+          2.382106768335033e-06,
+          2.107055010125488e-06
+        ]
+      },
+      "fit_stage": "position_trajectory_discovery_refit",
+      "joint_fit_ready": true,
+      "prediction_accuracy_status": "not_independently_validated",
+      "selection_role": "simplest_within_comparable_error_band",
+      "structural_complexity": {
+        "nodes": 29,
+        "parameters": 5,
+        "depth": 7
+      },
+      "selection_diagnostics": {
+        "metric": "trajectory_position_mse",
+        "error": 0.003422354171448476,
+        "band_best_error": 0.003417028712506015,
+        "absolute_tolerance": 0.0002321132536069408,
+        "relative_mse_tolerance": 0.05,
+        "observed_domain_or_pole_risk": true,
+        "rule": "simplest exported expression within comparable-error band",
+        "independent_validation": false
+      },
+      "rank": 1,
+      "trajectory_refit_status": "not_converged",
+      "discovery_probe_ids": [
+        "probe_0001",
+        "probe_0002",
+        "probe_0003",
+        "probe_0004",
+        "probe_0005",
+        "probe_0006",
+        "probe_0007",
+        "probe_0008",
+        "probe_0009",
+        "probe_0010"
+      ]
+    },
+    {
+      "law_spec": {
+        "ax": "(q('charge') / q('mass') * x + vx / (t / c1 + y - c2)) * c3",
+        "ay": "q('charge') / q('mass') * (-c4 * c5 ** q('charge') * x + y * c3)"
+      },
+      "parameter_spec": [
+        {
+          "name": "c1",
+          "initial": 0.03447722135133797
+        },
+        {
+          "name": "c2",
+          "initial": 0.2753009192387104
+        },
+        {
+          "name": "c3",
+          "initial": -0.060072928489169695
+        },
+        {
+          "name": "c4",
+          "initial": -0.00019561062385668623
+        },
+        {
+          "name": "c5",
+          "initial": -1.7222538895608126
+        }
+      ],
+      "complexity": 28,
+      "parameter_count": 5,
+      "acceleration_search_mse_by_axis": [
+        2.382427275567393e-06,
+        1.9180626932578516e-06
+      ],
+      "acceleration_search_mse": 4.3004899688252445e-06,
+      "normalized_acceleration_search_loss": 0.00033152280656701804,
+      "dsl_valid": true,
+      "component_sources": [
+        "pysr",
+        "pysr"
+      ],
+      "initial_domain_check": {
+        "status": "passed",
+        "scope": "All acquired states and controlled initial states"
+      },
+      "parameter_sharing": {
+        "status": "data_validated",
+        "proposal": "close coefficients proposed, never assumed equal",
+        "uncompressed_law_spec": {
+          "ax": "(q('charge') / q('mass') * x + vx / (t / c1 + y - c2)) * c3",
+          "ay": "q('charge') / q('mass') * (-c4 * c5 ** q('charge') * x + y * c6)"
+        },
+        "uncompressed_parameter_spec": [
+          {
+            "name": "c1",
+            "initial": 0.03540412107423844
+          },
+          {
+            "name": "c2",
+            "initial": 0.13120950308469295
+          },
+          {
+            "name": "c3",
+            "initial": -0.060051784096139
+          },
+          {
+            "name": "c4",
+            "initial": -0.00019577713669539947
+          },
+          {
+            "name": "c5",
+            "initial": -1.7211293881428475
+          },
+          {
+            "name": "c6",
+            "initial": -0.06007954332188922
+          }
+        ],
+        "groups": [
+          {
+            "shared_parameter": "c1",
+            "original_parameters": [
+              "c1"
+            ]
+          },
+          {
+            "shared_parameter": "c2",
+            "original_parameters": [
+              "c2"
+            ]
+          },
+          {
+            "shared_parameter": "c3",
+            "original_parameters": [
+              "c3",
+              "c6"
+            ]
+          },
+          {
+            "shared_parameter": "c4",
+            "original_parameters": [
+              "c4"
+            ]
+          },
+          {
+            "shared_parameter": "c5",
+            "original_parameters": [
+              "c5"
+            ]
+          }
+        ],
+        "original_loss_by_axis": [
+          2.382106768335035e-06,
+          1.917886553834383e-06
+        ],
+        "shared_loss_by_axis": [
+          2.382427275567393e-06,
+          1.9180626932578516e-06
+        ],
+        "acceptance_tolerance_by_axis": [
+          2.5012121067517866e-06,
+          2.013780881526102e-06
+        ],
+        "fit_evaluations": 165,
+        "heldout_discovery_probe_ids": [
+          "probe_0010"
+        ],
+        "split_checks": [
+          {
+            "split": "fit",
+            "original_mse_by_axis": [
+              1.674912471221923e-06,
+              1.5380930253945487e-06
+            ],
+            "shared_mse_by_axis": [
+              1.674937230104669e-06,
+              1.5380978240212426e-06
+            ],
+            "maximum_accepted_mse_by_axis": [
+              1.758658094783019e-06,
+              1.614997676664276e-06
+            ],
+            "passed": true
+          },
+          {
+            "split": "heldout_discovery_probes",
+            "original_mse_by_axis": [
+              8.753975938738361e-06,
+              5.393878754966406e-06
+            ],
+            "shared_mse_by_axis": [
+              8.757867593600092e-06,
+              5.487918817351517e-06
+            ],
+            "maximum_accepted_mse_by_axis": [
+              9.19167473567528e-06,
+              5.663572692714726e-06
+            ],
+            "passed": true
+          }
+        ],
+        "split_baseline": "unconstrained_parameters_refitted_on_same_training_split",
+        "independent_validation": false,
+        "limitation": "Ties are supported only by the supplied discovery data and resolution heuristic."
+      },
+      "short_rollout_check": {
+        "status": "passed",
+        "probe_count": 10,
+        "rhs_calls": 2304,
+        "position_rmse": 0.06057204490198315,
+        "velocity_rmse": 0.0006509844089500647,
+        "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+      },
+      "fitted_parameters": {
+        "c1": 0.03447722135133797,
+        "c2": 0.2753009192387104,
+        "c3": -0.060072928489169695,
+        "c4": -0.00019561062385668623,
+        "c5": -1.7222538895608126
+      },
+      "residuals": {
+        "acceleration_weighted_mse": 4.3004899688252445e-06,
+        "acceleration_weighted_mse_by_axis": [
+          2.382427275567393e-06,
+          1.9180626932578516e-06
+        ],
+        "short_rollout": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.06057204490198315,
+          "velocity_rmse": 0.0006509844089500647,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "observed_velocity_integral": {
+          "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0003810234833843865,
+              "relative_increment_rmse": 0.025824066693585987,
+              "cumulative_velocity_residual_rmse": 0.0004579304392702427,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0002",
+              "status": "checked",
+              "velocity_increment_rmse": 0.000541210151130639,
+              "relative_increment_rmse": 0.018470903272011927,
+              "cumulative_velocity_residual_rmse": 0.0006165610531115676,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0003",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0008014182899539001,
+              "relative_increment_rmse": 0.03682790039169481,
+              "cumulative_velocity_residual_rmse": 0.0031321524632044384,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0004",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007607245512846119,
+              "relative_increment_rmse": 0.03887232599600541,
+              "cumulative_velocity_residual_rmse": 0.003380125400610714,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0005",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007254067535069564,
+              "relative_increment_rmse": 0.012196778798165872,
+              "cumulative_velocity_residual_rmse": 0.0014720586263115107,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0006",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007936897356896479,
+              "relative_increment_rmse": 0.04805907938508404,
+              "cumulative_velocity_residual_rmse": 0.0042404367470995,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0007",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0008123364653190052,
+              "relative_increment_rmse": 0.05042936325711033,
+              "cumulative_velocity_residual_rmse": 0.0035240715700573765,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0008",
+              "status": "checked",
+              "velocity_increment_rmse": 0.000819239492030886,
+              "relative_increment_rmse": 0.048385643264297756,
+              "cumulative_velocity_residual_rmse": 0.003746985829595621,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0009",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007274564318657496,
+              "relative_increment_rmse": 0.07421296639609948,
+              "cumulative_velocity_residual_rmse": 0.0023787070950422933,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0010",
+              "status": "checked",
+              "velocity_increment_rmse": 0.001230774519927348,
+              "relative_increment_rmse": 0.04113598895908557,
+              "cumulative_velocity_residual_rmse": 0.0033731345350942435,
+              "denominator_sign_changes": 0
+            }
+          ],
+          "checked_probe_ids": [
+            "probe_0001",
+            "probe_0002",
+            "probe_0003",
+            "probe_0004",
+            "probe_0005",
+            "probe_0006",
+            "probe_0007",
+            "probe_0008",
+            "probe_0009",
+            "probe_0010"
+          ],
+          "complete": true,
+          "domain_error_probe_ids": [],
+          "denominator_sign_change_probe_ids": [
+            "probe_0001",
+            "probe_0005",
+            "probe_0006"
+          ],
+          "velocity_increment_rmse": 0.0007867821460166006,
+          "relative_increment_rmse": 0.04291604631118806,
+          "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+        },
+        "trajectory_training": {
+          "overall": {
+            "position_mse": 0.0034175385637368895,
+            "velocity_mse": 3.0291972241651945e-06,
+            "position_rmse": 0.058459717444894393,
+            "velocity_rmse": 0.001740458911943972
+          },
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "n_samples": 8,
+              "position_mse": 0.0024686463030674202,
+              "position_rmse": 0.04968547376313745,
+              "velocity_mse": 1.8032917936637472e-07,
+              "velocity_rmse": 0.00042465183311316896
+            },
+            {
+              "probe_id": "probe_0002",
+              "n_samples": 8,
+              "position_mse": 0.0025392192593116404,
+              "position_rmse": 0.050390666390827184,
+              "velocity_mse": 8.579070221322485e-07,
+              "velocity_rmse": 0.0009262327040934414
+            },
+            {
+              "probe_id": "probe_0003",
+              "n_samples": 50,
+              "position_mse": 0.0033232676560262186,
+              "position_rmse": 0.05764778968899171,
+              "velocity_mse": 2.6317943663571803e-06,
+              "velocity_rmse": 0.0016222806065404284
+            },
+            {
+              "probe_id": "probe_0004",
+              "n_samples": 50,
+              "position_mse": 0.0036356581631119926,
+              "position_rmse": 0.060296419156629796,
+              "velocity_mse": 1.5052199388696177e-06,
+              "velocity_rmse": 0.001226874051754954
+            },
+            {
+              "probe_id": "probe_0005",
+              "n_samples": 50,
+              "position_mse": 0.003682244740914033,
+              "position_rmse": 0.060681502460915,
+              "velocity_mse": 3.2716814575925977e-06,
+              "velocity_rmse": 0.0018087789963377498
+            },
+            {
+              "probe_id": "probe_0006",
+              "n_samples": 50,
+              "position_mse": 0.003124017664388242,
+              "position_rmse": 0.05589291247008195,
+              "velocity_mse": 1.4671019606044025e-06,
+              "velocity_rmse": 0.0012112398443761675
+            },
+            {
+              "probe_id": "probe_0007",
+              "n_samples": 50,
+              "position_mse": 0.0036502769541398705,
+              "position_rmse": 0.06041752191326512,
+              "velocity_mse": 1.4689458617269472e-06,
+              "velocity_rmse": 0.0012120007680389263
+            },
+            {
+              "probe_id": "probe_0008",
+              "n_samples": 50,
+              "position_mse": 0.00414527649387476,
+              "position_rmse": 0.06438382167807966,
+              "velocity_mse": 6.292301912554086e-07,
+              "velocity_rmse": 0.0007932403111639048
+            },
+            {
+              "probe_id": "probe_0009",
+              "n_samples": 50,
+              "position_mse": 0.0036544523802714357,
+              "position_rmse": 0.060452066799005603,
+              "velocity_mse": 1.0676204921291399e-06,
+              "velocity_rmse": 0.0010332572245714713
+            },
+            {
+              "probe_id": "probe_0010",
+              "n_samples": 50,
+              "position_mse": 0.003952326022263286,
+              "position_rmse": 0.06286752756601206,
+              "velocity_mse": 1.7212141771618026e-05,
+              "velocity_rmse": 0.004148751832975555
+            }
+          ],
+          "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+        },
+        "refitted_acceleration_mse_by_axis": [
+          2.3824272755673916e-06,
+          1.918062693257851e-06
+        ]
+      },
+      "fit_stage": "position_trajectory_discovery_refit",
+      "joint_fit_ready": true,
+      "prediction_accuracy_status": "not_independently_validated",
+      "selection_role": "simplest_within_comparable_error_band",
+      "structural_complexity": {
+        "nodes": 33,
+        "parameters": 5,
+        "depth": 7
+      },
+      "selection_diagnostics": {
+        "metric": "trajectory_position_mse",
+        "error": 0.0034175385637368895,
+        "band_best_error": 0.003417028712506015,
+        "absolute_tolerance": 0.0002321132536069408,
+        "relative_mse_tolerance": 0.05,
+        "observed_domain_or_pole_risk": true,
+        "rule": "simplest exported expression within comparable-error band",
+        "independent_validation": false
+      },
+      "rank": 2,
+      "trajectory_refit_status": "not_converged",
+      "discovery_probe_ids": [
+        "probe_0001",
+        "probe_0002",
+        "probe_0003",
+        "probe_0004",
+        "probe_0005",
+        "probe_0006",
+        "probe_0007",
+        "probe_0008",
+        "probe_0009",
+        "probe_0010"
+      ]
+    },
+    {
+      "law_spec": {
+        "ax": "sin(c1 * (q('charge') / q('mass')) * (-x - c2 / (c3 * sqrt(vx * vx + vy * vy) + cos(q('charge') / q('mass') + x - cos(sin(t))))))",
+        "ay": "y * (q('charge') / q('mass')) * c4"
+      },
+      "parameter_spec": [
+        {
+          "name": "c1",
+          "initial": 0.060013542508473974
+        },
+        {
+          "name": "c2",
+          "initial": 0.0007452108973735923
+        },
+        {
+          "name": "c3",
+          "initial": -3.37062160195168
+        },
+        {
+          "name": "c4",
+          "initial": -0.060081617721478096
+        }
+      ],
+      "complexity": 27,
+      "parameter_count": 4,
+      "acceleration_search_mse_by_axis": [
+        2.0205842266615233e-06,
+        2.164750570870607e-06
+      ],
+      "acceleration_search_mse": 4.18533479753213e-06,
+      "normalized_acceleration_search_loss": 0.00029967650333521804,
+      "dsl_valid": true,
+      "component_sources": [
+        "pysr",
+        "pysr"
+      ],
+      "initial_domain_check": {
+        "status": "passed",
+        "scope": "All acquired states and controlled initial states"
+      },
+      "short_rollout_check": {
+        "status": "passed",
+        "probe_count": 10,
+        "rhs_calls": 2304,
+        "position_rmse": 0.06059157611959349,
+        "velocity_rmse": 0.00041849401029475793,
+        "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+      },
+      "fitted_parameters": {
+        "c1": 0.060013542508473974,
+        "c2": 0.0007452108973735923,
+        "c3": -3.37062160195168,
+        "c4": -0.060081617721478096
+      },
+      "residuals": {
+        "acceleration_weighted_mse": 4.18533479753213e-06,
+        "acceleration_weighted_mse_by_axis": [
+          2.0205842266615233e-06,
+          2.164750570870607e-06
+        ],
+        "short_rollout": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.06059157611959349,
+          "velocity_rmse": 0.00041849401029475793,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "observed_velocity_integral": {
+          "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "status": "checked",
+              "velocity_increment_rmse": 0.00037667982688633424,
+              "relative_increment_rmse": 0.0255296730932142,
+              "cumulative_velocity_residual_rmse": 0.0004648517836858716,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0002",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0005394652651359724,
+              "relative_increment_rmse": 0.018411352244816954,
+              "cumulative_velocity_residual_rmse": 0.0005919611883149958,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0003",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007978848462122014,
+              "relative_increment_rmse": 0.036665526615365825,
+              "cumulative_velocity_residual_rmse": 0.0030294781354749554,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0004",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007472070292000305,
+              "relative_increment_rmse": 0.038181593030646624,
+              "cumulative_velocity_residual_rmse": 0.003263438318626564,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0005",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007240854867001843,
+              "relative_increment_rmse": 0.012174563401221123,
+              "cumulative_velocity_residual_rmse": 0.0016622336107476744,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0006",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007960683039841892,
+              "relative_increment_rmse": 0.048203105189312034,
+              "cumulative_velocity_residual_rmse": 0.004824221097018667,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0007",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0008098517780263737,
+              "relative_increment_rmse": 0.05027511535195045,
+              "cumulative_velocity_residual_rmse": 0.004430969787830671,
+              "denominator_sign_changes": 0
+            },
+            {
+              "probe_id": "probe_0008",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0008078838429761028,
+              "relative_increment_rmse": 0.047714959795612404,
+              "cumulative_velocity_residual_rmse": 0.003658297912663372,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0009",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0007257840059303632,
+              "relative_increment_rmse": 0.0740423504192437,
+              "cumulative_velocity_residual_rmse": 0.0014237359999062402,
+              "denominator_sign_changes": 1
+            },
+            {
+              "probe_id": "probe_0010",
+              "status": "checked",
+              "velocity_increment_rmse": 0.0011734711542711591,
+              "relative_increment_rmse": 0.03922074731345045,
+              "cumulative_velocity_residual_rmse": 0.005187829298735161,
+              "denominator_sign_changes": 0
+            }
+          ],
+          "checked_probe_ids": [
+            "probe_0001",
+            "probe_0002",
+            "probe_0003",
+            "probe_0004",
+            "probe_0005",
+            "probe_0006",
+            "probe_0007",
+            "probe_0008",
+            "probe_0009",
+            "probe_0010"
+          ],
+          "complete": true,
+          "domain_error_probe_ids": [],
+          "denominator_sign_change_probe_ids": [
+            "probe_0003",
+            "probe_0008",
+            "probe_0009"
+          ],
+          "velocity_increment_rmse": 0.0007744809069638567,
+          "relative_increment_rmse": 0.04253179706919496,
+          "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+        },
+        "trajectory_training": {
+          "overall": {
+            "position_mse": 0.003439886937963444,
+            "velocity_mse": 9.817917940653875e-07,
+            "position_rmse": 0.05865054934067919,
+            "velocity_rmse": 0.00099085407304274
+          },
+          "per_probe": [
+            {
+              "probe_id": "probe_0001",
+              "n_samples": 8,
+              "position_mse": 0.0024685568208661153,
+              "position_rmse": 0.04968457326843127,
+              "velocity_mse": 1.1315944256186602e-07,
+              "velocity_rmse": 0.0003363917991893768
+            },
+            {
+              "probe_id": "probe_0002",
+              "n_samples": 8,
+              "position_mse": 0.0025361189886481533,
+              "position_rmse": 0.05035989464492706,
+              "velocity_mse": 9.930500413297146e-07,
+              "velocity_rmse": 0.0009965189618515618
+            },
+            {
+              "probe_id": "probe_0003",
+              "n_samples": 50,
+              "position_mse": 0.003321705449539102,
+              "position_rmse": 0.05763423851790793,
+              "velocity_mse": 9.739024104145984e-07,
+              "velocity_rmse": 0.0009868649403107796
+            },
+            {
+              "probe_id": "probe_0004",
+              "n_samples": 50,
+              "position_mse": 0.0036607166423948956,
+              "position_rmse": 0.06050385642580889,
+              "velocity_mse": 2.9573157354313177e-07,
+              "velocity_rmse": 0.0005438120755767858
+            },
+            {
+              "probe_id": "probe_0005",
+              "n_samples": 50,
+              "position_mse": 0.0036616423466730563,
+              "position_rmse": 0.0605115059032004,
+              "velocity_mse": 1.7437433945502845e-06,
+              "velocity_rmse": 0.0013205087635264994
+            },
+            {
+              "probe_id": "probe_0006",
+              "n_samples": 50,
+              "position_mse": 0.003111119276399777,
+              "position_rmse": 0.0557774082976233,
+              "velocity_mse": 4.0150244008103056e-07,
+              "velocity_rmse": 0.000633642201941309
+            },
+            {
+              "probe_id": "probe_0007",
+              "n_samples": 50,
+              "position_mse": 0.0037682949234751667,
+              "position_rmse": 0.06138643924740355,
+              "velocity_mse": 3.6634482142973285e-07,
+              "velocity_rmse": 0.0006052642575187575
+            },
+            {
+              "probe_id": "probe_0008",
+              "n_samples": 50,
+              "position_mse": 0.0043519227132437265,
+              "position_rmse": 0.06596910423254,
+              "velocity_mse": 3.129344719881939e-06,
+              "velocity_rmse": 0.001768995398490889
+            },
+            {
+              "probe_id": "probe_0009",
+              "n_samples": 50,
+              "position_mse": 0.003662887798857407,
+              "position_rmse": 0.060521796064371775,
+              "velocity_mse": 4.7741478855002e-07,
+              "velocity_rmse": 0.0006909520884620148
+            },
+            {
+              "probe_id": "probe_0010",
+              "n_samples": 50,
+              "position_mse": 0.0038559044195370386,
+              "position_rmse": 0.062095929170413726,
+              "velocity_mse": 1.3237243083115584e-06,
+              "velocity_rmse": 0.0011505321848221189
+            }
+          ],
+          "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+        },
+        "refitted_acceleration_mse_by_axis": [
+          2.020584226661523e-06,
+          2.1647505708706064e-06
+        ]
+      },
+      "fit_stage": "position_trajectory_discovery_refit",
+      "joint_fit_ready": true,
+      "prediction_accuracy_status": "not_independently_validated",
+      "selection_role": "simplest_within_comparable_error_band",
+      "structural_complexity": {
+        "nodes": 40,
+        "parameters": 4,
+        "depth": 10
+      },
+      "selection_diagnostics": {
+        "metric": "trajectory_position_mse",
+        "error": 0.003439886937963444,
+        "band_best_error": 0.003417028712506015,
+        "absolute_tolerance": 0.0002321132536069408,
+        "relative_mse_tolerance": 0.05,
+        "observed_domain_or_pole_risk": true,
+        "rule": "simplest exported expression within comparable-error band",
+        "independent_validation": false
+      },
+      "rank": 3,
+      "trajectory_refit_status": "not_converged",
+      "discovery_probe_ids": [
+        "probe_0001",
+        "probe_0002",
+        "probe_0003",
+        "probe_0004",
+        "probe_0005",
+        "probe_0006",
+        "probe_0007",
+        "probe_0008",
+        "probe_0009",
+        "probe_0010"
+      ]
+    }
+  ],
+  "axis_candidates": {
+    "ax": [
+      {
+        "law_spec": {
+          "ax": "sin(c1 * (q('charge') / q('mass')) * (-x - c2 / (c3 * sqrt(vx * vx + vy * vy) + cos(q('charge') / q('mass') + x - cos(sin(t))))))",
+          "ay": "0"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": 0.060013542508473974
+          },
+          {
+            "name": "c2",
+            "initial": 0.0007452108973735923
+          },
+          {
+            "name": "c3",
+            "initial": -3.37062160195168
+          }
+        ],
+        "component": "ax",
+        "source": "sin(0.060013542508473974 * (charge / mass) * (-x - 0.0007452108973735923 / (-3.37062160195168 * sqrt(vx * vx + vy * vy) + cos(charge / mass + x - cos(sin(t))))))",
+        "loss": 2.0205842266615233e-06,
+        "complexity": 22,
+        "origin": "pysr",
+        "parameter_count": 3,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      {
+        "law_spec": {
+          "ax": "c1 * (q('charge') / q('mass')) * (-x - c2 / (c3 * sqrt(vx * vx + vy * vy) + cos(q('charge') / q('mass') + x - cos(sin(t)))))",
+          "ay": "0"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": 0.05988035554111205
+          },
+          {
+            "name": "c2",
+            "initial": 0.0007225774140154034
+          },
+          {
+            "name": "c3",
+            "initial": -3.370511773176685
+          }
+        ],
+        "component": "ax",
+        "source": "0.05988035554111205 * (charge / mass) * (-x - 0.0007225774140154034 / (-3.370511773176685 * sqrt(vx * vx + vy * vy) + cos(charge / mass + x - cos(sin(t)))))",
+        "loss": 2.0509761075819177e-06,
+        "complexity": 21,
+        "origin": "pysr",
+        "parameter_count": 3,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      {
+        "law_spec": {
+          "ax": "q('charge') / q('mass') * c1 * (-x - c2 / (-(vx * vx + vy * vy) / c3 + cos(x / (q('charge') / q('mass') - x - x))))",
+          "ay": "0"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": 0.06000177786241857
+          },
+          {
+            "name": "c2",
+            "initial": 0.0013880518378001873
+          },
+          {
+            "name": "c3",
+            "initial": 0.0881315250103545
+          }
+        ],
+        "component": "ax",
+        "source": "charge / mass * 0.06000177786241857 * (-x - 0.0013880518378001873 / (-(vx * vx + vy * vy) / 0.0881315250103545 + cos(x / (charge / mass - x - x))))",
+        "loss": 2.253395822065278e-06,
+        "complexity": 20,
+        "origin": "pysr",
+        "parameter_count": 3,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      }
+    ],
+    "ay": [
+      {
+        "law_spec": {
+          "ax": "0",
+          "ay": "q('charge') / q('mass') * (-c1 * c2 ** q('charge') * x + y * c3)"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -0.00019577713669539947
+          },
+          {
+            "name": "c2",
+            "initial": -1.7211293881428475
+          },
+          {
+            "name": "c3",
+            "initial": -0.06007954332188922
+          }
+        ],
+        "component": "ay",
+        "source": "charge / mass * (--0.00019577713669539947 * (-1.7211293881428475) ** charge * x + y * -0.06007954332188922)",
+        "loss": 1.9178865538343805e-06,
+        "complexity": 13,
+        "origin": "pysr",
+        "parameter_count": 3,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      {
+        "law_spec": {
+          "ax": "0",
+          "ay": "y * (q('charge') / q('mass')) * c1 - -1 * c2 / (-t - c3)"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -0.05999350245563371
+          },
+          {
+            "name": "c2",
+            "initial": 0.00029248228340992546
+          },
+          {
+            "name": "c3",
+            "initial": 0.11153342165893662
+          }
+        ],
+        "component": "ay",
+        "source": "y * (charge / mass) * -0.05999350245563371 - -1 * 0.00029248228340992546 / (-t - 0.11153342165893662)",
+        "loss": 1.952911846574653e-06,
+        "complexity": 11,
+        "origin": "pysr",
+        "parameter_count": 3,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      {
+        "law_spec": {
+          "ax": "0",
+          "ay": "y * sin(q('charge') / q('mass') * c1) - 1 * c2"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -0.06003750569458146
+          },
+          {
+            "name": "c2",
+            "initial": 0.00028461550847046294
+          }
+        ],
+        "component": "ay",
+        "source": "y * sin(charge / mass * -0.06003750569458146) - 1 * 0.00028461550847046294",
+        "loss": 2.1070550101254885e-06,
+        "complexity": 8,
+        "origin": "pysr",
+        "parameter_count": 2,
+        "joint_fit_ready": false,
+        "parameter_budget_compatible": true,
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "This component on all acquired and controlled initial states"
+        },
+        "prediction_accuracy_status": "not_independently_validated",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      }
+    ]
+  },
+  "tool_client_wall_seconds": 45.13769603893161
+}

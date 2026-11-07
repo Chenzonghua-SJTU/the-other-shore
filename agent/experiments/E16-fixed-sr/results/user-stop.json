@@ -1,0 +1,21 @@
+{
+  "status": "stopped_by_user",
+  "reason": "User asked to conclude immediately and decide whether to add filtering.",
+  "completed_trials": 9,
+  "partial_trials": 2,
+  "registered_trials": 36,
+  "owned_pids_signalled": [
+    2660944,
+    3717418,
+    3878806,
+    3971272,
+    3989898,
+    4010101
+  ],
+  "no_other_experiments_touched": true,
+  "partial_directories": [
+    "world-2/seed-43/joint",
+    "world-2/seed-44/joint"
+  ],
+  "unstarted_registered_attempts": 25
+}

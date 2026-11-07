@@ -1,0 +1,19 @@
+{
+  "scientific_source_unchanged": true,
+  "official_files_unchanged": false,
+  "status": "user_stopped_partial_experiment",
+  "official_non_git_files_unchanged": true,
+  "broad_snapshot_changed_paths": [
+    ".git/FETCH_HEAD",
+    ".git/objects/pack/pack-77bc9e6376be2945eb5a0e5b8daa66b629df974a.idx",
+    ".git/logs/refs/heads/main",
+    ".git/ORIG_HEAD",
+    ".git/logs/refs/remotes/origin/main",
+    ".git/refs/heads/main",
+    ".git/refs/remotes/origin/main",
+    ".git/index",
+    ".git/logs/HEAD",
+    ".git/objects/pack/pack-77bc9e6376be2945eb5a0e5b8daa66b629df974a.pack"
+  ],
+  "explanation": "Original broad helper includes .git metadata. Main chat pushed E15 while E16 ran; all changed paths are Git metadata, not official scientific code. Original broad false result retained."
+}

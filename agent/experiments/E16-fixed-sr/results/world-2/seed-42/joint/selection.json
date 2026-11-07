@@ -1,0 +1,987 @@
+{
+  "selected_sr_rank": 1,
+  "original_sr_rank_one": 1,
+  "selection_rule": "Minimum raw-training position RMSE; original SR rank breaks ties",
+  "scoring_constants": {
+    "claims": {
+      "dynamics_order": 2,
+      "hidden_matter": false,
+      "time_dependence": false
+    },
+    "energy_used": 8
+  },
+  "candidates": [
+    {
+      "sr_rank": 1,
+      "candidate": {
+        "law_spec": {
+          "ax": "q('charge') * sin((x * x + y * y) * c1 / (-t - c2) - c3 * x / q('mass'))",
+          "ay": "y * sin(q('charge') / q('mass') * c4) - 1 * c5"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -6.863262788211006e-05
+          },
+          {
+            "name": "c2",
+            "initial": 0.09918636598944336
+          },
+          {
+            "name": "c3",
+            "initial": 0.06012014246579006
+          },
+          {
+            "name": "c4",
+            "initial": -0.06002071224098931
+          },
+          {
+            "name": "c5",
+            "initial": 0.00019380890967919816
+          }
+        ],
+        "complexity": 24,
+        "parameter_count": 5,
+        "acceleration_search_mse_by_axis": [
+          7.043166566812109e-07,
+          1.079870927158673e-06
+        ],
+        "acceleration_search_mse": 1.7841875838398837e-06,
+        "normalized_acceleration_search_loss": 0.00011566748237754339,
+        "dsl_valid": true,
+        "component_sources": [
+          "pysr",
+          "pysr"
+        ],
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "All acquired states and controlled initial states"
+        },
+        "short_rollout_check": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.060576314426952924,
+          "velocity_rmse": 0.0005004254046587207,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "fitted_parameters": {
+          "c1": -6.863262788211006e-05,
+          "c2": 0.09918636598944336,
+          "c3": 0.06012014246579006,
+          "c4": -0.06002071224098931,
+          "c5": 0.00019380890967919816
+        },
+        "residuals": {
+          "acceleration_weighted_mse": 1.7841875838398837e-06,
+          "acceleration_weighted_mse_by_axis": [
+            7.043166566812109e-07,
+            1.079870927158673e-06
+          ],
+          "short_rollout": {
+            "status": "passed",
+            "probe_count": 10,
+            "rhs_calls": 2304,
+            "position_rmse": 0.060576314426952924,
+            "velocity_rmse": 0.0005004254046587207,
+            "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+          },
+          "observed_velocity_integral": {
+            "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0003732444509535097,
+                "relative_increment_rmse": 0.025296838685164597,
+                "cumulative_velocity_residual_rmse": 0.0003789050959085653,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0002",
+                "status": "checked",
+                "velocity_increment_rmse": 0.000542546448727055,
+                "relative_increment_rmse": 0.018516509629532118,
+                "cumulative_velocity_residual_rmse": 0.0006243992065246573,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0003",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008083638967305267,
+                "relative_increment_rmse": 0.037147074682743496,
+                "cumulative_velocity_residual_rmse": 0.0038792045116056383,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0004",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007591723016788173,
+                "relative_increment_rmse": 0.038793007466582735,
+                "cumulative_velocity_residual_rmse": 0.0031082097364809537,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0005",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007337983074540163,
+                "relative_increment_rmse": 0.012337871952827524,
+                "cumulative_velocity_residual_rmse": 0.003095117971632165,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0006",
+                "status": "checked",
+                "velocity_increment_rmse": 0.000795783998955654,
+                "relative_increment_rmse": 0.04818589010220488,
+                "cumulative_velocity_residual_rmse": 0.004209793404024911,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0007",
+                "status": "checked",
+                "velocity_increment_rmse": 0.000806829752120786,
+                "relative_increment_rmse": 0.05008750978618845,
+                "cumulative_velocity_residual_rmse": 0.0036049709709663454,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0008",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008180457997223285,
+                "relative_increment_rmse": 0.04831514181658798,
+                "cumulative_velocity_residual_rmse": 0.003969552847814999,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0009",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007262478968939572,
+                "relative_increment_rmse": 0.07408967521147126,
+                "cumulative_velocity_residual_rmse": 0.0023277291044404907,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0010",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0012493093760336555,
+                "relative_increment_rmse": 0.041755476626243584,
+                "cumulative_velocity_residual_rmse": 0.005592881352889786,
+                "denominator_sign_changes": 0
+              }
+            ],
+            "checked_probe_ids": [
+              "probe_0001",
+              "probe_0002",
+              "probe_0003",
+              "probe_0004",
+              "probe_0005",
+              "probe_0006",
+              "probe_0007",
+              "probe_0008",
+              "probe_0009",
+              "probe_0010"
+            ],
+            "complete": true,
+            "domain_error_probe_ids": [],
+            "denominator_sign_change_probe_ids": [],
+            "velocity_increment_rmse": 0.0007901631524895957,
+            "relative_increment_rmse": 0.04291574095590358,
+            "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+          },
+          "trajectory_training": {
+            "overall": {
+              "position_mse": 0.0034086227539404145,
+              "velocity_mse": 7.740845082873143e-07,
+              "position_rmse": 0.05838341163327486,
+              "velocity_rmse": 0.0008798207250839879
+            },
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "n_samples": 8,
+                "position_mse": 0.0024683439860508066,
+                "position_rmse": 0.049682431362110355,
+                "velocity_mse": 1.1824441764814507e-07,
+                "velocity_rmse": 0.0003438668603517138
+              },
+              {
+                "probe_id": "probe_0002",
+                "n_samples": 8,
+                "position_mse": 0.002540314459527116,
+                "position_rmse": 0.05040153231328504,
+                "velocity_mse": 8.171076000170165e-07,
+                "velocity_rmse": 0.0009039400422688535
+              },
+              {
+                "probe_id": "probe_0003",
+                "n_samples": 50,
+                "position_mse": 0.003316594242130306,
+                "position_rmse": 0.05758987968497856,
+                "velocity_mse": 1.2094935710877813e-06,
+                "velocity_rmse": 0.0010997697809486226
+              },
+              {
+                "probe_id": "probe_0004",
+                "n_samples": 50,
+                "position_mse": 0.003578391267863006,
+                "position_rmse": 0.05981965619980614,
+                "velocity_mse": 1.0528004404929736e-06,
+                "velocity_rmse": 0.00102606064172298
+              },
+              {
+                "probe_id": "probe_0005",
+                "n_samples": 50,
+                "position_mse": 0.0037000673293608104,
+                "position_rmse": 0.06082817874440111,
+                "velocity_mse": 1.4374547077339125e-06,
+                "velocity_rmse": 0.0011989389924987478
+              },
+              {
+                "probe_id": "probe_0006",
+                "n_samples": 50,
+                "position_mse": 0.0030935393186060046,
+                "position_rmse": 0.05561959473608204,
+                "velocity_mse": 5.028098349189909e-07,
+                "velocity_rmse": 0.0007090908509626893
+              },
+              {
+                "probe_id": "probe_0007",
+                "n_samples": 50,
+                "position_mse": 0.0037213182604326433,
+                "position_rmse": 0.061002608636292296,
+                "velocity_mse": 5.727258795537114e-07,
+                "velocity_rmse": 0.0007567865482113905
+              },
+              {
+                "probe_id": "probe_0008",
+                "n_samples": 50,
+                "position_mse": 0.004167215526322246,
+                "position_rmse": 0.06455397374540352,
+                "velocity_mse": 7.145108913834462e-07,
+                "velocity_rmse": 0.00084528746079866
+              },
+              {
+                "probe_id": "probe_0009",
+                "n_samples": 50,
+                "position_mse": 0.0036543407128585056,
+                "position_rmse": 0.06045114318901261,
+                "velocity_mse": 9.391604417884346e-07,
+                "velocity_rmse": 0.0009691029056753646
+              },
+              {
+                "probe_id": "probe_0010",
+                "n_samples": 50,
+                "position_mse": 0.0038461024362526973,
+                "position_rmse": 0.0620169528133453,
+                "velocity_mse": 3.765372982487314e-07,
+                "velocity_rmse": 0.0006136263506798999
+              }
+            ],
+            "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+          },
+          "refitted_acceleration_mse_by_axis": [
+            7.043166566812104e-07,
+            1.0798709271586731e-06
+          ]
+        },
+        "fit_stage": "position_trajectory_discovery_refit",
+        "joint_fit_ready": true,
+        "prediction_accuracy_status": "not_independently_validated",
+        "selection_role": "simplest_within_comparable_error_band",
+        "structural_complexity": {
+          "nodes": 35,
+          "parameters": 5,
+          "depth": 8
+        },
+        "selection_diagnostics": {
+          "metric": "trajectory_position_mse",
+          "error": 0.0034086227539404145,
+          "band_best_error": 0.0034086227539404145,
+          "absolute_tolerance": 0.0002321132536069408,
+          "relative_mse_tolerance": 0.05,
+          "observed_domain_or_pole_risk": false,
+          "rule": "simplest exported expression within comparable-error band",
+          "independent_validation": false
+        },
+        "rank": 1,
+        "trajectory_refit_status": "not_converged",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      "sr_law_file": "candidate-1-sr.py",
+      "sr_law_sha256": "c832018283645b6cb2cc316441a09302b8fa86bfd29e65e841c441f77930798b",
+      "fit_status": "not_converged",
+      "raw_position_rmse": 0.05838341163327486,
+      "raw_velocity_rmse": 0.0008798207250839879,
+      "law_file": "candidate-1.py",
+      "law_sha256": "c832018283645b6cb2cc316441a09302b8fa86bfd29e65e841c441f77930798b",
+      "fitted_parameters": {
+        "c1": -6.863262788211006e-05,
+        "c2": 0.09918636598944336,
+        "c3": 0.06012014246579006,
+        "c4": -0.06002071224098931,
+        "c5": 0.00019380890967919816
+      },
+      "refit_seconds": 8.014897845685482
+    },
+    {
+      "sr_rank": 2,
+      "candidate": {
+        "law_spec": {
+          "ax": "x * c1 * (q('charge') / q('mass')) - -1 * c2 / (t / cos(x) + sin(x + x + c3))",
+          "ay": "y * (q('charge') / q('mass')) * c4"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -0.06002585963414175
+          },
+          {
+            "name": "c2",
+            "initial": 0.00046099423070216646
+          },
+          {
+            "name": "c3",
+            "initial": 0.04711936215852369
+          },
+          {
+            "name": "c4",
+            "initial": -0.06003819252405901
+          }
+        ],
+        "complexity": 24,
+        "parameter_count": 4,
+        "acceleration_search_mse_by_axis": [
+          6.708054387305342e-07,
+          1.1033322182073315e-06
+        ],
+        "acceleration_search_mse": 1.7741376569378657e-06,
+        "normalized_acceleration_search_loss": 0.00011273930919737066,
+        "dsl_valid": true,
+        "component_sources": [
+          "pysr",
+          "pysr"
+        ],
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "All acquired states and controlled initial states"
+        },
+        "short_rollout_check": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.06057146024346468,
+          "velocity_rmse": 0.0005594182834947633,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "fitted_parameters": {
+          "c1": -0.06002585963414175,
+          "c2": 0.00046099423070216646,
+          "c3": 0.04711936215852369,
+          "c4": -0.06003819252405901
+        },
+        "residuals": {
+          "acceleration_weighted_mse": 1.7741376569378657e-06,
+          "acceleration_weighted_mse_by_axis": [
+            6.708054387305342e-07,
+            1.1033322182073315e-06
+          ],
+          "short_rollout": {
+            "status": "passed",
+            "probe_count": 10,
+            "rhs_calls": 2304,
+            "position_rmse": 0.06057146024346468,
+            "velocity_rmse": 0.0005594182834947633,
+            "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+          },
+          "observed_velocity_integral": {
+            "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0003570468245066097,
+                "relative_increment_rmse": 0.02419903604600139,
+                "cumulative_velocity_residual_rmse": 0.00037531618942486555,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0002",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0005189687921823326,
+                "relative_increment_rmse": 0.01771183031502096,
+                "cumulative_velocity_residual_rmse": 0.0006512644178173011,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0003",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008099436826945628,
+                "relative_increment_rmse": 0.037219671229207475,
+                "cumulative_velocity_residual_rmse": 0.0037439781471398153,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0004",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007455109527402415,
+                "relative_increment_rmse": 0.038094925081061284,
+                "cumulative_velocity_residual_rmse": 0.0029421231329752116,
+                "denominator_sign_changes": 3
+              },
+              {
+                "probe_id": "probe_0005",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007325364490115705,
+                "relative_increment_rmse": 0.012316655430893171,
+                "cumulative_velocity_residual_rmse": 0.0023658517445683458,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0006",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008013410399978545,
+                "relative_increment_rmse": 0.04852237710031533,
+                "cumulative_velocity_residual_rmse": 0.004816623476137563,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0007",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008107764344040571,
+                "relative_increment_rmse": 0.05033251746837507,
+                "cumulative_velocity_residual_rmse": 0.004230384767235918,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0008",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008190547585205237,
+                "relative_increment_rmse": 0.04837473259675999,
+                "cumulative_velocity_residual_rmse": 0.004076159471908116,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0009",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007250425728062365,
+                "relative_increment_rmse": 0.07396671159179578,
+                "cumulative_velocity_residual_rmse": 0.00157170649834788,
+                "denominator_sign_changes": 2
+              },
+              {
+                "probe_id": "probe_0010",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0012484877710093303,
+                "relative_increment_rmse": 0.04172801624689532,
+                "cumulative_velocity_residual_rmse": 0.005464939355491514,
+                "denominator_sign_changes": 0
+              }
+            ],
+            "checked_probe_ids": [
+              "probe_0001",
+              "probe_0002",
+              "probe_0003",
+              "probe_0004",
+              "probe_0005",
+              "probe_0006",
+              "probe_0007",
+              "probe_0008",
+              "probe_0009",
+              "probe_0010"
+            ],
+            "complete": true,
+            "domain_error_probe_ids": [],
+            "denominator_sign_change_probe_ids": [
+              "probe_0004",
+              "probe_0009"
+            ],
+            "velocity_increment_rmse": 0.0007873995856132172,
+            "relative_increment_rmse": 0.0428108974848597,
+            "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+          },
+          "trajectory_training": {
+            "overall": {
+              "position_mse": 0.003417691133554188,
+              "velocity_mse": 5.032537691877707e-07,
+              "position_rmse": 0.058461022344414984,
+              "velocity_rmse": 0.0007094038124987564
+            },
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "n_samples": 8,
+                "position_mse": 0.0024685537686378093,
+                "position_rmse": 0.04968454255236541,
+                "velocity_mse": 1.0249145922543551e-07,
+                "velocity_rmse": 0.00032014287314484374
+              },
+              {
+                "probe_id": "probe_0002",
+                "n_samples": 8,
+                "position_mse": 0.0025175172520778806,
+                "position_rmse": 0.050174866737021644,
+                "velocity_mse": 2.260675637202734e-06,
+                "velocity_rmse": 0.00150355433463601
+              },
+              {
+                "probe_id": "probe_0003",
+                "n_samples": 50,
+                "position_mse": 0.003342311257814422,
+                "position_rmse": 0.05781272574281913,
+                "velocity_mse": 8.884435916533089e-07,
+                "velocity_rmse": 0.0009425728574775049
+              },
+              {
+                "probe_id": "probe_0004",
+                "n_samples": 50,
+                "position_mse": 0.0036349913563272678,
+                "position_rmse": 0.06029088949689885,
+                "velocity_mse": 2.2872076618990415e-07,
+                "velocity_rmse": 0.0004782475992515845
+              },
+              {
+                "probe_id": "probe_0005",
+                "n_samples": 50,
+                "position_mse": 0.0036612653214198186,
+                "position_rmse": 0.060508390504291375,
+                "velocity_mse": 5.044196649537311e-07,
+                "velocity_rmse": 0.0007102250804876797
+              },
+              {
+                "probe_id": "probe_0006",
+                "n_samples": 50,
+                "position_mse": 0.0030934005062212707,
+                "position_rmse": 0.055618346849050364,
+                "velocity_mse": 2.3529638464506428e-07,
+                "velocity_rmse": 0.0004850735868350948
+              },
+              {
+                "probe_id": "probe_0007",
+                "n_samples": 50,
+                "position_mse": 0.0037741366230417245,
+                "position_rmse": 0.06143400217340333,
+                "velocity_mse": 2.0115798021584103e-07,
+                "velocity_rmse": 0.00044850638815499723
+              },
+              {
+                "probe_id": "probe_0008",
+                "n_samples": 50,
+                "position_mse": 0.004175312895243557,
+                "position_rmse": 0.06461666112732502,
+                "velocity_mse": 1.923463362998558e-07,
+                "velocity_rmse": 0.0004385730683704322
+              },
+              {
+                "probe_id": "probe_0009",
+                "n_samples": 50,
+                "position_mse": 0.003661267909941499,
+                "position_rmse": 0.060508411894062294,
+                "velocity_mse": 1.892504633032442e-07,
+                "velocity_rmse": 0.00043502926718008776
+              },
+              {
+                "probe_id": "probe_0010",
+                "n_samples": 50,
+                "position_mse": 0.003848154444816637,
+                "position_rmse": 0.06203349453977776,
+                "velocity_mse": 2.2973540818858824e-07,
+                "velocity_rmse": 0.00047930721691686245
+              }
+            ],
+            "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+          },
+          "refitted_acceleration_mse_by_axis": [
+            6.708054387305342e-07,
+            1.103332218207331e-06
+          ]
+        },
+        "fit_stage": "position_trajectory_discovery_refit",
+        "joint_fit_ready": true,
+        "prediction_accuracy_status": "not_independently_validated",
+        "selection_role": "simplest_within_comparable_error_band",
+        "structural_complexity": {
+          "nodes": 31,
+          "parameters": 4,
+          "depth": 7
+        },
+        "selection_diagnostics": {
+          "metric": "trajectory_position_mse",
+          "error": 0.003417691133554188,
+          "band_best_error": 0.003408429922272352,
+          "absolute_tolerance": 0.0002321132536069408,
+          "relative_mse_tolerance": 0.05,
+          "observed_domain_or_pole_risk": true,
+          "rule": "simplest exported expression within comparable-error band",
+          "independent_validation": false
+        },
+        "rank": 2,
+        "trajectory_refit_status": "not_converged",
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      "sr_law_file": "candidate-2-sr.py",
+      "sr_law_sha256": "f7ceffac893db7304ccff79e0c83858c6c0cc2044cbb94b5c4a39e58d8bc4a49",
+      "fit_status": "not_converged",
+      "raw_position_rmse": 0.05846100592685361,
+      "raw_velocity_rmse": 0.0007094040105625356,
+      "law_file": "candidate-2.py",
+      "law_sha256": "ef02a5eac0780ea153c334529493cf8818fc845755220b9f78dd26d0d78bedcc",
+      "fitted_parameters": {
+        "c1": -0.06002587453530294,
+        "c2": 0.00046099423070216646,
+        "c3": 0.04711936215852369,
+        "c4": -0.06003819252405901
+      },
+      "refit_seconds": 8.014921836555004
+    },
+    {
+      "sr_rank": 3,
+      "candidate": {
+        "law_spec": {
+          "ax": "x * c1 * (q('charge') / q('mass')) - -1 * c2 / (t / cos(x) + sin(x + x + c3))",
+          "ay": "q('charge') / q('mass') * y * c4 - 1 * c5"
+        },
+        "parameter_spec": [
+          {
+            "name": "c1",
+            "initial": -0.06002585963414175
+          },
+          {
+            "name": "c2",
+            "initial": 0.00046099423070216646
+          },
+          {
+            "name": "c3",
+            "initial": 0.04711936215852369
+          },
+          {
+            "name": "c4",
+            "initial": -0.0599835762955261
+          },
+          {
+            "name": "c5",
+            "initial": 0.00018556431552842526
+          }
+        ],
+        "complexity": 26,
+        "parameter_count": 5,
+        "acceleration_search_mse_by_axis": [
+          6.708054387305342e-07,
+          1.0809220141043455e-06
+        ],
+        "acceleration_search_mse": 1.7517274528348797e-06,
+        "normalized_acceleration_search_loss": 0.00011196818332278955,
+        "dsl_valid": true,
+        "component_sources": [
+          "pysr",
+          "pysr"
+        ],
+        "initial_domain_check": {
+          "status": "passed",
+          "scope": "All acquired states and controlled initial states"
+        },
+        "short_rollout_check": {
+          "status": "passed",
+          "probe_count": 10,
+          "rhs_calls": 2304,
+          "position_rmse": 0.06056705623631832,
+          "velocity_rmse": 0.0005717237201600648,
+          "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+        },
+        "fitted_parameters": {
+          "c1": -0.06002585963414175,
+          "c2": 0.00046099423070216646,
+          "c3": 0.04711936215852369,
+          "c4": -0.0599835762955261,
+          "c5": 0.00018556431552842526
+        },
+        "residuals": {
+          "acceleration_weighted_mse": 1.7517274528348797e-06,
+          "acceleration_weighted_mse_by_axis": [
+            6.708054387305342e-07,
+            1.0809220141043455e-06
+          ],
+          "short_rollout": {
+            "status": "passed",
+            "probe_count": 10,
+            "rhs_calls": 2304,
+            "position_rmse": 0.06056705623631832,
+            "velocity_rmse": 0.0005717237201600648,
+            "scope": "Short acquired-data replay with official rift.rollout; not independently validated."
+          },
+          "observed_velocity_integral": {
+            "scope": "Frozen formula on acquired observed paths; trapezoidal velocity increments, not hidden truth or independent validation.",
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "status": "checked",
+                "velocity_increment_rmse": 0.000356631271912765,
+                "relative_increment_rmse": 0.02417087175071224,
+                "cumulative_velocity_residual_rmse": 0.00034266850926520094,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0002",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0005190712002553772,
+                "relative_increment_rmse": 0.01771532538917566,
+                "cumulative_velocity_residual_rmse": 0.0006452892902977733,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0003",
+                "status": "checked",
+                "velocity_increment_rmse": 0.00080799265046357,
+                "relative_increment_rmse": 0.03713001465215566,
+                "cumulative_velocity_residual_rmse": 0.003959078971778412,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0004",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007489716774629657,
+                "relative_increment_rmse": 0.03827176493640314,
+                "cumulative_velocity_residual_rmse": 0.0033991206865663917,
+                "denominator_sign_changes": 3
+              },
+              {
+                "probe_id": "probe_0005",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007333939674918778,
+                "relative_increment_rmse": 0.012331073497955663,
+                "cumulative_velocity_residual_rmse": 0.0025260628028034343,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0006",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007995532539860918,
+                "relative_increment_rmse": 0.04841412403113812,
+                "cumulative_velocity_residual_rmse": 0.004489498925069739,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0007",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008079357431554282,
+                "relative_increment_rmse": 0.050156169049961834,
+                "cumulative_velocity_residual_rmse": 0.00374019778075666,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0008",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0008196169650173589,
+                "relative_increment_rmse": 0.048407937444989786,
+                "cumulative_velocity_residual_rmse": 0.004252003705429774,
+                "denominator_sign_changes": 0
+              },
+              {
+                "probe_id": "probe_0009",
+                "status": "checked",
+                "velocity_increment_rmse": 0.0007257839361811187,
+                "relative_increment_rmse": 0.07404234330363084,
+                "cumulative_velocity_residual_rmse": 0.002112224435504389,
+                "denominator_sign_changes": 2
+              },
+              {
+                "probe_id": "probe_0010",
+                "status": "checked",
+                "velocity_increment_rmse": 0.001250210714078141,
+                "relative_increment_rmse": 0.04178560191015712,
+                "cumulative_velocity_residual_rmse": 0.005972620809216279,
+                "denominator_sign_changes": 0
+              }
+            ],
+            "checked_probe_ids": [
+              "probe_0001",
+              "probe_0002",
+              "probe_0003",
+              "probe_0004",
+              "probe_0005",
+              "probe_0006",
+              "probe_0007",
+              "probe_0008",
+              "probe_0009",
+              "probe_0010"
+            ],
+            "complete": true,
+            "domain_error_probe_ids": [],
+            "denominator_sign_change_probe_ids": [
+              "probe_0004",
+              "probe_0009"
+            ],
+            "velocity_increment_rmse": 0.0007875217378222298,
+            "relative_increment_rmse": 0.04280734444449691,
+            "action": "A contradiction remains evidence even when a probe is omitted from train_probe_ids; acquire denser controls if quadrature resolution is insufficient."
+          },
+          "trajectory_training": {
+            "overall": {
+              "position_mse": 0.003413697930181353,
+              "velocity_mse": 7.073067841507838e-07,
+              "position_rmse": 0.058426859663868236,
+              "velocity_rmse": 0.0008410153293197358
+            },
+            "per_probe": [
+              {
+                "probe_id": "probe_0001",
+                "n_samples": 8,
+                "position_mse": 0.0024685520405227476,
+                "position_rmse": 0.04968452516149015,
+                "velocity_mse": 1.1061258915297916e-07,
+                "velocity_rmse": 0.0003325847097402091
+              },
+              {
+                "probe_id": "probe_0002",
+                "n_samples": 8,
+                "position_mse": 0.00251748162822103,
+                "position_rmse": 0.05017451173874072,
+                "velocity_mse": 2.260105281219756e-06,
+                "velocity_rmse": 0.0015033646534423231
+              },
+              {
+                "probe_id": "probe_0003",
+                "n_samples": 50,
+                "position_mse": 0.0033300846779978897,
+                "position_rmse": 0.057706885880264666,
+                "velocity_mse": 1.1712302119012764e-06,
+                "velocity_rmse": 0.001082233898887517
+              },
+              {
+                "probe_id": "probe_0004",
+                "n_samples": 50,
+                "position_mse": 0.003665897677592298,
+                "position_rmse": 0.06054665703069244,
+                "velocity_mse": 5.247681703181941e-07,
+                "velocity_rmse": 0.0007244088419657742
+              },
+              {
+                "probe_id": "probe_0005",
+                "n_samples": 50,
+                "position_mse": 0.0036578414096344685,
+                "position_rmse": 0.060480091018734985,
+                "velocity_mse": 2.8107236337335874e-07,
+                "velocity_rmse": 0.0005301625820192885
+              },
+              {
+                "probe_id": "probe_0006",
+                "n_samples": 50,
+                "position_mse": 0.0030948959318945,
+                "position_rmse": 0.055631788861176305,
+                "velocity_mse": 4.765940595153188e-07,
+                "velocity_rmse": 0.0006903579213098948
+              },
+              {
+                "probe_id": "probe_0007",
+                "n_samples": 50,
+                "position_mse": 0.0037219732222352727,
+                "position_rmse": 0.061007976709896494,
+                "velocity_mse": 5.198075416312168e-07,
+                "velocity_rmse": 0.0007209767968743632
+              },
+              {
+                "probe_id": "probe_0008",
+                "n_samples": 50,
+                "position_mse": 0.004181258463005103,
+                "position_rmse": 0.06466265122159084,
+                "velocity_mse": 6.485526168982866e-07,
+                "velocity_rmse": 0.0008053276456811145
+              },
+              {
+                "probe_id": "probe_0009",
+                "n_samples": 50,
+                "position_mse": 0.003653786942426015,
+                "position_rmse": 0.06044656270149706,
+                "velocity_mse": 7.764359375721084e-07,
+                "velocity_rmse": 0.0008811560233988691
+              },
+              {
+                "probe_id": "probe_0010",
+                "n_samples": 50,
+                "position_mse": 0.0038452073082842096,
+                "position_rmse": 0.06200973559276164,
+                "velocity_mse": 3.0388906992534137e-07,
+                "velocity_rmse": 0.0005512613444867519
+              }
+            ],
+            "definition": "sqrt(mean_trajectories(mean_samples(sum_coordinates((pred-obs)^2))))"
+          },
+          "refitted_acceleration_mse_by_axis": [
+            6.708054387305342e-07,
+            1.080922014104345e-06
+          ]
+        },
+        "fit_stage": "position_trajectory_discovery_refit",
+        "joint_fit_ready": true,
+        "prediction_accuracy_status": "not_independently_validated",
+        "selection_role": "simplest_within_comparable_error_band",
+        "structural_complexity": {
+          "nodes": 35,
+          "parameters": 5,
+          "depth": 7
+        },
+        "selection_diagnostics": {
+          "metric": "trajectory_position_mse",
+          "error": 0.003413697930181353,
+          "band_best_error": 0.003408429922272352,
+          "absolute_tolerance": 0.0002321132536069408,
+          "relative_mse_tolerance": 0.05,
+          "observed_domain_or_pole_risk": true,
+          "rule": "simplest exported expression within comparable-error band",
+          "independent_validation": false
+        },
+        "trajectory_refit_status": "not_converged",
+        "rank": 3,
+        "discovery_probe_ids": [
+          "probe_0001",
+          "probe_0002",
+          "probe_0003",
+          "probe_0004",
+          "probe_0005",
+          "probe_0006",
+          "probe_0007",
+          "probe_0008",
+          "probe_0009",
+          "probe_0010"
+        ]
+      },
+      "sr_law_file": "candidate-3-sr.py",
+      "sr_law_sha256": "f7af5d87598bf00d42cbb8e78915995f2cf16724ff58137a9e55b7946259be78",
+      "fit_status": "not_converged",
+      "raw_position_rmse": 0.05842684323670737,
+      "raw_velocity_rmse": 0.0008410154963882789,
+      "law_file": "candidate-3.py",
+      "law_sha256": "99aac99a5c99e1bf9689149daf40be6a1fc631775546555afc48e1784f838ff8",
+      "fitted_parameters": {
+        "c1": -0.06002587453530294,
+        "c2": 0.00046099423070216646,
+        "c3": 0.04711936215852369,
+        "c4": -0.0599835762955261,
+        "c5": 0.00018556431552842526
+      },
+      "refit_seconds": 8.01542211510241
+    }
+  ]
+}

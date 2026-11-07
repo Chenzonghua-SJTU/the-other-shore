@@ -1,0 +1,79 @@
+{
+  "world_id": "1",
+  "protocol_version": "trial-console-1.2.0",
+  "numerics_version": "1.1",
+  "claims_schema_version": "4.0.0",
+  "law_api_version": "1.0.0",
+  "task": "Infer a law predicting free probe motion from permitted observations.",
+  "controls": {
+    "source_properties": {
+      "p1": {
+        "min": 0.5,
+        "max": 2.0,
+        "default": 1.0
+      }
+    },
+    "probe_properties": {
+      "p2": {
+        "min": 0.5,
+        "max": 2.0,
+        "default": 1.0
+      }
+    }
+  },
+  "source_property_target_id": "N0",
+  "launch_region": {
+    "kind": "annulus",
+    "center": [
+      0.0,
+      0.0
+    ],
+    "radius_min": 1.0,
+    "radius_max": 8.0
+  },
+  "initial_speed_max": 5.0,
+  "maximum_physical_time": 40.0,
+  "maximum_single_trajectory_duration": 30.0,
+  "background_initial_state": {
+    "ids": [
+      "N0"
+    ],
+    "positions": [
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "velocities": [
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "limits": {
+    "energy_budget": 10,
+    "energy_per_new_probe": 1,
+    "max_probes_per_launch": 8,
+    "max_readouts_per_probe": 50,
+    "observe_calls": 20,
+    "max_times_per_observe": 50,
+    "wall_clock_seconds": 300.0
+  },
+  "noise": {
+    "noise_version": "1.1.0",
+    "positions": "independent Gaussian per coordinate on each new observation",
+    "probe_velocities": "independent Gaussian per coordinate, probe and returned time on each new experiment",
+    "velocity_sigma_fraction_of_initial_speed_max": 0.0001,
+    "velocity_sigma": 0.0005,
+    "velocity_sigma_rule": "velocity_sigma_fraction_of_initial_speed_max * public initial_speed_max",
+    "cached_data": "not re-noised"
+  },
+  "budget": {
+    "energy_remaining": 10,
+    "energy_used": 0,
+    "observe_remaining": 20,
+    "observe_used": 0,
+    "wall_clock_remaining_seconds": 299.97627354599535
+  }
+}
