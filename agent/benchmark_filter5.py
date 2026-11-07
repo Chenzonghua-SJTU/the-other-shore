@@ -1,5 +1,5 @@
 """Optional filter-tool ablation against the frozen BF2 five-repeat baseline."""
-import argparse,hashlib,json,os,queue,sys,time,statistics
+import argparse,hashlib,json,os,queue,sys,time,statistics,traceback
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from datetime import datetime
@@ -57,6 +57,8 @@ def main():
         finally:ports.put(port)
     try:
         with symbolic_service(output,size=4,timeout=900,trajectory_filter=True) as endpoint:
+            from .acceptance.real_filter_smoke import run as smoke
+            smoke(output/'integration-preflight',endpoint)
             latest['status']='running';save(A/'e11-latest.json',latest);save(A/'official-latest.json',latest)
             with ThreadPoolExecutor(max_workers=4) as pool:
                 jobs={pool.submit(one,r,w,n,endpoint):(r,w,n) for r,n in arms for w in range(1,7)}
@@ -66,7 +68,10 @@ def main():
                     except Exception as exc:results.append({'world':str(w),'repeat':r,'noise':n,'harness_error':type(exc).__name__,'directory':str(output/r/f'world-{w}')})
                     save(output/'progress.json',results)
                     latest['completed']=len(results);save(A/'e11-latest.json',latest);save(A/'official-latest.json',latest)
-    except Exception as exc:error=type(exc).__name__
+    except Exception as exc:
+        error=type(exc).__name__
+        (output/'harness-error.txt').write_text(traceback.format_exc())
+        traceback.print_exc()
     rows=[]
     for r in sorted(results,key=lambda x:(x['repeat'],int(x['world']))):
         s=r.get('score') or {};complete=bool(s.get('N_probes')) and not s.get('invalid_cases') and not r.get('evaluation_error')
