@@ -1,0 +1,45 @@
+{
+  "numerics_version": "1.1",
+  "integrator": "yoshida4",
+  "dt": 0.005,
+  "dtype": "float64",
+  "sampling": {
+    "rule": "grid_aligned_integer_ticks",
+    "grid_step": 0.005,
+    "alignment_tolerance_ticks": 1e-09,
+    "conversion": "将公开输入t除以0.005，仅在与最近整数tick之差不超过容差时接受；容差用于浮点表示，不用于把非网格时刻改写成邻近时刻",
+    "non_grid_input_policy": "拒绝并返回公开格式/范围错误；不再使用nearest_grid_round或ties-to-even来静默吸附任意公开请求",
+    "input_domain": "物理时间输入有限且非负，并位于本宇宙公开时间范围内",
+    "time_coordinates": "t_launch是共同物理t=0下的绝对时刻；readout是相对偏移；实际采样tick=launch_tick+offset_tick",
+    "readout_order": "相对偏移严格递增，可包含0，每批至多50个",
+    "returned_times": "明确返回实际投放及实际采样时刻",
+    "internal_integrator_substeps": "仅公开请求/采样时间受网格约束；Yoshida的内部子步时间仍按既定算法，不强迫它们落在公开网格上"
+  },
+  "softening": {
+    "length": 0.05,
+    "amplitude_radius": "rho=sqrt(r*r+epsilon*epsilon)",
+    "unit_direction": "delta/r，r为真实几何距离",
+    "self_and_zero_interaction_pairs": "求方向前屏蔽自作用与确定无作用的粒子对，防止0乘0/0",
+    "ownership": "加速度函数/公开几何工具按此约定求力；积分器不对返回加速度重复施加软化"
+  },
+  "shared_implementation": "候选轨迹与最终推演调用同一冻结实现；只使用相同算法名字不足以保证数值一致",
+  "candidate_inputs": "可见背景共同t0的干净位置/速度及已公开属性，候选自行估计的未知属性/隐藏对象；候选先推演到t_launch再置入验证探针初态；不逐步注入真实未来背景或真实隐藏状态",
+  "private_world_access": false,
+  "freeze_policy": "赛前公布并锁定实现及版本；后续变更统一公告，不由单队自行替换正式推演模块",
+  "time_meaning": {
+    "physical_time": "仿真中的无量纲时间坐标，绝对仅指相对统一物理t=0；不是现实日期或钟点",
+    "wall_clock": "从会话开始累计的现实经过时间，既定上限300秒；不参与节约分，仍约束探索运行"
+  },
+  "background_propagation": "候选负责背景推进，所有探针不反作用于背景且互不作用；只评探针轨迹，不另评背景。初始静止不等于官方强制固定",
+  "shared_module": {
+    "package": "rift_numerics",
+    "implementation_version": "rift-numerics-1.1.0",
+    "formal_entry": "rift.rollout(loaded_law,canonical_case)",
+    "fixed_step": 0.005,
+    "contains_true_world_laws": false,
+    "scope": "候选SDK负责t0背景预推、探针插入、被动性和对象/输出适配；下层state_rollout与既有rollout共用冻结数学循环",
+    "diagnostic_entry": "diagnostic_rollout使用同一loop做指挥部步长收敛检查，不是队伍可选正式积分精度"
+  },
+  "prediction_program_protocol": "law.py只暴露acceleration(t,bodies,params)；队伍本地拟合与指挥部正式驱动均使用同一rift.rollout，law不提供predict或自选积分方法",
+  "state_callback": "新state_rollout为候选回调提供当前子步速度；既有两参数位置回调算术不变，数学numerics仍1.1。固定drift/kick不等于对任意速度依赖/不光滑候选都承诺理论四阶收敛"
+}

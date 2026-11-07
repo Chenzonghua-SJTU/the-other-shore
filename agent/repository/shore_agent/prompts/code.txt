@@ -1,0 +1,13 @@
+你可按需调用run_code编写普通Python脚本，将结果赋给result；不要求函数封装或output_schema。不强制使用，不规定科学分析路线。
+只需code；files可省略，默认[]。需要数据时，files填写当前会话list_files、任务包或工具workspace_files中给出的文件路径。脚本用read_json(path)读取完整JSON，read_file(path)读取完整UTF-8文本，read_bytes(path)读取二进制；available_files列出本次传入的路径。路径与read_file工具一致，是当前会话虚拟工作目录的只读快照，不是宿主路径；不要用open访问这些虚拟路径。不要从聊天预览抄写或四舍五入观测数据。
+例：files=["observations/probe_0001.json"]，code：
+import numpy as np
+p = read_json("observations/probe_0001.json")
+s = probe_arrays(p, time_axis="acceleration")
+result = {"samples":len(s["t"]), "mean_speed":np.linalg.norm(s["v"],axis=1).mean(), "alignment":s["alignment"]}
+只有files明确列出的文件在本次容器中可读；未列入的文件即使属于当前会话也不可直接读取。不访问其他会话或隐藏数据。至多128个文件、总计16MiB，可分批计算。已有分析result.json、analysis.py和CSV/TXT/PNG产物也可用相同路径传入，例如read_json("analyses/code_x/result.json")；原始文件不回写。图像可用read_bytes配合BytesIO读取。
+任务包和新观测的code_inputs说明实际字段、编号、路径和数组形状。探针times为(N,)，r_obs/v_obs为(N,2)；a_est有独立的a_est_times，二者可能缺失，不能假设与times等长。probe_arrays(p)返回观测时刻上的t/r/v；time_axis="acceleration"返回估计加速度时刻上的t/r/v/a。默认interpolation="exact"必须精确匹配，时刻不符会报错，不会截短。确需线性插值时显式指定interpolation="linear"，返回alignment注明，禁止外推。a仍是差分估计；该函数不拟合规律或产生观测。
+天体观测记录使用times、body_ids、positions_obs，位置轴为(时间,天体,xy)，不是bodies字段。天体可能运动，按观测时刻读取，不默认只用第一帧。
+numpy/scipy/sympy/matplotlib及标准库可用；NumPy数组、标量和元组自动转JSON，NaN/Infinity明确报错，不静默替换。仅print也可执行，但建议将有用数值赋给result。小结果完整返回，大结果预览有截断标记；完整文件可用read_file工具继续读取，或传给下一次run_code直接计算，不必全部送入聊天上下文。
+output/可写PNG/JSON/CSV/TXT产物，最多10个、总计8MiB。只导出显式产物，不能修改原观测。每次新容器，无隐含变量状态、网络、宿主文件或隐藏评测访问；90秒/1GiB/1CPU，耗时计入会话时限。完整代码、输入文件快照/来源哈希、输出和错误留档。
+success仅表示执行及格式合格，不代表科学正确或独立验证。最终仍使用fit_law_and_rollout、validate_law和submit，最多5个参数的表达式提交约束保持不变。

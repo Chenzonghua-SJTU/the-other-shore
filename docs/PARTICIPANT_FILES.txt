@@ -1,0 +1,50 @@
+参赛者与指挥部文件划分（2026-11-05）
+
+一、攻坚组可修改，正式策略必须集中在agent/
+
+agent/run.py                  统一入口，全部智能体协作的主程序
+agent/models.py               本队模型加载、客户端和服务协调
+agent/tools.py、tool_worker.py 本队拟合与工具策略
+agent/strategy.json           队伍ID、提交ID和版本
+agent/prompts/、memory/、configs/、agents/等自建目录
+                              提示词、合法开发记忆、配置及子智能体模块
+models.json                   本次全部权重路径清单，每项唯一ID
+权重目录                      可放其他共享盘路径，完整checkpoint或底座加LoRA路径逐项声明
+
+正式运行需要的非权重自定义资产全部放入agent/，相对导入使用agent包命名空间。
+训练代码与数据可在其他位置，但正式入口不依赖未提交的项目根目录代码或外部提示词。
+law.py/claims.json在每个宇宙运行中自动产生，不是赛前人为给定九份答案。
+输出目录由控制台运行器提供，正式运行不把新记忆写回本队策略目录。
+
+二、公开可读，标准运行使用固定版本
+
+rift/、rift_numerics/          控制台、模型清单接口、候选接口与固定积分器
+development_worlds/           六公开完整环境、标准实验与评分
+scripts/run_strategy.py       固定启动器，装载提交的agent包和模型清单
+scripts/prepare_strategy.py   生成策略描述和模型清单
+scripts/validate_strategy.py  检查策略目录及所有权重路径
+scripts/serve_model.py        单模型服务启动与预检
+scripts/validate_*.py         其他公开格式检查
+scripts/bootstrap_cuda128.sh等安装与离线资源辅助
+docs/、docs/contracts/        当前规则、提交规范与机器契约
+models.json、examples/models*.json
+                              默认与多模型路径示例，示例路径按实际修改
+shore_agent/及旧提交脚本      历史兼容接口，当前可修改策略位置为agent/
+
+六公开源码可以阅读并用于合法训练数据。标准自测调用固定积分器和评分器。
+固定SDK不从队伍目录替换为自改版本。正式科学结果只由指挥部固定程序生成。
+
+三、指挥部独占，不交给攻坚组
+
+正式测评入口                  按策略/模型两类路径统一启动测评
+contest_simulator.py等        九隐藏真实模拟器及固定定律参数
+claims_truth.json             三项声明真值
+profiles/、隐藏验证参考        私有配置、案例和无噪轨迹
+contest_console_service.py等   会话、计时、配额、配对交卷
+law_program_evaluation.py等    固定预测与科学计分
+contest_scoreboard.py等        私有成绩、最佳完整成绩及同分排序
+正式运行输出、日志、观测与新记忆
+                              指挥部留存，赛中不归还
+
+正式测评使用九个未知宇宙，按赛题说明中的三档权重汇总成绩。
+攻坚组只接收开发包。正式环境始终在指挥部私有目录，不解压到队伍项目中。
