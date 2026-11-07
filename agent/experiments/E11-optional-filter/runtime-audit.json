@@ -1,0 +1,932 @@
+{
+  "completed": 30,
+  "rows": [
+    {
+      "round": "R01",
+      "world": "1",
+      "total": 95.99413593934776,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 11,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "validate_law": 2,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 11
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-1"
+    },
+    {
+      "round": "R01",
+      "world": "2",
+      "total": 95.9967883484967,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 3,
+        "read_file": 2,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-2"
+    },
+    {
+      "round": "R01",
+      "world": "3",
+      "total": 95.96283008899826,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "observe_body": 1,
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 3,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-3"
+    },
+    {
+      "round": "R01",
+      "world": "4",
+      "total": 64.44112316333933,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 21,
+      "tools": {
+        "insert_probe": 5,
+        "fit_law_and_rollout": 5,
+        "read_file": 3,
+        "validate_law": 1,
+        "save_draft": 2,
+        "symbolic_regression": 1,
+        "analyze_residual": 1
+      },
+      "tool_error_codes": {
+        "invalid_request": 1,
+        "invalid_expression": 1,
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 21
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-4"
+    },
+    {
+      "round": "R01",
+      "world": "5",
+      "total": 50.53335118503983,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 6,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-5"
+    },
+    {
+      "round": "R01",
+      "world": "6",
+      "total": 15.000018291642217,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 6,
+        "observe_body": 1,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1,
+        "ValueError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R01/world-6"
+    },
+    {
+      "round": "R02",
+      "world": "1",
+      "total": 95.99919113720169,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 13,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "read_file": 2,
+        "observe_body": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 13
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-1"
+    },
+    {
+      "round": "R02",
+      "world": "2",
+      "total": 94.99892150253444,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 11,
+      "tools": {
+        "insert_probe": 5,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 11
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-2"
+    },
+    {
+      "round": "R02",
+      "world": "3",
+      "total": 95.97315546303648,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "analyze_residual": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-3"
+    },
+    {
+      "round": "R02",
+      "world": "4",
+      "total": 15.392406704216548,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 21,
+      "tools": {
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "read_file": 5,
+        "fit_law_and_rollout": 10,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 2
+      },
+      "finish_reasons": {
+        "tool_calls": 21
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-4"
+    },
+    {
+      "round": "R02",
+      "world": "5",
+      "total": 78.62440717144813,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 15,
+      "tools": {
+        "analyze_residual": 1,
+        "observe_body": 1,
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 5,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValueError": 1,
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 15
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-5"
+    },
+    {
+      "round": "R02",
+      "world": "6",
+      "total": 15.0,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 15,
+      "tools": {
+        "list_files": 1,
+        "insert_probe": 3,
+        "observe_body": 1,
+        "fit_law_and_rollout": 6,
+        "symbolic_regression": 1,
+        "read_file": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1,
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 15
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [
+        {
+          "name": "b0-s0",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b0-s1",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b0-s2",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b0-s3",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b1-s0",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b1-s1",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b1-s2",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        },
+        {
+          "name": "b1-s3",
+          "error_type": "ValidationError",
+          "message": "$.law.acceleration.return: accelerations must all be finite"
+        }
+      ],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R02/world-6"
+    },
+    {
+      "round": "R03",
+      "world": "1",
+      "total": 26.298672723776672,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 14,
+      "tools": {
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "read_file": 1,
+        "analyze_residual": 1,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 14
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-1"
+    },
+    {
+      "round": "R03",
+      "world": "2",
+      "total": 94.99802485542627,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 12,
+      "tools": {
+        "insert_probe": 3,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 12
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-2"
+    },
+    {
+      "round": "R03",
+      "world": "3",
+      "total": 96.48661693872026,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 13,
+      "tools": {
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 13
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-3"
+    },
+    {
+      "round": "R03",
+      "world": "4",
+      "total": 70.24138461892524,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 12,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "read_file": 1,
+        "fit_law_and_rollout": 5,
+        "observe_body": 1,
+        "validate_law": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 12
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-4"
+    },
+    {
+      "round": "R03",
+      "world": "5",
+      "total": 58.362237212036376,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 16,
+      "tools": {
+        "insert_probe": 3,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "analyze_residual": 1,
+        "validate_law": 2,
+        "save_draft": 2,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 16
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-5"
+    },
+    {
+      "round": "R03",
+      "world": "6",
+      "total": 95.88978044531578,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 18,
+      "tools": {
+        "insert_probe": 4,
+        "read_file": 3,
+        "observe_body": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 3,
+        "validate_law": 1,
+        "save_draft": 1,
+        "analyze_residual": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 18
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R03/world-6"
+    },
+    {
+      "round": "R04",
+      "world": "1",
+      "total": 91.1567358444664,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 18,
+      "tools": {
+        "read_file": 2,
+        "insert_probe": 3,
+        "fit_law_and_rollout": 5,
+        "symbolic_regression": 1,
+        "validate_law": 3,
+        "save_draft": 2,
+        "observe_body": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 18
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-1"
+    },
+    {
+      "round": "R04",
+      "world": "2",
+      "total": 95.49532593854508,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 17,
+      "tools": {
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "validate_law": 3,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 17
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-2"
+    },
+    {
+      "round": "R04",
+      "world": "3",
+      "total": 20.3497521145757,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 15,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "observe_body": 1,
+        "fit_law_and_rollout": 6,
+        "analyze_residual": 1,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 15
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-3"
+    },
+    {
+      "round": "R04",
+      "world": "4",
+      "total": 80.47442532817271,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 13,
+      "tools": {
+        "insert_probe": 1,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "validate_law": 2,
+        "save_draft": 1,
+        "analyze_residual": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 13
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-4"
+    },
+    {
+      "round": "R04",
+      "world": "5",
+      "total": 33.561623973761776,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 12,
+      "tools": {
+        "insert_probe": 4,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 3,
+        "save_draft": 2,
+        "validate_law": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_request": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 12
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-5"
+    },
+    {
+      "round": "R04",
+      "world": "6",
+      "total": 95.99156452055776,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 9,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 1,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 9
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R04/world-6"
+    },
+    {
+      "round": "R05",
+      "world": "1",
+      "total": 96.49392283231909,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 9,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 9
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-1"
+    },
+    {
+      "round": "R05",
+      "world": "2",
+      "total": 90.99588060979524,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 20,
+      "tools": {
+        "insert_probe": 5,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 3,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 20
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-2"
+    },
+    {
+      "round": "R05",
+      "world": "3",
+      "total": 96.42268978799606,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 15,
+      "tools": {
+        "insert_probe": 4,
+        "symbolic_regression": 1,
+        "read_file": 1,
+        "fit_law_and_rollout": 2,
+        "validate_law": 2,
+        "save_draft": 2,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValidationError": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 15
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-3"
+    },
+    {
+      "round": "R05",
+      "world": "4",
+      "total": 81.93858092570919,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 13,
+      "tools": {
+        "insert_probe": 2,
+        "observe_body": 1,
+        "run_code": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 6,
+        "validate_law": 2,
+        "save_draft": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "ValueError": 1,
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 13
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-4"
+    },
+    {
+      "round": "R05",
+      "world": "5",
+      "total": 21.276629366362435,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 12,
+      "tools": {
+        "insert_probe": 2,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 4,
+        "observe_body": 1,
+        "save_draft": 2,
+        "validate_law": 1,
+        "submit": 1
+      },
+      "tool_error_codes": {
+        "invalid_expression": 1
+      },
+      "finish_reasons": {
+        "tool_calls": 12
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-5"
+    },
+    {
+      "round": "R05",
+      "world": "6",
+      "total": 23.690617262289237,
+      "accepted": true,
+      "end_reason": "submitted",
+      "exit_code": 0,
+      "model_requests": 16,
+      "tools": {
+        "insert_probe": 3,
+        "observe_body": 1,
+        "symbolic_regression": 1,
+        "fit_law_and_rollout": 3,
+        "read_file": 1,
+        "save_draft": 2,
+        "validate_law": 2,
+        "submit": 1
+      },
+      "tool_error_codes": {},
+      "finish_reasons": {
+        "tool_calls": 16
+      },
+      "thinking": false,
+      "max_tokens": 4096,
+      "pair_matches": true,
+      "invalid_cases": [],
+      "traceback_in_agent_log": false,
+      "directory": "agent/_experiments/E11-20261107-231819/R05/world-6"
+    }
+  ],
+  "accepted": 30,
+  "pair_mismatches": [],
+  "traceback_cases": []
+}
