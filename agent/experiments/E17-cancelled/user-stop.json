@@ -1,9 +1,0 @@
-{
-  "status": "stopped_by_user",
-  "reason": "User cancelled additional no-code replication and requested conclusions from completed experiments",
-  "recorded_at": "2026-11-07T18:04:06.107293+00:00",
-  "completed_trials": 0,
-  "exclude_from_primary_comparison": true,
-  "completed_results_retained": true,
-  "managed_processes_signalled": 9
-}

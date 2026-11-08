@@ -27,19 +27,28 @@
     "api_key_required": false,
     "local_model_endpoints": {
       "qwen3.8-27b": "http://127.0.0.1:8000/v1"
-    }
+    },
+    "sampling_seed": 42,
+    "main_timeout_seconds": 95,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "top_k": -1
   },
   "agent": {
+    "max_turns": 3,
+    "counting_policy": "environment_batches",
     "max_no_action": 3,
     "guidance_profile": "baseline",
     "loop_recovery": true,
-    "submission_fit_rmse_threshold": null,
-    "submission_time_remaining_seconds": 40
+    "submission_fit_rmse_threshold": 0.01,
+    "submission_time_remaining_seconds": 90,
+    "submission_validation_rmse_threshold": 0.01,
+    "force_submit_remaining_seconds": 60
   },
   "code_execution": {
     "enabled": false,
     "image": "shore-code:e2-r04",
-    "timeout_seconds": 90,
+    "timeout_seconds": 20,
     "memory_mb": 1024
   },
   "numerics": {

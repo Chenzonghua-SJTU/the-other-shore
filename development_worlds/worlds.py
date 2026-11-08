@@ -1,7 +1,8 @@
-"""Six fully public force fields for the development design prototype.
+"""Twenty public force fields for a synthetic training extension of starter v15.
 
 All fields act on independent passive probes in two dimensions.  Each source
-or origin marker is fixed; visible tracers in worlds 3, 5 and 6 exert no force.
+or origin marker is fixed; visible tracers exert no force. Worlds 15, 16 and
+20 contain fixed invisible sources; world 14 has two fixed visible sources.
 The fixed public integrator is shared with candidate prediction.  This module
 supplies clean trajectories; the separate console supplies noise and budgets.
 No external physics package, private simulator or private configuration is read.
@@ -17,10 +18,11 @@ import numpy as np
 
 from rift_numerics import DT, NUMERICS_VERSION, diagnostic_rollout, rollout, sample_indices
 
-VERSION = "public-development-worlds-1.0.0"
+from .world_specs import WORLDS, SCALAR_WORLDS, WORLD_SPECS
+
+VERSION = "shore-worlds-20-1.0.0"
 EPSILON = 0.05
-SINGLE_CENTER = frozenset(("1", "2", "4"))
-WORLDS = ("1", "2", "3", "4", "5", "6")
+SINGLE_CENTER = SCALAR_WORLDS
 PARAMETERS = {
     "1": {"G": 1.0},
     "2": {"k": 0.06},
@@ -28,6 +30,20 @@ PARAMETERS = {
     "4": {"G": 2.0, "lambda": 4.0},
     "5": {"a": 0.06, "b": 0.10, "c": 0.002, "d": 0.012},
     "6": {"kx": 0.06, "ky": 0.18, "period": 16.0, "phase": 0.3},
+    "7": {"G": 1.2, "s": 0.8},
+    "8": {"k": 0.14, "L": 2.0},
+    "9": {"k": 0.03, "c": 0.004},
+    "10": {"a": 0.08, "b": 0.008, "ky": 0.12},
+    "11": {"k": 0.025, "A": 0.10, "q": 1.3},
+    "12": {"A": 0.18, "s": 2.0},
+    "13": {"k": 0.008, "radius": 2.5},
+    "14": {"G1": 0.9, "G2": 1.4, "s": 0.8, "k": 0.025},
+    "15": {"G": 1.2, "s": 0.8, "cx": 1.1, "cy": -0.9, "k": 0.025},
+    "16": {"G1": 0.8, "G2": 1.1, "s": 0.9, "d": 1.7, "k": 0.025},
+    "17": {"k": 0.10, "amplitude": 0.35, "period": 12.0, "phase": 0.4},
+    "18": {"k": 0.08, "A": 0.12, "period": 10.0},
+    "19": {"k": 0.06, "A": 0.10, "q": 1.2, "period": 14.0, "phase": 0.4},
+    "20": {"k": 0.08, "amplitude": 0.3, "period": 10.0, "cx": 1.2, "cy": -0.7},
 }
 
 
@@ -94,14 +110,13 @@ class DevelopmentSimulator:
 
     def __init__(self, world):
         if isinstance(world, (bool, np.bool_)) or str(world) not in WORLDS:
-            raise ValueError("Development world must be 1 through 6.")
+            raise ValueError("Development world must be 1 through 20.")
         self.world = str(world)
         self.parameters = copy.deepcopy(PARAMETERS[self.world])
         self.parameter_count = len(self.parameters)
-        self.claims_truth = {"dynamics_order": 2, "hidden_matter": False,
-                             "time_dependence": self.world == "6"}
+        self.claims_truth = copy.deepcopy(WORLD_SPECS[self.world]["claims_truth"])
         self.cache_token = hashlib.sha256(
-            Path(__file__).read_bytes() + json.dumps(
+            Path(__file__).read_bytes() + Path(__file__).with_name("world_specs.py").read_bytes() + json.dumps(
                 {"world": self.world, "parameters": self.parameters,
                  "numerics_version": NUMERICS_VERSION, "dt": DT},
                 sort_keys=True).encode("utf-8")
@@ -161,10 +176,52 @@ class DevelopmentSimulator:
             x, y = positions[:, 0], positions[:, 1]
             return -np.column_stack((p["a"]*x + p["c"]*x**3 + p["d"]*x*y*y,
                                      p["b"]*y + p["c"]*y**3 + p["d"]*y*x*x))
-        # An anisotropy axis is unchanged after a half-turn: field period is
-        # exactly ``period``, though the oriented basis takes twice that time.
-        angle = np.pi*t/p["period"] + p["phase"]
-        return self._rotated_linear(positions, p["kx"], p["ky"], angle)
+        if self.world == "6":
+            # A half-turn restores the anisotropy matrix: field period=period.
+            angle = np.pi*t/p["period"] + p["phase"]
+            return self._rotated_linear(positions, p["kx"], p["ky"], angle)
+        radius2 = np.sum(positions*positions, axis=1)
+        if self.world == "7":
+            return -(p["G"]*p1/values/(radius2+p["s"]**2)**1.5)[:, None]*positions
+        if self.world == "8":
+            return -(p["k"]*p1/values/np.sqrt(1+radius2/p["L"]**2))[:, None]*positions
+        if self.world == "9":
+            return -(p1/values*(p["k"]+p["c"]*radius2))[:, None]*positions
+        if self.world == "10":
+            x, y = positions[:, 0], positions[:, 1]
+            return np.column_stack((p["a"]*x-p["b"]*x**3, -p["ky"]*y))
+        if self.world == "11":
+            return -p["k"]*positions-p["A"]*p["q"]*np.sin(p["q"]*positions)
+        if self.world == "12":
+            return -(p1/values*p["A"]*np.exp(-radius2/(2*p["s"]**2)))[:, None]*positions
+        if self.world == "13":
+            return -(p["k"]*(radius2-p["radius"]**2))[:, None]*positions
+        if self.world in ("14", "15", "16"):
+            result = -p["k"]*positions
+            if self.world == "15":
+                sources = ((p["G"], np.array([p["cx"], p["cy"]])),)
+            else:
+                d = 2.0 if self.world == "14" else p["d"]
+                sources = ((p["G1"], np.array([-d, 0.])),
+                           (p["G2"], np.array([d, 0.])))
+            for strength, center in sources:
+                displacement = positions-center
+                distance2 = np.sum(displacement*displacement, axis=1)
+                result = result-strength*displacement/(distance2+p["s"]**2)[:, None]**1.5
+            return result
+        if self.world == "17":
+            return -p["k"]*(1+p["amplitude"]*np.sin(2*np.pi*t/p["period"]+p["phase"]))*positions
+        if self.world == "18":
+            angle = 2*np.pi*t/p["period"]
+            return -p["k"]*positions+p["A"]*np.array([np.cos(angle), np.sin(angle)])
+        if self.world == "19":
+            result = -p["k"]*positions
+            result[:, 0] += p["A"]*p["q"]*np.sin(p["q"]*positions[:, 0]-2*np.pi*t/p["period"]+p["phase"])
+            return result
+        if self.world == "20":
+            center = np.array([p["cx"], p["cy"]])
+            return -p["k"]*(1+p["amplitude"]*np.sin(2*np.pi*t/p["period"]))*(positions-center)
+        raise AssertionError("Unregistered force field.")
 
     def acceleration(self, t, positions, *, source_properties=None, probe_properties=None):
         instant = _finite_scalar(t, "t")
@@ -191,6 +248,9 @@ class DevelopmentSimulator:
                                   duration=duration, dt=dt)
 
     def background_initial_state(self):
+        if self.world == "14":
+            return {"positions": np.array([[-2., 0.], [2., 0.]]),
+                    "velocities": np.zeros((2, 2)), "ids": ["N0", "N1"]}
         if self.world in SINGLE_CENTER:
             return {"positions": np.zeros((1, 2)), "velocities": np.zeros((1, 2)), "ids": ["N0"]}
         k = np.arange(8, dtype=np.float64)
@@ -202,7 +262,7 @@ class DevelopmentSimulator:
                 "ids": [f"N{i}" for i in range(9)]}
 
     def _background_acceleration(self, t, positions):
-        if self.world in SINGLE_CENTER:
+        if self.world in SINGLE_CENTER or self.world == "14":
             return np.zeros_like(positions)
         result = self._test_acceleration(t, positions, None, np.ones(len(positions)))
         result[0] = 0.

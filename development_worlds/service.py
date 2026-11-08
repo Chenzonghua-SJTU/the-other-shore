@@ -1,6 +1,6 @@
 """Local public-development adapter for the official authenticated Console API.
 
-Only the six public simulators are used here. Formal unknown environments are
+Only the twenty public simulators are used here. Formal unknown environments are
 provided by the organizer service, which accepts the same client requests.
 """
 from __future__ import annotations
@@ -109,7 +109,7 @@ class DevelopmentSession:
                 if set(params) != {"times"}:
                     raise ValueError("observe requires times only.")
                 return self.console.observe(params["times"])
-            if method == "launch":
+            if method in ("launch", "insert_probe"):
                 if set(params) != {"probes", "t_launch", "readout", "source_properties"}:
                     raise ValueError("launch requires probes, t_launch, readout and source_properties.")
                 return self.console.launch(**params)

@@ -1,15 +1,14 @@
-"""Public development domains and validation cases, design revision 1.
+"""Public domains and validation cases for the twenty-world training extension.
 
 Cases are separate from first light and from an agent's acquired observations.
-These six public suites are for development, not the official leaderboard.
+These twenty public suites are for development, not the official leaderboard.
 """
 from __future__ import annotations
 import copy
 import numpy as np
 
-WORLDS = ('1', '2', '3', '4', '5', '6')
-SCALAR_WORLDS = frozenset(('1', '2', '4'))
-VERSION = 'public-development-design-1.1.0'
+from .world_specs import WORLDS, SCALAR_WORLDS, TIME_WORLDS
+VERSION = 'shore-worlds-20-catalog-1.0.0'
 ENERGY_BUDGET = 10
 WALL_CLOCK_SECONDS = 300.
 # r_min, r_max, last absolute time, maximum trajectory duration, speed limit
@@ -20,12 +19,13 @@ LIMITS = {
     '4': (1., 10., 40., 30., 5.),
     '5': (.5, 5., 32., 20., 3.),
     '6': (.5, 6., 48., 24., 3.),
+    **{str(i): (.5, 5., 40., 20., 3.) for i in range(7, 21)},
 }
 
 def _world(world):
     value = str(world)
     if value not in WORLDS:
-        raise ValueError('Development world must be 1 through 6.')
+        raise ValueError('Development world must be 1 through 20.')
     return value
 
 def _probe(world, pos, vel, attr=1.):
@@ -98,10 +98,16 @@ def validation_cases(world):
         '6': [([1.2, 1.6, 2., 2.4], [.35, .45, .55, .65]),
               ([3.6, 4.2, 4.8, 5.4], [.6, .7, .8, .9])],
     }
+    if int(world) >= 7:
+        # Independent initial conditions cover the inner, middle and outer
+        # domain; phase coverage never depends on true orbit conditions.
+        layouts[world] = [([.7, 1.0, 1.3, 1.6], [.25, .35, .45, .55]),
+                          ([2.0, 2.4, 2.8, 3.2], [.35, .45, .55, .65]),
+                          ([3.6, 4.0, 4.4, 4.8], [.45, .55, .65, .75])]
     duration = LIMITS[world][3]
     cases = []
     for band, (radii, speeds) in enumerate(layouts[world]):
-        launches = (0., 4., 8., 12.) if world == '6' else (0., 4.)
+        launches = (0., 4., 8., 12.) if world in TIME_WORLDS else (0., 4.)
         for k, launch in enumerate(launches):
             p1 = [.7, 1.7][k] if world in SCALAR_WORLDS else None
             case = {'name': f'b{band}-s{k}', 'group': f'band_{band}',

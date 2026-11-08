@@ -1,0 +1,1904 @@
+{
+  "scope": "trainer_only_public_truth_do_not_feed_to_agent",
+  "world_count": 20,
+  "worlds": [
+    {
+      "world_id": "1",
+      "name": "二维中心场",
+      "difficulty": 1,
+      "formula": "-G*p1/(4*pi*p2*sqrt(R^2+0.05^2)) * r/R",
+      "mechanism": "radial_inverse_distance",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G": 1.0
+      },
+      "controls_and_limits": {
+        "world_id": "1",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 1.0,
+          "radius_max": 8.0
+        },
+        "initial_speed_max": 5.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 30.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                2.0,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                4.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "2",
+      "name": "各向同性谐振场",
+      "difficulty": 1,
+      "formula": "-k*(p1/p2)*r",
+      "mechanism": "harmonic",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "k": 0.06
+      },
+      "controls_and_limits": {
+        "world_id": "2",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 6.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 32.0,
+        "maximum_single_trajectory_duration": 24.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "3",
+      "name": "旋转各向异性场",
+      "difficulty": 2,
+      "formula": "-Rot(theta) diag(kx,ky) Rot(theta)^T r",
+      "mechanism": "anisotropic_harmonic",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "kx": 0.04,
+        "ky": 0.12,
+        "angle": 0.5235987755982988
+      },
+      "controls_and_limits": {
+        "world_id": "3",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 6.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 32.0,
+        "maximum_single_trajectory_duration": 24.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "4",
+      "name": "指数屏蔽中心场",
+      "difficulty": 2,
+      "formula": "-G*p1*exp(-rho/lambda)/(2*pi*p2*rho) * r/R",
+      "mechanism": "screened_radial",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G": 2.0,
+        "lambda": 4.0
+      },
+      "controls_and_limits": {
+        "world_id": "4",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 1.0,
+          "radius_max": 10.0
+        },
+        "initial_speed_max": 5.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 30.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                2.0,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                4.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "5",
+      "name": "交叉四次势",
+      "difficulty": 3,
+      "formula": "(-a*x-c*x^3-d*x*y^2, -b*y-c*y^3-d*y*x^2)",
+      "mechanism": "coupled_quartic",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "a": 0.06,
+        "b": 0.1,
+        "c": 0.002,
+        "d": 0.012
+      },
+      "controls_and_limits": {
+        "world_id": "5",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 32.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "6",
+      "name": "旋转主轴场",
+      "difficulty": 3,
+      "formula": "-Rot(pi*t/period+phase) diag(kx,ky) Rot(...)^T r",
+      "mechanism": "rotating_anisotropy",
+      "origin": "starter_v15",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": true
+      },
+      "parameters": {
+        "kx": 0.06,
+        "ky": 0.18,
+        "period": 16.0,
+        "phase": 0.3
+      },
+      "controls_and_limits": {
+        "world_id": "6",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 6.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 48.0,
+        "maximum_single_trajectory_duration": 24.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 8
+    },
+    {
+      "world_id": "7",
+      "name": "软化开普勒场",
+      "difficulty": 1,
+      "formula": "-G*(p1/p2)*r/(R^2+s^2)^(3/2)",
+      "mechanism": "softened_inverse_square",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G": 1.2,
+        "s": 0.8
+      },
+      "controls_and_limits": {
+        "world_id": "7",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "8",
+      "name": "饱和回复场",
+      "difficulty": 1,
+      "formula": "-k*(p1/p2)*r/sqrt(1+R^2/L^2)",
+      "mechanism": "saturating_spring",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "k": 0.14,
+        "L": 2.0
+      },
+      "controls_and_limits": {
+        "world_id": "8",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "9",
+      "name": "径向硬化振子",
+      "difficulty": 2,
+      "formula": "-(p1/p2)*(k+c*R^2)*r",
+      "mechanism": "radial_duffing",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "k": 0.03,
+        "c": 0.004
+      },
+      "controls_and_limits": {
+        "world_id": "9",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "10",
+      "name": "双阱场",
+      "difficulty": 2,
+      "formula": "(a*x-b*x^3, -ky*y)",
+      "mechanism": "double_well",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "a": 0.08,
+        "b": 0.008,
+        "ky": 0.12
+      },
+      "controls_and_limits": {
+        "world_id": "10",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "11",
+      "name": "周期晶格场",
+      "difficulty": 2,
+      "formula": "-k*r-A*q*(sin(q*x),sin(q*y))",
+      "mechanism": "confined_periodic_lattice",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "k": 0.025,
+        "A": 0.1,
+        "q": 1.3
+      },
+      "controls_and_limits": {
+        "world_id": "11",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "12",
+      "name": "高斯势阱",
+      "difficulty": 2,
+      "formula": "-(p1/p2)*A*exp(-R^2/(2*s^2))*r",
+      "mechanism": "gaussian_well",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "A": 0.18,
+        "s": 2.0
+      },
+      "controls_and_limits": {
+        "world_id": "12",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {
+          "p1": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "probe_properties": {
+          "p2": {
+            "min": 0.5,
+            "max": 2.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {
+            "p1": 1.0
+          },
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "p2": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "13",
+      "name": "环形势阱",
+      "difficulty": 2,
+      "formula": "-k*(R^2-radius^2)*r",
+      "mechanism": "mexican_hat",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "k": 0.008,
+        "radius": 2.5
+      },
+      "controls_and_limits": {
+        "world_id": "13",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "14",
+      "name": "可见双源场",
+      "difficulty": 3,
+      "formula": "-k*r-sum_i G_i*(r-c_i)/(|r-c_i|^2+s^2)^(3/2); c1=(-2,0),c2=(2,0)",
+      "mechanism": "visible_binary_source",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G1": 0.9,
+        "G2": 1.4,
+        "s": 0.8,
+        "k": 0.025
+      },
+      "controls_and_limits": {
+        "world_id": "14",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "15",
+      "name": "偏心暗源场",
+      "difficulty": 3,
+      "formula": "-k*r-G*(r-(cx,cy))/(|r-(cx,cy)|^2+s^2)^(3/2)",
+      "mechanism": "hidden_offset_source",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": true,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G": 1.2,
+        "s": 0.8,
+        "cx": 1.1,
+        "cy": -0.9,
+        "k": 0.025
+      },
+      "controls_and_limits": {
+        "world_id": "15",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "16",
+      "name": "双暗源场",
+      "difficulty": 3,
+      "formula": "-k*r-sum_i G_i*(r-c_i)/(|r-c_i|^2+s^2)^(3/2); c1=(-d,0),c2=(d,0)",
+      "mechanism": "hidden_binary_source",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": true,
+        "time_dependence": false
+      },
+      "parameters": {
+        "G1": 0.8,
+        "G2": 1.1,
+        "s": 0.9,
+        "d": 1.7,
+        "k": 0.025
+      },
+      "controls_and_limits": {
+        "world_id": "16",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 6
+    },
+    {
+      "world_id": "17",
+      "name": "呼吸谐振场",
+      "difficulty": 3,
+      "formula": "-k*(1+amplitude*sin(2*pi*t/period+phase))*r",
+      "mechanism": "pulsating_stiffness",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": true
+      },
+      "parameters": {
+        "k": 0.1,
+        "amplitude": 0.35,
+        "period": 12.0,
+        "phase": 0.4
+      },
+      "controls_and_limits": {
+        "world_id": "17",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 12
+    },
+    {
+      "world_id": "18",
+      "name": "圆周驱动场",
+      "difficulty": 3,
+      "formula": "-k*r+A*(cos(2*pi*t/period),sin(2*pi*t/period))",
+      "mechanism": "circular_drive",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": true
+      },
+      "parameters": {
+        "k": 0.08,
+        "A": 0.12,
+        "period": 10.0
+      },
+      "controls_and_limits": {
+        "world_id": "18",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 12
+    },
+    {
+      "world_id": "19",
+      "name": "行波晶格场",
+      "difficulty": 3,
+      "formula": "(-k*x+A*q*sin(q*x-2*pi*t/period+phase),-k*y)",
+      "mechanism": "traveling_wave",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": false,
+        "time_dependence": true
+      },
+      "parameters": {
+        "k": 0.06,
+        "A": 0.1,
+        "q": 1.2,
+        "period": 14.0,
+        "phase": 0.4
+      },
+      "controls_and_limits": {
+        "world_id": "19",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 12
+    },
+    {
+      "world_id": "20",
+      "name": "呼吸暗源场",
+      "difficulty": 3,
+      "formula": "-k*(1+amplitude*sin(2*pi*t/period))*(r-(cx,cy))",
+      "mechanism": "pulsating_hidden_spring",
+      "origin": "synthetic_training",
+      "claims_truth": {
+        "dynamics_order": 2,
+        "hidden_matter": true,
+        "time_dependence": true
+      },
+      "parameters": {
+        "k": 0.08,
+        "amplitude": 0.3,
+        "period": 10.0,
+        "cx": 1.2,
+        "cy": -0.7
+      },
+      "controls_and_limits": {
+        "world_id": "20",
+        "status": "design_prototype_not_frozen",
+        "catalog_version": "shore-worlds-20-catalog-1.0.0",
+        "launch_region": {
+          "kind": "annulus",
+          "center": [
+            0.0,
+            0.0
+          ],
+          "radius_min": 0.5,
+          "radius_max": 5.0
+        },
+        "initial_speed_max": 3.0,
+        "maximum_physical_time": 40.0,
+        "maximum_single_trajectory_duration": 20.0,
+        "source_properties": {},
+        "probe_properties": {
+          "mass": {
+            "min": 0.5,
+            "max": 4.0,
+            "default": 1.0
+          }
+        },
+        "energy_budget": 10,
+        "max_probes_per_launch": 8,
+        "max_readouts_per_probe": 50,
+        "observe_calls": 20,
+        "max_times_per_observe": 50,
+        "wall_clock_seconds": 300.0,
+        "first_light": {
+          "t_launch": 0.0,
+          "readout": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.35,
+            0.5,
+            0.7,
+            1.0
+          ],
+          "source_properties": {},
+          "probes": [
+            {
+              "pos": [
+                1.5,
+                0.0
+              ],
+              "vel": [
+                0.0,
+                0.3
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            },
+            {
+              "pos": [
+                0.0,
+                3.0
+              ],
+              "vel": [
+                -0.3,
+                0.0
+              ],
+              "properties": {
+                "mass": 1.0
+              }
+            }
+          ]
+        }
+      },
+      "validation_case_count": 12
+    }
+  ]
+}

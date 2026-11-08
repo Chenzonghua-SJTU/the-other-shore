@@ -15,11 +15,19 @@ def property_mapping(mission):
 
 
 def compile_law(law_spec, background_law_spec, parameter_spec, mission, background_props=None):
+    if background_props:
+        raise ValueError('Inferred background metadata is disabled; supply explicit background_law_spec')
     specs = validate_parameter_spec(parameter_spec)
     names = {p['name'] for p in specs}
     mapping = property_mapping(mission)
     used = set()
+    from .joint_expression import joint_expression
+    probe_expression = joint_expression(law_spec, specs, background_law_spec, allowed_properties=mapping)
+    from .background import explicit_background
+    background_law_spec = explicit_background(probe_expression, background_law_spec, mission)
     for formula in (law_spec, background_law_spec):
+        if formula is None:
+            continue
         referenced = {n.id for value in formula.values() for n in ast.walk(ast.parse(value, mode='eval')) if isinstance(n, ast.Name)}
         selected = [p for p in specs if p['name'] in referenced]
         Expression(formula, selected, allowed_properties=mapping)
@@ -65,20 +73,16 @@ def compile_law(law_spec, background_law_spec, parameter_spec, mission, backgrou
         'def acceleration(t, bodies, params):', '    result = np.zeros((len(bodies), 2))',
         '    for i, b in enumerate(bodies):', "        if b['kind'] == 'probe':",
         '            result[i, 0] = ' + convert(law_spec['ax']),
-        '            result[i, 1] = ' + convert(law_spec['ay']), '        else:',
-        '            result[i, 0] = ' + convert(background_law_spec['ax']),
-        '            result[i, 1] = ' + convert(background_law_spec['ay']), '    return result']
-    if background_props:
-        from .background import HELPER
-        lines.insert(4, 'BODY_PROPS = '+repr(background_props))
-        lines[lines.index('def acceleration(t, bodies, params):'):lines.index('def acceleration(t, bodies, params):')] = HELPER.rstrip().splitlines()
-        start=lines.index('        else:')
-        lines[start+1:start+3] = [
-            "            if b['properties'].get('bridge_motion_mode') == 3:",
-            '                result[i, 0] = ' + convert(background_law_spec['ax']),
-            '                result[i, 1] = ' + convert(background_law_spec['ay']),
-            '            else:',
-            '                result[i] = background_acceleration(b)']
+        '            result[i, 1] = ' + convert(law_spec['ay'])]
+    if background_law_spec is not None:
+        lines += ['        else:',
+                  '            result[i, 0] = ' + convert(background_law_spec['ax']),
+                  '            result[i, 1] = ' + convert(background_law_spec['ay'])]
+    else:
+        # The probe expression is body-free. These unused return slots satisfy
+        # the fixed API; they are never a proposed model of background motion.
+        lines += ['    # Background dynamics are unspecified and cannot influence this body-free probe law.']
+    lines += ['    return result']
     source = '\n'.join(lines) + '\n'
     from rift.law import validate_source
     validate_source(source)

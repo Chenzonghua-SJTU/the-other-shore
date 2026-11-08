@@ -1,4 +1,4 @@
-"""Noisy, budgeted local console for the six fully public development worlds.
+"""Noisy, budgeted local console for the twenty fully public development worlds.
 
 The interaction/accounting logic follows the standard episode protocol.
 Source and clean simulator data are intentionally available for development;

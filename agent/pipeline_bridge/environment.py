@@ -35,6 +35,9 @@ class Environment:
                 'wall_seconds_remaining': remaining, 'session_ended': self.ended or remaining <= 0}
 
     def call(self, method, **kwargs):
+        guard = getattr(self, 'interaction_guard', None)
+        if guard is not None:
+            guard(method)
         started = time.monotonic()
         return self.update(getattr(self.console, method)(**kwargs), started)
 

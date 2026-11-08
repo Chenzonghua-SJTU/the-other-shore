@@ -1,4 +1,4 @@
-"""Run the same submitted LLM agent on any of the six public universes.
+"""Run the same submitted LLM agent on any of the twenty public universes.
 
 All observations, source and detailed scores are public in this development
 driver. The organizer-only driver runs the submitted agent against unknown
@@ -121,8 +121,8 @@ def main(argv=None):
     parser.add_argument("--model-python", default=os.environ.get("SHORE_MODEL_PYTHON"))
     parser.add_argument("--tp-size", type=int, default=4)
     parser.add_argument("--max-tokens", type=int, default=4096)
-    parser.add_argument("--max-turns", type=int, default=3,
-                        help="Maximum baseline model calls per universe (default 3); zero removes this cap.")
+    parser.add_argument("--max-interaction-rounds", "--max-turns", dest="max_turns", type=int, default=3,
+                        help="Number of environment interaction rounds (3); each round may contain multiple tools. Model calls are not rounds.")
     parser.add_argument("--agent-dir", type=Path,
                         help="Complete agent/ directory containing strategy.json and run.py.")
     parser.add_argument("--models-file", type=Path,
@@ -130,8 +130,8 @@ def main(argv=None):
     parser.add_argument("--agent-command", nargs=argparse.REMAINDER,
                         help="Optional custom command argument list; put this option last.")
     args = parser.parse_args(argv)
-    if args.seed < 0 or args.max_turns < 0 or not 0 < args.startup_timeout < float("inf"):
-        parser.error("seed and max-turns must be nonnegative; startup timeout must be finite and positive.")
+    if args.seed < 0 or args.max_turns != 3 or not 0 < args.startup_timeout < float("inf"):
+        parser.error("seed must be nonnegative, max-interaction-rounds must be 3, and startup timeout must be finite and positive.")
     if bool(args.agent_dir) != bool(args.models_file):
         parser.error('--agent-dir and --models-file must be supplied together.')
     if args.agent_dir and args.agent_command:
@@ -166,7 +166,8 @@ def main(argv=None):
         results.append(result)
         print(json.dumps({"world": world, "has_valid_submission": result["has_valid_submission"],
                           "score": result.get("score", {}).get("total")}, ensure_ascii=False), flush=True)
-    summary = {"scope": "public_development_not_official_ranking", "worlds": results,
+    summary = {"scope": "shore_training_20_not_official_ranking", "worlds": results,
+               "mean_total": sum(item.get("score", {}).get("total", 0.) for item in results) / len(results),
                "all_have_valid_submission": all(item["has_valid_submission"] for item in results)}
     (args.output/"summary.json").write_text(json.dumps(summary, ensure_ascii=False, allow_nan=False, indent=2)+'\n', encoding="utf-8")
     return 0 if summary["all_have_valid_submission"] else 2

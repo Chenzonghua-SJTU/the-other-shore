@@ -403,6 +403,13 @@ def _runtime_environment(python_executable, cache_root):
         libraries = [str(p) for p in (cuda/'lib64',cuda/'lib',cuda/'targets/x86_64-linux/lib') if p.is_dir()]
         libraries += [part for part in env.get('LD_LIBRARY_PATH','').split(os.pathsep) if part and 'stubs' not in Path(part).parts]
         env['LD_LIBRARY_PATH'] = os.pathsep.join(dict.fromkeys(libraries))
+    # Selecting an interpreter by absolute path does not activate its Conda
+    # environment. Its native extensions can require a newer C++ runtime than
+    # the host's; prefer that interpreter's own runtime when it is installed.
+    interpreter_lib = executable.parent.parent/'lib'
+    if (interpreter_lib/'libstdc++.so.6').is_file():
+        libraries = [str(interpreter_lib), *filter(None,env.get('LD_LIBRARY_PATH','').split(os.pathsep))]
+        env['LD_LIBRARY_PATH'] = os.pathsep.join(dict.fromkeys(libraries))
     if env.get('CXX'): env.update(CUDAHOSTCXX=env['CXX'],NVCC_CCBIN=env['CXX'])
     env['PATH'] = str(executable.parent)+os.pathsep+env.get('PATH','')
     for key,leaf in (('HF_HOME','huggingface'),('VLLM_CACHE_ROOT','vllm'),('TRITON_CACHE_DIR','triton'),
@@ -528,6 +535,21 @@ def stop_server(process):
 
 
 @contextmanager
+def _model_ipc_environment(environment, log_dir):
+    """Unix IPC needs short paths even when an organizer's output path is deep."""
+    with tempfile.TemporaryDirectory(prefix='shore-ipc-', dir='/tmp') as directory:
+        child = dict(environment)
+        child['VLLM_RPC_BASE_PATH'] = directory
+        if len(os.fsencode(directory + '/' + '0'*36)) > 107:
+            raise InferenceError('The temporary IPC path exceeds the Unix socket limit.')
+        (Path(log_dir)/'ipc-path.json').write_text(json.dumps({
+            'purpose':'private vLLM Unix sockets only; scientific data stays in output',
+            'VLLM_RPC_BASE_PATH':directory,'cleanup':'removed after the owned model service stops'
+        },indent=2)+'\n',encoding='utf-8')
+        yield child
+
+
+@contextmanager
 def managed_model(model_key=None, *, base_url=None, model_id=None, model_root=None, model_path=None, adapter_path=None,
                   python_executable=None, tensor_parallel_size=4, startup_timeout=900.,
                   max_model_len=32768, log_dir=None):
@@ -558,7 +580,7 @@ def managed_model(model_key=None, *, base_url=None, model_id=None, model_root=No
     client = ModelClient(plan['base_url'],plan['model']['served_model_name'])
     logfile = destination/'vllm.log'
     (destination/'launch.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    with logfile.open('ab') as stream:
+    with _model_ipc_environment(environment,destination) as environment, logfile.open('ab') as stream:
         try:
             process = subprocess.Popen(plan['command'],env=environment,stdout=stream,stderr=subprocess.STDOUT,
                 start_new_session=(os.name=='posix'))

@@ -2,16 +2,19 @@
 import ast,copy,hashlib,json,time
 from pathlib import Path
 from dataclasses import replace
+from contextlib import contextmanager
 import numpy as np
 from rift import load_law,rollout
 from rift.observations import case_from_observation
 from .compiler import compile_law,property_mapping
-from .background import infer as infer_background,BackgroundModelError
+from .background import explicit_background,BackgroundModelError
+from .joint_expression import background_context, scoped_expression
 
 class Backend:
     def __init__(self,environment,output,numerics,expressions):
         self.env,self.output,self.numerics,self.expressions=environment,Path(output),numerics,expressions
-        self.cache={};self.source_cache={};self.background_cache={};self.background_history_cache={};self.rollout_calls=0;self.exports={};self.selection=None
+        self.cache={};self.source_cache={};self.background_history_cache={};self.rollout_calls=0;self.exports={};self.selection=None
+        self._background_spec=None
         (self.output/'bridge-cache').mkdir(parents=True,exist_ok=True)
 
     def _frame(self,probe):
@@ -32,58 +35,38 @@ class Backend:
             'positions':np.asarray(probe['r_obs'])[:,None,:].tolist(),'velocities':np.asarray(probe['v_obs'])[:,None,:].tolist()}
         return mission,record
 
-    def background_model(self,expression,mission,bodies):
-        if not expression.uses_bodies:return {},[]
-        sigma=mission.get('noise',{}).get('position_sigma')
-        if sigma is None:
-            region=mission.get('launch_region',{})
-            sigma=.01*float(np.sqrt((region['radius_min']**2+region['radius_max']**2)/2)) if region.get('kind')=='annulus' else 0.
-        key=hashlib.sha256(json.dumps({'initial':mission['background_initial_state'],'observed':bodies,'sigma':sigma,'candidate':expression.law_spec},sort_keys=True).encode()).hexdigest()
-        if key not in self.background_cache:
-            try:props,evidence=infer_background(mission,bodies,sigma)
-            except BackgroundModelError as exc:
-                # Generic alternative hypothesis: use the candidate RHS for moving
-                # background bodies too. It is not a truth-derived force model.
-                # Public stationary anchors remain stationary only when measured so.
-                initial=mission['background_initial_state'];props={};evidence=[]
-                required=[]
-                for value in expression.law_spec.values():
-                    for n in ast.walk(ast.parse(value,mode='eval')):
-                        if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='q':required.append(n.args[0].value)
-                mapping=property_mapping(mission)
-                for idx,ident in enumerate(initial['ids']):
-                    known=initial.get('properties',[{} for _ in initial['ids']])[idx]
-                    if any(mapping[k][0]=='probe' and mapping[k][1] not in known for k in required):
-                        raise self.numerics.NumericalError('Shared-background hypothesis requires unavailable public properties; no property values invented. '+str(exc),'background_model_unidentified') from exc
-                    j=bodies.get('body_ids',initial['ids']).index(ident)
-                    observed=np.asarray(bodies['positions'],float)[:,j,:]
-                    p0=np.asarray(initial['positions'][idx],float)
-                    stationary=np.linalg.norm(initial['velocities'][idx])<1e-12 and float(np.sqrt(np.mean(np.sum((observed-p0)**2,axis=1))))<=max(1e-6,4*np.sqrt(2)*float(sigma or 0))
-                    props[ident]={'bridge_motion_mode':0. if stationary else 3.}
-                    evidence.append({'body_id':ident,'mode':'stationary' if stationary else 'shared_candidate_rhs','status':'candidate_hypothesis_not_established','reason':str(exc),'future_observation_replay':False})
-            for ident,extra in props.items():
-                initial=mission['background_initial_state'];idx=initial['ids'].index(ident);known=initial.get('properties',[{} for _ in initial['ids']])[idx]
-                if set(extra)&set(known):raise self.numerics.NumericalError('Background metadata conflicts with known properties','background_model_unidentified')
-            self.background_cache[key]=(props,evidence)
-            with (self.output/'background-model-audit.jsonl').open('a') as stream:stream.write(json.dumps({'context_sha256':key,'models':evidence,'data_source':'acquired public observations and exact public initial states','prediction':'autonomous official rollout, no future observation replay'})+'\n')
-        return self.background_cache[key]
+    @contextmanager
+    def candidate(self, background_law_spec):
+        """Bind only an explicit model choice, scoped to one candidate operation."""
+        previous=self._background_spec
+        self._background_spec=copy.deepcopy(background_law_spec)
+        token=background_context.set(self._background_spec)
+        try:yield
+        finally:
+            self._background_spec=previous
+            background_context.reset(token)
+
+    def background_model(self,expression,mission,bodies=None):
+        # Observations never select a background model. They remain available to
+        # the LLM, which must supply the mathematical hypothesis explicitly.
+        try:return explicit_background(expression,self._background_spec,mission)
+        except BackgroundModelError as exc:
+            raise self.numerics.NumericalError(str(exc),exc.code) from exc
 
     def source(self,expression,parameters,mission,bodies=None):
-        background_props,_=self.background_model(expression,mission,bodies)
-        used={n.id for value in expression.law_spec.values() for n in ast.walk(ast.parse(value,mode='eval')) if isinstance(n,ast.Name)}
-        specs=[{**s,'initial':float(parameters[s['name']])} for s in expression.parameter_spec if s['name'] in used]
-        background_spec=expression.law_spec if any(p.get('bridge_motion_mode')==3 for p in background_props.values()) else {'ax':'0','ay':'0'}
-        source=compile_law(expression.law_spec,background_spec,specs,mission,background_props=background_props)
-        tree=ast.parse(source)
-        for node in tree.body:
-            if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='PARAMS' for t in node.targets):
-                node.value=ast.parse(repr({k:float(v) for k,v in parameters.items()}),mode='eval').body
-        return ast.unparse(ast.fix_missing_locations(tree))+'\n'
+        background_spec=self.background_model(expression,mission,bodies)
+        specs=[{**s,'initial':float(parameters[s['name']])} for s in expression.parameter_spec]
+        return compile_law(expression.law_spec,background_spec,specs,mission)
 
     def integrate(self,expression,parameters,probe,bodies,deadline=None):
+        tool_limit=getattr(self,'tool_deadline',None)
+        def check_tool_deadline():
+            if tool_limit is not None and time.monotonic()>=tool_limit[0]:
+                raise tool_limit[1]()
+        check_tool_deadline()
         mission,record=self._frame(probe)
-        props,_=self.background_model(expression,mission,bodies)
-        signature=json.dumps({'law':expression.law_spec,'spec':expression.parameter_spec,'mapping':property_mapping(mission),'target':mission.get('source_property_target_id'),'background':props},sort_keys=True)
+        background_spec=self.background_model(expression,mission,bodies)
+        signature=json.dumps({'law':expression.law_spec,'spec':expression.parameter_spec,'mapping':property_mapping(mission),'target':mission.get('source_property_target_id'),'background':background_spec},sort_keys=True)
         if signature not in self.source_cache:
             initial_parameters={p['name']:p['initial'] for p in expression.parameter_spec}
             source=self.source(expression,initial_parameters,mission,bodies)
@@ -98,16 +81,18 @@ class Backend:
         # The official immutable LawModel accepts current parameters separately.
         # Reuse mathematical code; never recompile it for each optimizer perturbation.
         law=replace(self.cache[digest],params={k:float(v) for k,v in parameters.items()})
-        stop=min(time.monotonic()+self.numerics.MAX_ROLLOUT_SECONDS,deadline if deadline is not None else float('inf'))
+        stop=min(time.monotonic()+self.numerics.MAX_ROLLOUT_SECONDS,deadline if deadline is not None else float('inf'),tool_limit[0] if tool_limit is not None else float('inf'))
         rhs_calls=0
         def acceleration(t,state,params):
             nonlocal rhs_calls
             rhs_calls+=1
+            check_tool_deadline()
             if time.monotonic()>stop:raise self.numerics.NumericalError('Official rollout wall-time budget exhausted','numerical_timeout')
             return law.acceleration(t,state,params)
         try:
             case=case_from_observation(mission,record)
             prediction=rollout(replace(law,acceleration=acceleration),case)
+            check_tool_deadline()
             self.rollout_calls+=1
             self.last_rhs_calls=rhs_calls
         except Exception as exc:
@@ -115,16 +100,25 @@ class Backend:
             raise self.numerics.NumericalError('Official rift.rollout: '+str(exc)[:600],code) from exc
         r=np.asarray(prediction['positions'])[:,0,:];v=np.asarray(prediction['velocities'])[:,0,:]
         if expression.uses_bodies and case['background']:
-            history_key=json.dumps({'background':case['background'],'models':props,'times':probe['times'],'law':digest,'parameters':parameters},sort_keys=True)
+            history_key=json.dumps({'background':case['background'],'background_law_spec':background_spec,'times':probe['times'],'law':digest,'parameters':parameters},sort_keys=True)
             if history_key not in self.background_history_cache:
-                queries=[]
-                for body in case['background']:
-                    q=copy.deepcopy(body);q['properties'].update(props.get(body['id'],{}));queries.append(q)
+                queries=[];query_ids={};occupied={b['id'] for b in case['background']}
+                for i,body in enumerate(case['background']):
+                    identifier='bridge_background_query_'+str(i)
+                    while identifier in occupied:identifier+='_' 
+                    occupied.add(identifier);query_ids[identifier]=body['id']
+                    queries.append({**copy.deepcopy(body),'id':identifier})
                 def background_only(t,state,p):
+                    check_tool_deadline()
                     if time.monotonic()>stop:raise self.numerics.NumericalError('Background diagnostic rollout time budget exhausted','numerical_timeout')
-                    return law.acceleration(t,tuple({**body,'kind':'background'} for body in state),p)
+                    # Retain all interacting background bodies. A passive copy
+                    # follows each source's explicit RHS; mapping its ID makes
+                    # sum_b exclude the original source and its diagnostic copy.
+                    translated=tuple({**body,'kind':'background','id':query_ids[body['id']]}
+                                     if body['id'] in query_ids else body for body in state)
+                    return law.acceleration(t,translated,p)
                 bg_law=replace(law,body_props={},hidden=[],acceleration=background_only)
-                bg_case={'schema_version':'1.0.0','t_launch':0.,'readout':list(probe['times']),'background':[],'probes':queries}
+                bg_case={'schema_version':'1.0.0','t_launch':0.,'readout':list(probe['times']),'background':copy.deepcopy(case['background']),'probes':queries}
                 bg_prediction=rollout(bg_law,bg_case)
                 self.background_history_cache[history_key]=np.asarray(bg_prediction['positions'])
                 if len(self.background_history_cache)>64:self.background_history_cache.pop(next(iter(self.background_history_cache)))
@@ -133,6 +127,7 @@ class Backend:
             background_positions=np.repeat(np.asarray(mission['background_initial_state']['positions'],float)[None,:,:],len(r),axis=0) if mission['background_initial_state']['ids'] else np.empty((len(r),0,2))
         a=[]
         for j,(t,rp,vp) in enumerate(zip(probe['times'],r,v)):
+            check_tool_deadline()
             bg=[{'body_id':bid,'position':pos} for bid,pos in zip(mission['background_initial_state']['ids'],background_positions[j])]
             a.append(expression.acceleration(float(t),rp,vp,bg,probe['initial_conditions']['properties'],parameters).tolist())
         with (self.output/'official-rollout-audit.jsonl').open('a') as stream:
@@ -142,7 +137,7 @@ class Backend:
     def short_rollout(self,candidate,dataset,deadline):
         # Original terminal time, original observations, original 0.4 s check;
         # only the numerical engine is the fixed organizer rollout.
-        expression=self.expressions.Expression(candidate['law_spec'],candidate['parameter_spec'])
+        expression=scoped_expression(candidate['law_spec'],candidate['parameter_spec'])
         parameters={p['name']:p['initial'] for p in candidate['parameter_spec']}
         stop=min(deadline,time.monotonic()+.4)
         position_errors=[];velocity_errors=[];calls=0
@@ -185,6 +180,34 @@ class Backend:
         return reply
 
     def attach(self,runtime):
+        # Persist the explicit background formula before the immutable law
+        # record is written; a later fit cannot alter an earlier candidate.
+        original_add=runtime.store.add
+        def add(kind,data,record_id=None):
+            if kind=='law':
+                data=copy.deepcopy(data)
+                data['background_law_spec']=copy.deepcopy(self._background_spec)
+                data['background_selection_source']='model_tool_argument' if self._background_spec is not None else 'unused_by_body_free_probe_law'
+            return original_add(kind,data,record_id)
+        runtime.store.add=add
+        original_fit=runtime.fit_law_and_rollout
+        def fit(law_spec,parameter_spec,train_probe_ids,background_law_spec=None):
+            with self.candidate(background_law_spec):
+                expression=scoped_expression(law_spec,parameter_spec)
+                chosen=explicit_background(expression,background_law_spec,self.env.public_mission)
+                result=original_fit(law_spec,parameter_spec,train_probe_ids)
+            result['background_law_spec']=copy.deepcopy(chosen)
+            return result
+        runtime.fit_law_and_rollout=fit
+
+        def for_law(operation):
+            def bound(law_id,*args,**kwargs):
+                law=runtime._law(law_id)
+                with self.candidate(law.get('background_law_spec')):
+                    return operation(law_id,*args,**kwargs)
+            return bound
+        runtime.validate_law=for_law(runtime.validate_law)
+        runtime.analyze_residual=for_law(runtime.analyze_residual)
         # Preserve each original tool call and its scientific checks, then
         # serialize only the exact pair selected by that original runtime.
         original_save=runtime.save_draft;original_submit=runtime.submit;original_finalize=runtime.finalize_draft
@@ -219,8 +242,12 @@ class Backend:
         runtime.save_draft=save;runtime.submit=submit;runtime.finalize_draft=finalize
 
     def export(self,directory,law,claims,probes,physical_explanation):
+        with self.candidate(law.get('background_law_spec')):
+            return self._export(directory,law,claims,probes,physical_explanation)
+
+    def _export(self,directory,law,claims,probes,physical_explanation):
         directory=Path(directory);directory.mkdir(parents=True,exist_ok=False)
-        expression=self.expressions.Expression(law['law_spec'],law['parameter_spec'])
+        expression=scoped_expression(law['law_spec'],law['parameter_spec'])
         source=self.source(expression,law['fitted_parameters'],self.env.public_mission,law.get('body_context',law.get('known_bodies',[])))
         points=0
         for probe in probes:
@@ -241,14 +268,17 @@ def install(environment,output):
     from .bootstrap import repository
     repository()
     from ..repository.shore_agent import numerics,expressions,submission,symbolic_regression
+    from ..repository.shore_agent import runtime
+    runtime.Expression=scoped_expression
+    numerics.Expression=scoped_expression
     backend=Backend(environment,output,numerics,expressions)
     numerics._integrate=backend.integrate
     def autonomous_coverage(expression,bodies,probe):
         if expression.uses_bodies:
             if environment is None:
                 raise numerics.NumericalError('This SR worker has no acquired background context','background_context_unavailable')
-            # Acquired epochs constrain an autonomous hypothesis; they need not
-            # cover future prediction times. Never interpolate future inputs.
+            # The LLM supplies the dynamics; the fixed integrator propagates
+            # initial states. Never infer a model or replay future observations.
             backend.background_model(expression,environment.public_mission,bodies)
     numerics._check_body_coverage=autonomous_coverage
     def short_rollout(candidate,dataset,deadline):

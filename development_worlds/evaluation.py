@@ -1,6 +1,6 @@
 """Public development reference generation and fixed-law trajectory scoring.
 
-This design prototype evaluates the six public development worlds only.  It
+This design prototype evaluates the twenty public training worlds only.  It
 uses the same public law loader and fixed integration path used for candidate
 predictions.  Source data, clean references and component scores are public
 here; that does not change the feedback policy of the official competition.
@@ -28,15 +28,15 @@ from . import catalog
 from .worlds import DevelopmentSimulator
 
 
-VERSION = "public-development-evaluation-1.0.0"
-REFERENCE_VERSION = "public-development-reference-1.0.0"
+VERSION = "shore-training-evaluation-2.0.0"
+REFERENCE_VERSION = "shore-training-reference-2.0.0"
 ROOT = Path(__file__).resolve().parent
 
 
 def _world(world):
     value = str(world)
     if value not in catalog.WORLDS:
-        raise ValueError("Development world must be 1 through 6.")
+        raise ValueError("Development world must be 1 through 20.")
     return value
 
 
@@ -64,15 +64,18 @@ def _source_hashes():
              "development_worlds/evaluation.py", "rift/law.py",
              "rift/observations.py", "rift/prediction.py",
              "rift_numerics/__init__.py", "rift_numerics/rollout.py")
+    # Include extension mechanism/metadata modules so cached truth cannot survive
+    # a changed force law merely because worlds.py stayed unchanged.
+    extra = tuple(str(path.relative_to(root)) for path in sorted(ROOT.glob("*.py"))
+                  if path.name not in {"oracles.py", "validate_suite.py"})
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest()
-            for name in names}
+            for name in sorted(set(names + extra))}
 
 
 def claims_truth(world):
     """Public labels; source visibility concerns the simulated environment."""
     world = _world(world)
-    return {"dynamics_order": 2, "hidden_matter": False,
-            "time_dependence": world == "6"}
+    return copy.deepcopy(DevelopmentSimulator(world).claims_truth)
 
 
 def prediction_score(mse, variance):
